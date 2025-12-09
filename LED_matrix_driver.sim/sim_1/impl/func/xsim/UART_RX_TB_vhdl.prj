@@ -1,0 +1,8 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"UART_RX_TB_func_impl.vhd" \
+"../../../../../LED_matrix_driver.srcs/sources_1/new/uart_rx.vhd" \
+"../../../../../LED_matrix_driver.srcs/sim_1/new/uart_tb.vhd" \
+
+# Do not sort compile order
+nosort
