@@ -63,6 +63,7 @@ module design_1_fifo_generator_0_0 (
   full,
   wr_ack,
   empty,
+  almost_empty,
   data_count
 );
 
@@ -86,6 +87,8 @@ output wire full;
 output wire wr_ack;
 (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ EMPTY" *)
 output wire empty;
+(* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ ALMOST_EMPTY" *)
+output wire almost_empty;
 output wire [10 : 0] data_count;
 
   fifo_generator_v13_2_11 #(
@@ -100,7 +103,7 @@ output wire [10 : 0] data_count;
     .C_ENABLE_RLOCS(0),
     .C_FAMILY("artix7"),
     .C_FULL_FLAGS_RST_VAL(0),
-    .C_HAS_ALMOST_EMPTY(0),
+    .C_HAS_ALMOST_EMPTY(1),
     .C_HAS_ALMOST_FULL(0),
     .C_HAS_BACKUP(0),
     .C_HAS_DATA_COUNT(1),
@@ -320,7 +323,7 @@ output wire [10 : 0] data_count;
     .wr_ack(wr_ack),
     .overflow(),
     .empty(empty),
-    .almost_empty(),
+    .almost_empty(almost_empty),
     .valid(),
     .underflow(),
     .data_count(data_count),

@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
---Date        : Mon Dec  8 00:45:05 2025
+--Date        : Tue Dec  9 01:08:55 2025
 --Host        : adrianna-linux running 64-bit Linux Mint 22
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -81,6 +81,7 @@ architecture STRUCTURE of design_1 is
     full : out STD_LOGIC;
     wr_ack : out STD_LOGIC;
     empty : out STD_LOGIC;
+    almost_empty : out STD_LOGIC;
     data_count : out STD_LOGIC_VECTOR ( 10 downto 0 )
   );
   end component design_1_fifo_generator_0_0;
@@ -126,6 +127,7 @@ architecture STRUCTURE of design_1 is
   signal proc_sys_reset_0_peripheral_reset : STD_LOGIC_VECTOR ( 0 to 0 );
   signal seven_seg_0_o_fifo_read : STD_LOGIC;
   signal NLW_clk_wiz_input_clk_stopped_UNCONNECTED : STD_LOGIC;
+  signal NLW_fifo_generator_0_almost_empty_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_generator_0_empty_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_generator_0_full_UNCONNECTED : STD_LOGIC;
   signal NLW_proc_sys_reset_0_mb_reset_UNCONNECTED : STD_LOGIC;
@@ -159,6 +161,7 @@ clk_wiz: component design_1_clk_wiz_0
     );
 fifo_generator_0: component design_1_fifo_generator_0_0
      port map (
+      almost_empty => NLW_fifo_generator_0_almost_empty_UNCONNECTED,
       clk => clk_wiz_clk_out1,
       data_count(10 downto 0) => fifo_generator_0_data_count(10 downto 0),
       din(7 downto 0) => UART_RX_0_o_RX_Byte(7 downto 0),

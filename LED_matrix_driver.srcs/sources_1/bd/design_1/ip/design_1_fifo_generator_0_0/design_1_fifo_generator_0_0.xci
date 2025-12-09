@@ -29,7 +29,7 @@
         "Dout_Reset_Value": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
         "dynamic_power_saving": [ { "value": "false", "resolve_type": "user", "format": "bool", "enabled": false, "usage": "all" } ],
         "Almost_Full_Flag": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
-        "Almost_Empty_Flag": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
+        "Almost_Empty_Flag": [ { "value": "true", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "Valid_Flag": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "Valid_Sense": [ { "value": "Active_High", "resolve_type": "user", "enabled": false, "usage": "all" } ],
         "Underflow_Flag": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
@@ -189,7 +189,7 @@
         "C_ENABLE_RLOCS": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_FAMILY": [ { "value": "artix7", "resolve_type": "generated", "usage": "all" } ],
         "C_FULL_FLAGS_RST_VAL": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_HAS_ALMOST_EMPTY": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_HAS_ALMOST_EMPTY": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_HAS_ALMOST_FULL": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_HAS_BACKUP": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_HAS_DATA_COUNT": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -416,6 +416,7 @@
         "full": [ { "direction": "out", "driver_value": "0x0" } ],
         "wr_ack": [ { "direction": "out", "driver_value": "0x0" } ],
         "empty": [ { "direction": "out", "driver_value": "0x1" } ],
+        "almost_empty": [ { "direction": "out", "driver_value": "0x1" } ],
         "data_count": [ { "direction": "out", "size_left": "10", "size_right": "0", "driver_value": "0" } ]
       },
       "interfaces": {
@@ -452,6 +453,7 @@
           "abstraction_type": "xilinx.com:interface:fifo_read_rtl:1.0",
           "mode": "slave",
           "port_maps": {
+            "ALMOST_EMPTY": [ { "physical_name": "almost_empty" } ],
             "EMPTY": [ { "physical_name": "empty" } ],
             "RD_DATA": [ { "physical_name": "dout" } ],
             "RD_EN": [ { "physical_name": "rd_en" } ]

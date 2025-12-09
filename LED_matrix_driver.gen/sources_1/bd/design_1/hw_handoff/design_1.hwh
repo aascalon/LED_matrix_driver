@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Dec  8 00:45:07 2025" VIVADOVERSION="2024.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Dec  9 01:08:57 2025" VIVADOVERSION="2024.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:basys3:part0:1.2" DEVICE="7a35t" NAME="design_1" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
@@ -789,7 +789,7 @@
         <PARAMETER NAME="C_ERROR_INJECTION_TYPE_WRCH" VALUE="0"/>
         <PARAMETER NAME="C_FAMILY" VALUE="artix7"/>
         <PARAMETER NAME="C_FULL_FLAGS_RST_VAL" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_ALMOST_EMPTY" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_ALMOST_EMPTY" VALUE="1"/>
         <PARAMETER NAME="C_HAS_ALMOST_FULL" VALUE="0"/>
         <PARAMETER NAME="C_HAS_AXIS_TDATA" VALUE="1"/>
         <PARAMETER NAME="C_HAS_AXIS_TDEST" VALUE="0"/>
@@ -945,7 +945,7 @@
         <PARAMETER NAME="ARUSER_Width" VALUE="0"/>
         <PARAMETER NAME="AWUSER_Width" VALUE="0"/>
         <PARAMETER NAME="Add_NGC_Constraint_AXI" VALUE="false"/>
-        <PARAMETER NAME="Almost_Empty_Flag" VALUE="false"/>
+        <PARAMETER NAME="Almost_Empty_Flag" VALUE="true"/>
         <PARAMETER NAME="Almost_Full_Flag" VALUE="false"/>
         <PARAMETER NAME="BUSER_Width" VALUE="0"/>
         <PARAMETER NAME="Clock_Enable_Type" VALUE="Slave_Interface_Clock_Enable"/>
@@ -1111,6 +1111,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
+        <PORT DIR="O" NAME="almost_empty" SIGIS="undef"/>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clk_wiz_clk_out1">
           <CONNECTIONS>
             <CONNECTION INSTANCE="clk_wiz" PORT="clk_out1"/>
@@ -1165,6 +1166,7 @@
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="__NOC__" NAME="FIFO_READ" TYPE="TARGET" VLNV="xilinx.com:interface:fifo_read:1.0">
           <PORTMAPS>
+            <PORTMAP LOGICAL="ALMOST_EMPTY" PHYSICAL="almost_empty"/>
             <PORTMAP LOGICAL="EMPTY" PHYSICAL="empty"/>
             <PORTMAP LOGICAL="RD_DATA" PHYSICAL="dout"/>
             <PORTMAP LOGICAL="RD_EN" PHYSICAL="rd_en"/>

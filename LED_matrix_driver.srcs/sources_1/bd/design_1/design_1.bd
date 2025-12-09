@@ -234,6 +234,9 @@
         "xci_path": "ip/design_1_fifo_generator_0_0/design_1_fifo_generator_0_0.xci",
         "inst_hier_path": "fifo_generator_0",
         "parameters": {
+          "Almost_Empty_Flag": {
+            "value": "true"
+          },
           "Data_Count": {
             "value": "true"
           },

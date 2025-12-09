@@ -1,0 +1,35 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Tue Dec  9 01:09:08 2025
+# Process ID         : 456236
+# Current directory  : /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/design_1_system_ila_0_0_synth_1
+# Command line       : vivado -log design_1_system_ila_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_system_ila_0_0.tcl
+# Log file           : /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/design_1_system_ila_0_0_synth_1/design_1_system_ila_0_0.vds
+# Journal file       : /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/design_1_system_ila_0_0_synth_1/vivado.jou
+# Running On         : adrianna-linux
+# Platform           : Linuxmint
+# Operating System   : Linux Mint 22
+# Processor Detail   : Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz
+# CPU Frequency      : 2601.640 MHz
+# CPU Physical cores : 4
+# CPU Logical cores  : 8
+# Host memory        : 16433 MB
+# Swap memory        : 2147 MB
+# Total Virtual      : 18581 MB
+# Available Virtual  : 6043 MB
+#-----------------------------------------------------------
+source design_1_system_ila_0_0.tcl -notrace
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1438.066 ; gain = 0.027 ; free physical = 1467 ; free virtual = 5409
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: design_1_system_ila_0_0
+INFO: [IP_Flow 19-6922] IPCACHE: Exporting cached entry d1a09d804504521d to dir: /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/design_1_system_ila_0_0_synth_1
+INFO: [IP_Flow 19-6928] IPCACHE: copied cached file /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.cache/ip/2024.2/d/1/d1a09d804504521d/design_1_system_ila_0_0.dcp to /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/design_1_system_ila_0_0_synth_1/design_1_system_ila_0_0.dcp.
+INFO: [IP_Flow 19-6928] IPCACHE: copied cached file /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.cache/ip/2024.2/d/1/d1a09d804504521d/design_1_system_ila_0_0_sim_netlist.v to /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/design_1_system_ila_0_0_synth_1/design_1_system_ila_0_0_sim_netlist.v.
+INFO: [IP_Flow 19-6928] IPCACHE: copied cached file /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.cache/ip/2024.2/d/1/d1a09d804504521d/design_1_system_ila_0_0_sim_netlist.vhdl to /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/design_1_system_ila_0_0_synth_1/design_1_system_ila_0_0_sim_netlist.vhdl.
+INFO: [IP_Flow 19-6928] IPCACHE: copied cached file /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.cache/ip/2024.2/d/1/d1a09d804504521d/design_1_system_ila_0_0_stub.v to /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/design_1_system_ila_0_0_synth_1/design_1_system_ila_0_0_stub.v.
+INFO: [IP_Flow 19-6928] IPCACHE: copied cached file /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.cache/ip/2024.2/d/1/d1a09d804504521d/design_1_system_ila_0_0_stub.vhdl to /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/design_1_system_ila_0_0_synth_1/design_1_system_ila_0_0_stub.vhdl.
+INFO: [IP_Flow 19-4838] Using cached IP synthesis design for IP design_1_system_ila_0_0, cache-ID = d1a09d804504521d.
+config_ip_cache: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1438.066 ; gain = 0.000 ; free physical = 1079 ; free virtual = 5339
+INFO: [Common 17-206] Exiting Vivado at Tue Dec  9 01:09:27 2025...
