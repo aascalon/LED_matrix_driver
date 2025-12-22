@@ -9,19 +9,20 @@ module design_1 (
   clk,
   UART_RX,
   fpga_reset,
-  CA,
-  CB,
-  CC,
-  CD,
-  CE,
-  CF,
-  CG,
-  AN0,
-  AN1,
-  led0,
-  AN2,
-  AN3,
-  led1
+  led1,
+  JA1,
+  JA2,
+  JA3,
+  JA4,
+  JA7,
+  JA8,
+  JA9,
+  JXADC1,
+  JXADC2,
+  JXADC3,
+  JXADC4,
+  JXADC7,
+  JXADC8
 );
 
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.CLK CLK" *)
@@ -33,31 +34,59 @@ module design_1 (
   (* X_INTERFACE_IGNORE = "true" *)
   input fpga_reset;
   (* X_INTERFACE_IGNORE = "true" *)
-  output CA;
-  (* X_INTERFACE_IGNORE = "true" *)
-  output CB;
-  (* X_INTERFACE_IGNORE = "true" *)
-  output CC;
-  (* X_INTERFACE_IGNORE = "true" *)
-  output CD;
-  (* X_INTERFACE_IGNORE = "true" *)
-  output CE;
-  (* X_INTERFACE_IGNORE = "true" *)
-  output CF;
-  (* X_INTERFACE_IGNORE = "true" *)
-  output CG;
-  (* X_INTERFACE_IGNORE = "true" *)
-  output AN0;
-  (* X_INTERFACE_IGNORE = "true" *)
-  output AN1;
-  (* X_INTERFACE_IGNORE = "true" *)
-  output led0;
-  (* X_INTERFACE_IGNORE = "true" *)
-  output [0:0]AN2;
-  (* X_INTERFACE_IGNORE = "true" *)
-  output [0:0]AN3;
-  (* X_INTERFACE_IGNORE = "true" *)
   output led1;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.JA1 DATA" *)
+  (* X_INTERFACE_MODE = "master DATA.JA1" *)
+  (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.JA1, LAYERED_METADATA undef" *)
+  output JA1;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.JA2 DATA" *)
+  (* X_INTERFACE_MODE = "master DATA.JA2" *)
+  (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.JA2, LAYERED_METADATA undef" *)
+  output JA2;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.JA3 DATA" *)
+  (* X_INTERFACE_MODE = "master DATA.JA3" *)
+  (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.JA3, LAYERED_METADATA undef" *)
+  output JA3;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.JA4 DATA" *)
+  (* X_INTERFACE_MODE = "master DATA.JA4" *)
+  (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.JA4, LAYERED_METADATA undef" *)
+  output JA4;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.JA7 DATA" *)
+  (* X_INTERFACE_MODE = "master DATA.JA7" *)
+  (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.JA7, LAYERED_METADATA undef" *)
+  output JA7;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.JA8 DATA" *)
+  (* X_INTERFACE_MODE = "master DATA.JA8" *)
+  (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.JA8, LAYERED_METADATA undef" *)
+  output JA8;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.JA9 DATA" *)
+  (* X_INTERFACE_MODE = "master DATA.JA9" *)
+  (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.JA9, LAYERED_METADATA undef" *)
+  output JA9;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.JXADC1 DATA" *)
+  (* X_INTERFACE_MODE = "master DATA.JXADC1" *)
+  (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.JXADC1, LAYERED_METADATA undef" *)
+  output JXADC1;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.JXADC2 DATA" *)
+  (* X_INTERFACE_MODE = "master DATA.JXADC2" *)
+  (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.JXADC2, LAYERED_METADATA undef" *)
+  output JXADC2;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.JXADC3 DATA" *)
+  (* X_INTERFACE_MODE = "master DATA.JXADC3" *)
+  (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.JXADC3, LAYERED_METADATA undef" *)
+  output JXADC3;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.JXADC4 DATA" *)
+  (* X_INTERFACE_MODE = "master DATA.JXADC4" *)
+  (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.JXADC4, LAYERED_METADATA undef" *)
+  output JXADC4;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.JXADC7 DATA" *)
+  (* X_INTERFACE_MODE = "master DATA.JXADC7" *)
+  (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.JXADC7, LAYERED_METADATA undef" *)
+  output JXADC7;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.JXADC8 DATA" *)
+  (* X_INTERFACE_MODE = "master DATA.JXADC8" *)
+  (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.JXADC8, LAYERED_METADATA undef" *)
+  output JXADC8;
 
   // stub module has no contents
 

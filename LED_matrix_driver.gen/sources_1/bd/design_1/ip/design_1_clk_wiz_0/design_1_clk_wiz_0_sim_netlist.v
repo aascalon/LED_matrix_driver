@@ -2,10 +2,10 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-// Date        : Sun Dec  7 15:28:45 2025
+// Date        : Sun Dec  7 15:28:44 2025
 // Host        : adrianna-linux running 64-bit Linux Mint 22
-// Command     : write_verilog -force -mode funcsim
-//               /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_clk_wiz_0/design_1_clk_wiz_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top design_1_clk_wiz_0 -prefix
+//               design_1_clk_wiz_0_ design_1_clk_wiz_0_sim_netlist.v
 // Design      : design_1_clk_wiz_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -35,7 +35,7 @@ module design_1_clk_wiz_0
   wire locked;
   (* RTL_KEEP = "yes" *) wire reset;
 
-  design_1_clk_wiz_0_clk_wiz inst
+  design_1_clk_wiz_0_design_1_clk_wiz_0_clk_wiz inst
        (.clk_in1(clk_in1),
         .clk_out1(clk_out1),
         .clk_out2(clk_out2),
@@ -44,7 +44,7 @@ module design_1_clk_wiz_0
         .reset(reset));
 endmodule
 
-module design_1_clk_wiz_0_clk_wiz
+module design_1_clk_wiz_0_design_1_clk_wiz_0_clk_wiz
    (clk_out1,
     clk_out2,
     reset,

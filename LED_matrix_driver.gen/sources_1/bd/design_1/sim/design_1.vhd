@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
---Date        : Tue Dec  9 01:08:55 2025
+--Date        : Sun Dec 21 19:57:17 2025
 --Host        : adrianna-linux running 64-bit Linux Mint 22
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -14,25 +14,26 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity design_1 is
   port (
-    AN0 : out STD_LOGIC;
-    AN1 : out STD_LOGIC;
-    AN2 : out STD_LOGIC_VECTOR ( 0 to 0 );
-    AN3 : out STD_LOGIC_VECTOR ( 0 to 0 );
-    CA : out STD_LOGIC;
-    CB : out STD_LOGIC;
-    CC : out STD_LOGIC;
-    CD : out STD_LOGIC;
-    CE : out STD_LOGIC;
-    CF : out STD_LOGIC;
-    CG : out STD_LOGIC;
+    JA1 : out STD_LOGIC;
+    JA2 : out STD_LOGIC;
+    JA3 : out STD_LOGIC;
+    JA4 : out STD_LOGIC;
+    JA7 : out STD_LOGIC;
+    JA8 : out STD_LOGIC;
+    JA9 : out STD_LOGIC;
+    JXADC1 : out STD_LOGIC;
+    JXADC2 : out STD_LOGIC;
+    JXADC3 : out STD_LOGIC;
+    JXADC4 : out STD_LOGIC;
+    JXADC7 : out STD_LOGIC;
+    JXADC8 : out STD_LOGIC;
     UART_RX : in STD_LOGIC;
     clk : in STD_LOGIC;
     fpga_reset : in STD_LOGIC;
-    led0 : out STD_LOGIC;
     led1 : out STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=7,numReposBlks=7,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_board_cnt=11,da_clkrst_cnt=9,synth_mode=Hierarchical}";
+  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=8,numReposBlks=8,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=4,numPkgbdBlks=0,bdsource=USER,da_board_cnt=11,da_clkrst_cnt=11,synth_mode=Hierarchical}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of design_1 : entity is "design_1.hwdef";
 end design_1;
@@ -48,14 +49,6 @@ architecture STRUCTURE of design_1 is
     locked : out STD_LOGIC
   );
   end component design_1_clk_wiz_0;
-  component design_1_UART_RX_0_0 is
-  port (
-    i_Clk : in STD_LOGIC;
-    i_RX_Serial : in STD_LOGIC;
-    o_RX_DV : out STD_LOGIC;
-    o_RX_Byte : out STD_LOGIC_VECTOR ( 7 downto 0 )
-  );
-  end component design_1_UART_RX_0_0;
   component design_1_proc_sys_reset_0_0 is
   port (
     slowest_sync_clk : in STD_LOGIC;
@@ -85,65 +78,159 @@ architecture STRUCTURE of design_1 is
     data_count : out STD_LOGIC_VECTOR ( 10 downto 0 )
   );
   end component design_1_fifo_generator_0_0;
-  component design_1_seven_seg_0_0 is
+  component design_1_blk_mem_gen_0_0 is
   port (
-    i_data : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    i_data_clk : in STD_LOGIC;
-    i_display_clk : in STD_LOGIC;
-    o_fifo_read : out STD_LOGIC;
-    o_an1 : out STD_LOGIC;
-    o_an0 : out STD_LOGIC;
-    o_ca : out STD_LOGIC;
-    o_cb : out STD_LOGIC;
-    o_cc : out STD_LOGIC;
-    o_cd : out STD_LOGIC;
-    o_ce : out STD_LOGIC;
-    o_cf : out STD_LOGIC;
-    o_cg : out STD_LOGIC;
-    o_dp : out STD_LOGIC
+    clka : in STD_LOGIC;
+    addra : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    douta : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    clkb : in STD_LOGIC;
+    addrb : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    doutb : out STD_LOGIC_VECTOR ( 63 downto 0 )
   );
-  end component design_1_seven_seg_0_0;
-  component design_1_xlconstant_1_0 is
+  end component design_1_blk_mem_gen_0_0;
+  component design_1_HUB75_driver_0_3 is
   port (
-    dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+    i_clk : in STD_LOGIC;
+    i_clk_enable : in STD_LOGIC;
+    i_row_data_top : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    i_row_data_bottom : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    o_read_addr_top : out STD_LOGIC_VECTOR ( 4 downto 0 );
+    o_read_addr_bottom : out STD_LOGIC_VECTOR ( 4 downto 0 );
+    o_addr : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    o_rgb_0 : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    o_rgb_1 : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    o_latch : out STD_LOGIC;
+    o_out_enable_n : out STD_LOGIC;
+    o_clk : out STD_LOGIC
   );
-  end component design_1_xlconstant_1_0;
-  component design_1_system_ila_0_0 is
+  end component design_1_HUB75_driver_0_3;
+  component design_1_HUB75_bus_breakout_0_1 is
   port (
-    clk : in STD_LOGIC;
-    probe0 : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 7 downto 0 )
+    i_clk : in STD_LOGIC;
+    i_addr : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    i_rgb_0 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    i_rgb_1 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    o_a : out STD_LOGIC;
+    o_b : out STD_LOGIC;
+    o_c : out STD_LOGIC;
+    o_d : out STD_LOGIC;
+    o_r_0 : out STD_LOGIC;
+    o_g_0 : out STD_LOGIC;
+    o_b_0 : out STD_LOGIC;
+    o_r_1 : out STD_LOGIC;
+    o_g_1 : out STD_LOGIC;
+    o_b_1 : out STD_LOGIC
   );
-  end component design_1_system_ila_0_0;
-  signal \^an2\ : STD_LOGIC_VECTOR ( 0 to 0 );
+  end component design_1_HUB75_bus_breakout_0_1;
+  component design_1_UART_RX_0_1 is
+  port (
+    i_Clk : in STD_LOGIC;
+    i_RX_Serial : in STD_LOGIC;
+    o_RX_DV : out STD_LOGIC;
+    o_RX_Byte : out STD_LOGIC_VECTOR ( 7 downto 0 )
+  );
+  end component design_1_UART_RX_0_1;
+  component design_1_Frame_Clock_Divider_0_1 is
+  port (
+    i_clk : in STD_LOGIC;
+    i_rst : in STD_LOGIC;
+    o_clk_en : out STD_LOGIC
+  );
+  end component design_1_Frame_Clock_Divider_0_1;
+  signal Frame_Clock_Divider_0_o_clk_en : STD_LOGIC;
+  signal HUB75_driver_0_o_addr : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal HUB75_driver_0_o_read_addr_bottom : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal HUB75_driver_0_o_read_addr_top : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal HUB75_driver_0_o_rgb_0 : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal HUB75_driver_0_o_rgb_1 : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal UART_RX_0_o_RX_Byte : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal UART_RX_0_o_RX_DV : STD_LOGIC;
   signal clk_wiz_clk_out1 : STD_LOGIC;
   signal clk_wiz_clk_out2 : STD_LOGIC;
   signal clk_wiz_locked : STD_LOGIC;
-  signal fifo_generator_0_data_count : STD_LOGIC_VECTOR ( 10 downto 0 );
-  signal fifo_generator_0_dout : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal proc_sys_reset_0_peripheral_reset : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal seven_seg_0_o_fifo_read : STD_LOGIC;
+  signal static_img_douta : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal static_img_doutb : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal NLW_clk_wiz_input_clk_stopped_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_generator_0_almost_empty_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_generator_0_empty_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_generator_0_full_UNCONNECTED : STD_LOGIC;
+  signal NLW_fifo_generator_0_data_count_UNCONNECTED : STD_LOGIC_VECTOR ( 10 downto 0 );
+  signal NLW_fifo_generator_0_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal NLW_proc_sys_reset_0_mb_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_proc_sys_reset_0_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_proc_sys_reset_0_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_proc_sys_reset_0_peripheral_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal NLW_seven_seg_0_o_dp_UNCONNECTED : STD_LOGIC;
   attribute X_INTERFACE_INFO : string;
-  attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 CLK.CLK CLK";
+  attribute X_INTERFACE_INFO of JA1 : signal is "xilinx.com:signal:data:1.0 DATA.JA1 DATA";
   attribute X_INTERFACE_PARAMETER : string;
+  attribute X_INTERFACE_PARAMETER of JA1 : signal is "XIL_INTERFACENAME DATA.JA1, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of JA2 : signal is "xilinx.com:signal:data:1.0 DATA.JA2 DATA";
+  attribute X_INTERFACE_PARAMETER of JA2 : signal is "XIL_INTERFACENAME DATA.JA2, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of JA3 : signal is "xilinx.com:signal:data:1.0 DATA.JA3 DATA";
+  attribute X_INTERFACE_PARAMETER of JA3 : signal is "XIL_INTERFACENAME DATA.JA3, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of JA4 : signal is "xilinx.com:signal:data:1.0 DATA.JA4 DATA";
+  attribute X_INTERFACE_PARAMETER of JA4 : signal is "XIL_INTERFACENAME DATA.JA4, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of JA7 : signal is "xilinx.com:signal:data:1.0 DATA.JA7 DATA";
+  attribute X_INTERFACE_PARAMETER of JA7 : signal is "XIL_INTERFACENAME DATA.JA7, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of JA8 : signal is "xilinx.com:signal:data:1.0 DATA.JA8 DATA";
+  attribute X_INTERFACE_PARAMETER of JA8 : signal is "XIL_INTERFACENAME DATA.JA8, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of JA9 : signal is "xilinx.com:signal:data:1.0 DATA.JA9 DATA";
+  attribute X_INTERFACE_PARAMETER of JA9 : signal is "XIL_INTERFACENAME DATA.JA9, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of JXADC1 : signal is "xilinx.com:signal:data:1.0 DATA.JXADC1 DATA";
+  attribute X_INTERFACE_PARAMETER of JXADC1 : signal is "XIL_INTERFACENAME DATA.JXADC1, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of JXADC2 : signal is "xilinx.com:signal:data:1.0 DATA.JXADC2 DATA";
+  attribute X_INTERFACE_PARAMETER of JXADC2 : signal is "XIL_INTERFACENAME DATA.JXADC2, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of JXADC3 : signal is "xilinx.com:signal:data:1.0 DATA.JXADC3 DATA";
+  attribute X_INTERFACE_PARAMETER of JXADC3 : signal is "XIL_INTERFACENAME DATA.JXADC3, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of JXADC4 : signal is "xilinx.com:signal:data:1.0 DATA.JXADC4 DATA";
+  attribute X_INTERFACE_PARAMETER of JXADC4 : signal is "XIL_INTERFACENAME DATA.JXADC4, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of JXADC7 : signal is "xilinx.com:signal:data:1.0 DATA.JXADC7 DATA";
+  attribute X_INTERFACE_PARAMETER of JXADC7 : signal is "XIL_INTERFACENAME DATA.JXADC7, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of JXADC8 : signal is "xilinx.com:signal:data:1.0 DATA.JXADC8 DATA";
+  attribute X_INTERFACE_PARAMETER of JXADC8 : signal is "XIL_INTERFACENAME DATA.JXADC8, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 CLK.CLK CLK";
   attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME CLK.CLK, CLK_DOMAIN design_1_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0";
 begin
-  AN2(0) <= \^an2\(0);
-  AN3(0) <= \^an2\(0);
-  led0 <= seven_seg_0_o_fifo_read;
-UART_RX_0: component design_1_UART_RX_0_0
+Frame_Clock_Divider_0: component design_1_Frame_Clock_Divider_0_1
+     port map (
+      i_clk => clk_wiz_clk_out2,
+      i_rst => fpga_reset,
+      o_clk_en => Frame_Clock_Divider_0_o_clk_en
+    );
+HUB75_bus_breakout_0: component design_1_HUB75_bus_breakout_0_1
+     port map (
+      i_addr(3 downto 0) => HUB75_driver_0_o_addr(3 downto 0),
+      i_clk => clk_wiz_clk_out2,
+      i_rgb_0(2 downto 0) => HUB75_driver_0_o_rgb_0(2 downto 0),
+      i_rgb_1(2 downto 0) => HUB75_driver_0_o_rgb_1(2 downto 0),
+      o_a => JA1,
+      o_b => JA2,
+      o_b_0 => JA9,
+      o_b_1 => JXADC3,
+      o_c => JA3,
+      o_d => JA4,
+      o_g_0 => JA8,
+      o_g_1 => JXADC2,
+      o_r_0 => JA7,
+      o_r_1 => JXADC1
+    );
+HUB75_driver_0: component design_1_HUB75_driver_0_3
+     port map (
+      i_clk => clk_wiz_clk_out2,
+      i_clk_enable => Frame_Clock_Divider_0_o_clk_en,
+      i_row_data_bottom(63 downto 0) => static_img_doutb(63 downto 0),
+      i_row_data_top(63 downto 0) => static_img_douta(63 downto 0),
+      o_addr(3 downto 0) => HUB75_driver_0_o_addr(3 downto 0),
+      o_clk => JXADC8,
+      o_latch => JXADC4,
+      o_out_enable_n => JXADC7,
+      o_read_addr_bottom(4 downto 0) => HUB75_driver_0_o_read_addr_bottom(4 downto 0),
+      o_read_addr_top(4 downto 0) => HUB75_driver_0_o_read_addr_top(4 downto 0),
+      o_rgb_0(2 downto 0) => HUB75_driver_0_o_rgb_0(2 downto 0),
+      o_rgb_1(2 downto 0) => HUB75_driver_0_o_rgb_1(2 downto 0)
+    );
+UART_RX_0: component design_1_UART_RX_0_1
      port map (
       i_Clk => clk_wiz_clk_out1,
       i_RX_Serial => UART_RX,
@@ -163,12 +250,12 @@ fifo_generator_0: component design_1_fifo_generator_0_0
      port map (
       almost_empty => NLW_fifo_generator_0_almost_empty_UNCONNECTED,
       clk => clk_wiz_clk_out1,
-      data_count(10 downto 0) => fifo_generator_0_data_count(10 downto 0),
+      data_count(10 downto 0) => NLW_fifo_generator_0_data_count_UNCONNECTED(10 downto 0),
       din(7 downto 0) => UART_RX_0_o_RX_Byte(7 downto 0),
-      dout(7 downto 0) => fifo_generator_0_dout(7 downto 0),
+      dout(7 downto 0) => NLW_fifo_generator_0_dout_UNCONNECTED(7 downto 0),
       empty => NLW_fifo_generator_0_empty_UNCONNECTED,
       full => NLW_fifo_generator_0_full_UNCONNECTED,
-      rd_en => seven_seg_0_o_fifo_read,
+      rd_en => '0',
       srst => proc_sys_reset_0_peripheral_reset(0),
       wr_ack => led1,
       wr_en => UART_RX_0_o_RX_DV
@@ -186,32 +273,13 @@ proc_sys_reset_0: component design_1_proc_sys_reset_0_0
       peripheral_reset(0) => proc_sys_reset_0_peripheral_reset(0),
       slowest_sync_clk => clk_wiz_clk_out1
     );
-seven_seg_0: component design_1_seven_seg_0_0
+static_img: component design_1_blk_mem_gen_0_0
      port map (
-      i_data(7 downto 0) => fifo_generator_0_dout(7 downto 0),
-      i_data_clk => clk_wiz_clk_out2,
-      i_display_clk => clk_wiz_clk_out2,
-      o_an0 => AN0,
-      o_an1 => AN1,
-      o_ca => CA,
-      o_cb => CB,
-      o_cc => CC,
-      o_cd => CD,
-      o_ce => CE,
-      o_cf => CF,
-      o_cg => CG,
-      o_dp => NLW_seven_seg_0_o_dp_UNCONNECTED,
-      o_fifo_read => seven_seg_0_o_fifo_read
-    );
-system_ila_0: component design_1_system_ila_0_0
-     port map (
-      clk => clk_wiz_clk_out1,
-      probe0(10 downto 0) => fifo_generator_0_data_count(10 downto 0),
-      probe1(0) => seven_seg_0_o_fifo_read,
-      probe2(7 downto 0) => fifo_generator_0_dout(7 downto 0)
-    );
-xlconstant_1: component design_1_xlconstant_1_0
-     port map (
-      dout(0) => \^an2\(0)
+      addra(4 downto 0) => HUB75_driver_0_o_read_addr_top(4 downto 0),
+      addrb(4 downto 0) => HUB75_driver_0_o_read_addr_bottom(4 downto 0),
+      clka => clk_wiz_clk_out2,
+      clkb => clk_wiz_clk_out2,
+      douta(63 downto 0) => static_img_douta(63 downto 0),
+      doutb(63 downto 0) => static_img_doutb(63 downto 0)
     );
 end STRUCTURE;
