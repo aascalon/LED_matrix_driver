@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x36E7DA98609FFD6C",
+      "boundary_crc": "0x36E7DA98C1ACB4F1",
       "device": "xc7a35tcpg236-1",
       "gen_directory": "../../../../LED_matrix_driver.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -19,6 +19,68 @@
       "HUB75_bus_breakout_0": "",
       "UART_RX_0": "",
       "Frame_Clock_Divider_0": ""
+    },
+    "interface_ports": {
+      "BRAM_PORTA_0": {
+        "mode": "Slave",
+        "vlnv_bus_definition": "xilinx.com:interface:bram:1.0",
+        "vlnv": "xilinx.com:interface:bram_rtl:1.0",
+        "parameters": {
+          "MASTER_TYPE": {
+            "value": "OTHER",
+            "value_src": "default"
+          },
+          "MEM_ECC": {
+            "value": "NONE",
+            "value_src": "default"
+          },
+          "MEM_SIZE": {
+            "value": "8192",
+            "value_src": "default"
+          },
+          "MEM_WIDTH": {
+            "value": "32",
+            "value_src": "default"
+          },
+          "READ_LATENCY": {
+            "value": "1",
+            "value_src": "default"
+          },
+          "READ_WRITE_MODE": {
+            "value": "READ_ONLY"
+          }
+        }
+      },
+      "BRAM_PORTB_0": {
+        "mode": "Slave",
+        "vlnv_bus_definition": "xilinx.com:interface:bram:1.0",
+        "vlnv": "xilinx.com:interface:bram_rtl:1.0",
+        "parameters": {
+          "MASTER_TYPE": {
+            "value": "OTHER",
+            "value_src": "default"
+          },
+          "MEM_ECC": {
+            "value": "NONE",
+            "value_src": "default"
+          },
+          "MEM_SIZE": {
+            "value": "8192",
+            "value_src": "default"
+          },
+          "MEM_WIDTH": {
+            "value": "32",
+            "value_src": "default"
+          },
+          "READ_LATENCY": {
+            "value": "1",
+            "value_src": "default"
+          },
+          "READ_WRITE_MODE": {
+            "value": "READ_ONLY"
+          }
+        }
+      }
     },
     "ports": {
       "clk": {
@@ -323,7 +385,7 @@
             "value": "32"
           },
           "Write_Width_A": {
-            "value": "64"
+            "value": "128"
           },
           "use_bram_block": {
             "value": "Stand_Alone"
@@ -370,12 +432,12 @@
           },
           "i_row_data_top": {
             "direction": "I",
-            "left": "63",
+            "left": "127",
             "right": "0"
           },
           "i_row_data_bottom": {
             "direction": "I",
-            "left": "63",
+            "left": "127",
             "right": "0"
           },
           "o_read_addr_top": {
@@ -563,7 +625,7 @@
         "inst_hier_path": "Frame_Clock_Divider_0",
         "parameters": {
           "counter_reset_value": {
-            "value": "50"
+            "value": "25"
           }
         },
         "reference_info": {
@@ -602,6 +664,20 @@
             "direction": "O"
           }
         }
+      }
+    },
+    "interface_nets": {
+      "BRAM_PORTA_0_1": {
+        "interface_ports": [
+          "BRAM_PORTA_0",
+          "static_img/BRAM_PORTA"
+        ]
+      },
+      "BRAM_PORTB_0_1": {
+        "interface_ports": [
+          "BRAM_PORTB_0",
+          "static_img/BRAM_PORTB"
+        ]
       }
     },
     "nets": {

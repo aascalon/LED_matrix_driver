@@ -42,8 +42,8 @@
       "ports": {
         "i_clk": [ { "direction": "in" } ],
         "i_clk_enable": [ { "direction": "in" } ],
-        "i_row_data_top": [ { "direction": "in", "size_left": "63", "size_right": "0" } ],
-        "i_row_data_bottom": [ { "direction": "in", "size_left": "63", "size_right": "0" } ],
+        "i_row_data_top": [ { "direction": "in", "size_left": "127", "size_right": "0" } ],
+        "i_row_data_bottom": [ { "direction": "in", "size_left": "127", "size_right": "0" } ],
         "o_read_addr_top": [ { "direction": "out", "size_left": "4", "size_right": "0" } ],
         "o_read_addr_bottom": [ { "direction": "out", "size_left": "4", "size_right": "0" } ],
         "o_addr": [ { "direction": "out", "size_left": "3", "size_right": "0" } ],
