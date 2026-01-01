@@ -1,5 +1,5 @@
 // (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// (c) Copyright 2022-2025 Advanced Micro Devices, Inc. All rights reserved.
+// (c) Copyright 2022-2026 Advanced Micro Devices, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of AMD and is protected under U.S. and international copyright
@@ -67,17 +67,17 @@ module design_1_blk_mem_gen_0_0 (
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME BRAM_PORTA, MEM_ADDRESS_MODE BYTE_ADDRESS, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_WRITE_MODE READ_ONLY, READ_LATENCY 1" *)
 input wire clka;
 (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_PORTA ADDR" *)
-input wire [4 : 0] addra;
+input wire [5 : 0] addra;
 (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_PORTA DOUT" *)
-output wire [63 : 0] douta;
+output wire [191 : 0] douta;
 (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_PORTB CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME BRAM_PORTB, MEM_ADDRESS_MODE BYTE_ADDRESS, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, MASTER_TYPE OTHER, READ_WRITE_MODE READ_ONLY, READ_LATENCY 1" *)
 input wire clkb;
 (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_PORTB ADDR" *)
-input wire [4 : 0] addrb;
+input wire [5 : 0] addrb;
 (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_PORTB DOUT" *)
-output wire [63 : 0] doutb;
+output wire [191 : 0] doutb;
 
   blk_mem_gen_v8_4_9 #(
     .C_FAMILY("artix7"),
@@ -109,11 +109,11 @@ output wire [63 : 0] doutb;
     .C_USE_BYTE_WEA(0),
     .C_WEA_WIDTH(1),
     .C_WRITE_MODE_A("WRITE_FIRST"),
-    .C_WRITE_WIDTH_A(64),
-    .C_READ_WIDTH_A(64),
-    .C_WRITE_DEPTH_A(32),
-    .C_READ_DEPTH_A(32),
-    .C_ADDRA_WIDTH(5),
+    .C_WRITE_WIDTH_A(192),
+    .C_READ_WIDTH_A(192),
+    .C_WRITE_DEPTH_A(64),
+    .C_READ_DEPTH_A(64),
+    .C_ADDRA_WIDTH(6),
     .C_HAS_RSTB(0),
     .C_RST_PRIORITY_B("CE"),
     .C_RSTRAM_B(0),
@@ -123,11 +123,11 @@ output wire [63 : 0] doutb;
     .C_USE_BYTE_WEB(0),
     .C_WEB_WIDTH(1),
     .C_WRITE_MODE_B("WRITE_FIRST"),
-    .C_WRITE_WIDTH_B(64),
-    .C_READ_WIDTH_B(64),
-    .C_WRITE_DEPTH_B(32),
-    .C_READ_DEPTH_B(32),
-    .C_ADDRB_WIDTH(5),
+    .C_WRITE_WIDTH_B(192),
+    .C_READ_WIDTH_B(192),
+    .C_WRITE_DEPTH_B(64),
+    .C_READ_DEPTH_B(64),
+    .C_ADDRB_WIDTH(6),
     .C_HAS_MEM_OUTPUT_REGS_A(1),
     .C_HAS_MEM_OUTPUT_REGS_B(0),
     .C_HAS_MUX_OUTPUT_REGS_A(0),
@@ -152,9 +152,9 @@ output wire [63 : 0] doutb;
     .C_EN_SHUTDOWN_PIN(0),
     .C_EN_SAFETY_CKT(0),
     .C_DISABLE_WARN_BHV_RANGE(0),
-    .C_COUNT_36K_BRAM("2"),
-    .C_COUNT_18K_BRAM("0"),
-    .C_EST_POWER_SUMMARY("Estimated Power for IP     :     10.488 mW")
+    .C_COUNT_36K_BRAM("5"),
+    .C_COUNT_18K_BRAM("1"),
+    .C_EST_POWER_SUMMARY("Estimated Power for IP     :     29.5056 mW")
   ) inst (
     .clka(clka),
     .rsta(1'D0),
@@ -162,7 +162,7 @@ output wire [63 : 0] doutb;
     .regcea(1'D1),
     .wea(1'B0),
     .addra(addra),
-    .dina(64'B0),
+    .dina(192'B0),
     .douta(douta),
     .clkb(clkb),
     .rstb(1'D0),
@@ -170,7 +170,7 @@ output wire [63 : 0] doutb;
     .regceb(1'D1),
     .web(1'B0),
     .addrb(addrb),
-    .dinb(64'B0),
+    .dinb(192'B0),
     .doutb(doutb),
     .injectsbiterr(1'D0),
     .injectdbiterr(1'D0),
@@ -192,7 +192,7 @@ output wire [63 : 0] doutb;
     .s_axi_awburst(2'B0),
     .s_axi_awvalid(1'D0),
     .s_axi_awready(),
-    .s_axi_wdata(64'B0),
+    .s_axi_wdata(192'B0),
     .s_axi_wstrb(1'B0),
     .s_axi_wlast(1'D0),
     .s_axi_wvalid(1'D0),

@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-// Date        : Sun Dec 21 14:09:17 2025
+// Date        : Thu Jan  1 12:22:46 2026
 // Host        : adrianna-linux running 64-bit Linux Mint 22
 // Command     : write_verilog -force -mode synth_stub
 //               /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_Frame_Clock_Divider_0_1/design_1_Frame_Clock_Divider_0_1_stub.v
@@ -14,7 +14,7 @@
 // This empty module with port declaration file causes synthesis tools to infer a black box for IP.
 // The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
-(* CHECK_LICENSE_TYPE = "design_1_Frame_Clock_Divider_0_1,Frame_Clock_Divider,{}" *) (* core_generation_info = "design_1_Frame_Clock_Divider_0_1,Frame_Clock_Divider,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=Frame_Clock_Divider,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,counter_reset_value=50}" *) (* downgradeipidentifiedwarnings = "yes" *) 
+(* CHECK_LICENSE_TYPE = "design_1_Frame_Clock_Divider_0_1,Frame_Clock_Divider,{}" *) (* core_generation_info = "design_1_Frame_Clock_Divider_0_1,Frame_Clock_Divider,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=Frame_Clock_Divider,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,counter_reset_value=10}" *) (* downgradeipidentifiedwarnings = "yes" *) 
 (* ip_definition_source = "module_ref" *) (* x_core_info = "Frame_Clock_Divider,Vivado 2024.2" *) 
 module design_1_Frame_Clock_Divider_0_1(i_clk, i_rst, o_clk_en)
 /* synthesis syn_black_box black_box_pad_pin="i_rst,o_clk_en" */

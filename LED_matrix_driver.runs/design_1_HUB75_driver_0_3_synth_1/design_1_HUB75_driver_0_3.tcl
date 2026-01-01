@@ -57,10 +57,7 @@ if {$::dispatch::connected} {
 
 OPTRACE "design_1_HUB75_driver_0_3_synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 2
-set_param tcl.collectionResultDisplayLimit 0
 set_param xicom.use_bs_reader 1
-set_param bd.open.in_stealth_mode 1
-set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {HDL 9-1061} -limit 100000
 set_msg_config -id {HDL 9-1654} -limit 100000
 set_param project.vivado.isBlockSynthRun true

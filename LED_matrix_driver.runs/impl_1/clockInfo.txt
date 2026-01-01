@@ -1,6 +1,6 @@
 -------------------------------------
 | Tool Version : Vivado v.2024.2
-| Date         : Sun Dec 21 20:00:22 2025
+| Date         : Thu Jan  1 12:24:54 2026
 | Host         : adrianna-linux
 | Design       : design_1
 | Device       : xc7a35t-cpg236-1--

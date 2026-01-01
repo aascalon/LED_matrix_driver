@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x36E7DA98C1ACB4F1",
+      "boundary_crc": "0x36E7DA98609FFD6C",
       "device": "xc7a35tcpg236-1",
       "gen_directory": "../../../../LED_matrix_driver.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -15,72 +15,10 @@
       "proc_sys_reset_0": "",
       "fifo_generator_0": "",
       "static_img": "",
-      "HUB75_driver_0": "",
       "HUB75_bus_breakout_0": "",
       "UART_RX_0": "",
-      "Frame_Clock_Divider_0": ""
-    },
-    "interface_ports": {
-      "BRAM_PORTA_0": {
-        "mode": "Slave",
-        "vlnv_bus_definition": "xilinx.com:interface:bram:1.0",
-        "vlnv": "xilinx.com:interface:bram_rtl:1.0",
-        "parameters": {
-          "MASTER_TYPE": {
-            "value": "OTHER",
-            "value_src": "default"
-          },
-          "MEM_ECC": {
-            "value": "NONE",
-            "value_src": "default"
-          },
-          "MEM_SIZE": {
-            "value": "8192",
-            "value_src": "default"
-          },
-          "MEM_WIDTH": {
-            "value": "32",
-            "value_src": "default"
-          },
-          "READ_LATENCY": {
-            "value": "1",
-            "value_src": "default"
-          },
-          "READ_WRITE_MODE": {
-            "value": "READ_ONLY"
-          }
-        }
-      },
-      "BRAM_PORTB_0": {
-        "mode": "Slave",
-        "vlnv_bus_definition": "xilinx.com:interface:bram:1.0",
-        "vlnv": "xilinx.com:interface:bram_rtl:1.0",
-        "parameters": {
-          "MASTER_TYPE": {
-            "value": "OTHER",
-            "value_src": "default"
-          },
-          "MEM_ECC": {
-            "value": "NONE",
-            "value_src": "default"
-          },
-          "MEM_SIZE": {
-            "value": "8192",
-            "value_src": "default"
-          },
-          "MEM_WIDTH": {
-            "value": "32",
-            "value_src": "default"
-          },
-          "READ_LATENCY": {
-            "value": "1",
-            "value_src": "default"
-          },
-          "READ_WRITE_MODE": {
-            "value": "READ_ONLY"
-          }
-        }
-      }
+      "Frame_Clock_Divider_0": "",
+      "HUB75_driver_0": ""
     },
     "ports": {
       "clk": {
@@ -358,7 +296,7 @@
             "value": "true"
           },
           "Coe_File": {
-            "value": "../design_1_blk_mem_gen_0_0.coe"
+            "value": "../hub75_fb_64x32_2planes_rgb2bpc_vertical_stripes.coe"
           },
           "Enable_32bit_Address": {
             "value": "false"
@@ -382,98 +320,13 @@
             "value": "false"
           },
           "Write_Depth_A": {
-            "value": "32"
+            "value": "64"
           },
           "Write_Width_A": {
-            "value": "128"
+            "value": "192"
           },
           "use_bram_block": {
             "value": "Stand_Alone"
-          }
-        }
-      },
-      "HUB75_driver_0": {
-        "vlnv": "xilinx.com:module_ref:HUB75_driver:1.0",
-        "ip_revision": "1",
-        "xci_name": "design_1_HUB75_driver_0_3",
-        "xci_path": "ip/design_1_HUB75_driver_0_3/design_1_HUB75_driver_0_3.xci",
-        "inst_hier_path": "HUB75_driver_0",
-        "parameters": {
-          "g_BRIGHTNESS": {
-            "value": "10"
-          }
-        },
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "HUB75_driver",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "i_clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "6250000",
-                "value_src": "ip_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "ip_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "/clk_wiz_clk_out1",
-                "value_src": "ip_prop"
-              }
-            }
-          },
-          "i_clk_enable": {
-            "direction": "I"
-          },
-          "i_row_data_top": {
-            "direction": "I",
-            "left": "127",
-            "right": "0"
-          },
-          "i_row_data_bottom": {
-            "direction": "I",
-            "left": "127",
-            "right": "0"
-          },
-          "o_read_addr_top": {
-            "direction": "O",
-            "left": "4",
-            "right": "0"
-          },
-          "o_read_addr_bottom": {
-            "direction": "O",
-            "left": "4",
-            "right": "0"
-          },
-          "o_addr": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "o_rgb_0": {
-            "direction": "O",
-            "left": "2",
-            "right": "0"
-          },
-          "o_rgb_1": {
-            "direction": "O",
-            "left": "2",
-            "right": "0"
-          },
-          "o_latch": {
-            "direction": "O"
-          },
-          "o_out_enable_n": {
-            "direction": "O"
-          },
-          "o_clk": {
-            "type": "clk",
-            "direction": "O"
           }
         }
       },
@@ -491,21 +344,7 @@
         "ports": {
           "i_clk": {
             "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "6250000",
-                "value_src": "ip_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "ip_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "/clk_wiz_clk_out1",
-                "value_src": "ip_prop"
-              }
-            }
+            "direction": "I"
           },
           "i_addr": {
             "direction": "I",
@@ -625,7 +464,7 @@
         "inst_hier_path": "Frame_Clock_Divider_0",
         "parameters": {
           "counter_reset_value": {
-            "value": "25"
+            "value": "10"
           }
         },
         "reference_info": {
@@ -664,26 +503,111 @@
             "direction": "O"
           }
         }
-      }
-    },
-    "interface_nets": {
-      "BRAM_PORTA_0_1": {
-        "interface_ports": [
-          "BRAM_PORTA_0",
-          "static_img/BRAM_PORTA"
-        ]
       },
-      "BRAM_PORTB_0_1": {
-        "interface_ports": [
-          "BRAM_PORTB_0",
-          "static_img/BRAM_PORTB"
-        ]
+      "HUB75_driver_0": {
+        "vlnv": "xilinx.com:module_ref:HUB75_driver:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_HUB75_driver_0_3",
+        "xci_path": "ip/design_1_HUB75_driver_0_3/design_1_HUB75_driver_0_3.xci",
+        "inst_hier_path": "HUB75_driver_0",
+        "parameters": {
+          "g_BRIGHTNESS": {
+            "value": "50"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "HUB75_driver",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "i_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "i_rst",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "6250000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "i_rst": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH"
+              }
+            }
+          },
+          "i_clk_enable": {
+            "direction": "I"
+          },
+          "i_row_data_top": {
+            "direction": "I",
+            "left": "191",
+            "right": "0"
+          },
+          "i_row_data_bottom": {
+            "direction": "I",
+            "left": "191",
+            "right": "0"
+          },
+          "o_read_addr_top": {
+            "direction": "O",
+            "left": "5",
+            "right": "0"
+          },
+          "o_read_addr_bottom": {
+            "direction": "O",
+            "left": "5",
+            "right": "0"
+          },
+          "o_addr": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "o_rgb_0": {
+            "direction": "O",
+            "left": "2",
+            "right": "0"
+          },
+          "o_rgb_1": {
+            "direction": "O",
+            "left": "2",
+            "right": "0"
+          },
+          "o_latch": {
+            "direction": "O"
+          },
+          "o_out_enable_n": {
+            "direction": "O"
+          },
+          "o_clk": {
+            "type": "clk",
+            "direction": "O"
+          }
+        }
       }
     },
     "nets": {
       "Frame_Clock_Divider_0_o_clk_en": {
         "ports": [
           "Frame_Clock_Divider_0/o_clk_en",
+          "HUB75_bus_breakout_0/i_clk",
           "HUB75_driver_0/i_clk_enable"
         ]
       },
@@ -830,7 +754,6 @@
       "clk_wiz_clk_out2": {
         "ports": [
           "clk_wiz/clk_out2",
-          "HUB75_bus_breakout_0/i_clk",
           "Frame_Clock_Divider_0/i_clk",
           "static_img/clkb",
           "static_img/clka",
@@ -872,7 +795,8 @@
           "fpga_reset",
           "clk_wiz/reset",
           "proc_sys_reset_0/ext_reset_in",
-          "Frame_Clock_Divider_0/i_rst"
+          "Frame_Clock_Divider_0/i_rst",
+          "HUB75_driver_0/i_rst"
         ]
       }
     }

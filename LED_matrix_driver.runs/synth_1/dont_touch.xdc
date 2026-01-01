@@ -18,9 +18,6 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_fi
 # IP: bd/design_1/ip/design_1_blk_mem_gen_0_0/design_1_blk_mem_gen_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_blk_mem_gen_0_0 || ORIG_REF_NAME==design_1_blk_mem_gen_0_0} -quiet] -quiet
 
-# IP: bd/design_1/ip/design_1_HUB75_driver_0_3/design_1_HUB75_driver_0_3.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_HUB75_driver_0_3 || ORIG_REF_NAME==design_1_HUB75_driver_0_3} -quiet] -quiet
-
 # IP: bd/design_1/ip/design_1_HUB75_bus_breakout_0_1/design_1_HUB75_bus_breakout_0_1.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_HUB75_bus_breakout_0_1 || ORIG_REF_NAME==design_1_HUB75_bus_breakout_0_1} -quiet] -quiet
 
@@ -29,5 +26,8 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_UA
 
 # IP: bd/design_1/ip/design_1_Frame_Clock_Divider_0_1/design_1_Frame_Clock_Divider_0_1.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_Frame_Clock_Divider_0_1 || ORIG_REF_NAME==design_1_Frame_Clock_Divider_0_1} -quiet] -quiet
+
+# IP: bd/design_1/ip/design_1_HUB75_driver_0_3/design_1_HUB75_driver_0_3.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_HUB75_driver_0_3 || ORIG_REF_NAME==design_1_HUB75_driver_0_3} -quiet] -quiet
 
 # XDC: /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/design_1_ooc.xdc
