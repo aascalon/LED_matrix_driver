@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-// Date        : Thu Jan  1 12:15:47 2026
+// Date        : Thu Jan  1 13:18:17 2026
 // Host        : adrianna-linux running 64-bit Linux Mint 22
 // Command     : write_verilog -force -mode funcsim
 //               /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_HUB75_driver_0_3/design_1_HUB75_driver_0_3_sim_netlist.v
@@ -51,18 +51,19 @@ module design_1_HUB75_driver_0_3
   wire [191:0]i_row_data_bottom;
   wire [191:0]i_row_data_top;
   wire i_rst;
+  wire [3:0]o_addr;
   wire o_clk;
   wire o_latch;
   wire o_out_enable_n;
-  wire [5:0]\^o_read_addr_bottom ;
+  wire [3:0]\^o_read_addr_bottom ;
+  wire [5:5]\^o_read_addr_top ;
   wire [2:0]o_rgb_0;
   wire [2:0]o_rgb_1;
 
-  assign o_addr[3:0] = \^o_read_addr_bottom [3:0];
-  assign o_read_addr_bottom[5] = \^o_read_addr_bottom [5];
+  assign o_read_addr_bottom[5] = \^o_read_addr_top [5];
   assign o_read_addr_bottom[4] = \<const1> ;
   assign o_read_addr_bottom[3:0] = \^o_read_addr_bottom [3:0];
-  assign o_read_addr_top[5] = \^o_read_addr_bottom [5];
+  assign o_read_addr_top[5] = \^o_read_addr_top [5];
   assign o_read_addr_top[4] = \<const0> ;
   assign o_read_addr_top[3:0] = \^o_read_addr_bottom [3:0];
   GND GND
@@ -73,10 +74,11 @@ module design_1_HUB75_driver_0_3
         .i_row_data_bottom(i_row_data_bottom),
         .i_row_data_top(i_row_data_top),
         .i_rst(i_rst),
+        .o_addr(o_addr),
         .o_clk(o_clk),
         .o_latch(o_latch),
         .o_out_enable_n(o_out_enable_n),
-        .o_read_addr_bottom({\^o_read_addr_bottom [5],\^o_read_addr_bottom [3:0]}),
+        .o_read_addr_bottom({\^o_read_addr_top ,\^o_read_addr_bottom }),
         .o_rgb_0(o_rgb_0),
         .o_rgb_1(o_rgb_1));
   VCC VCC
@@ -85,7 +87,8 @@ endmodule
 
 (* ORIG_REF_NAME = "HUB75_driver" *) 
 module design_1_HUB75_driver_0_3_HUB75_driver
-   (o_rgb_0,
+   (o_addr,
+    o_rgb_0,
     o_rgb_1,
     o_latch,
     o_clk,
@@ -96,6 +99,7 @@ module design_1_HUB75_driver_0_3_HUB75_driver
     i_clk,
     i_row_data_top,
     i_row_data_bottom);
+  output [3:0]o_addr;
   output [2:0]o_rgb_0;
   output [2:0]o_rgb_1;
   output o_latch;
@@ -108,11 +112,13 @@ module design_1_HUB75_driver_0_3_HUB75_driver
   input [191:0]i_row_data_top;
   input [191:0]i_row_data_bottom;
 
+  wire \FSM_onehot_r_state[0]_i_1_n_0 ;
   wire \FSM_onehot_r_state[4]_i_1_n_0 ;
   wire \FSM_onehot_r_state[4]_i_2_n_0 ;
   wire \FSM_onehot_r_state[4]_i_3_n_0 ;
   wire \FSM_onehot_r_state[4]_i_4_n_0 ;
   wire \FSM_onehot_r_state[4]_i_5_n_0 ;
+  wire \FSM_onehot_r_state[4]_i_6_n_0 ;
   wire \FSM_onehot_r_state_reg_n_0_[0] ;
   wire [31:1]data0;
   wire [0:0]data0__0;
@@ -121,13 +127,14 @@ module design_1_HUB75_driver_0_3_HUB75_driver
   wire [191:0]i_row_data_bottom;
   wire [191:0]i_row_data_top;
   wire i_rst;
+  wire [3:0]o_addr;
   wire o_clk;
   wire o_latch;
   wire o_out_enable_n;
   wire o_out_enable_n_i_1_n_0;
   wire [4:0]o_read_addr_bottom;
+  wire \o_read_addr_bottom[5]_i_1_n_0 ;
   wire [3:0]o_read_addr_top0;
-  wire \o_read_addr_top[5]_i_1_n_0 ;
   wire [2:0]o_rgb_0;
   wire o_rgb_01__5_carry__0_i_1_n_0;
   wire o_rgb_01__5_carry__0_i_2_n_0;
@@ -410,8 +417,7 @@ module design_1_HUB75_driver_0_3_HUB75_driver
   wire \o_rgb_1_reg[2]_i_8_n_0 ;
   wire \o_rgb_1_reg[2]_i_9_n_0 ;
   wire \r_bitplane_count[0]_i_1_n_0 ;
-  wire \r_bitplane_count[0]_i_2_n_0 ;
-  wire r_bitplane_count__0;
+  wire \r_bitplane_count_reg_n_0_[0] ;
   wire [191:0]r_bottom_half_row;
   wire r_brightness_count;
   wire [31:1]r_brightness_count0;
@@ -554,8 +560,14 @@ module design_1_HUB75_driver_0_3_HUB75_driver
   wire \r_row_count[0]_i_1_n_0 ;
   wire \r_row_count[1]_i_1_n_0 ;
   wire \r_row_count[2]_i_1_n_0 ;
+  wire \r_row_count[3]__0_i_1_n_0 ;
   wire \r_row_count[3]_i_1_n_0 ;
   wire \r_row_count[3]_i_2_n_0 ;
+  wire \r_row_count[3]_i_3_n_0 ;
+  wire \r_row_count_reg_n_0_[0] ;
+  wire \r_row_count_reg_n_0_[1] ;
+  wire \r_row_count_reg_n_0_[2] ;
+  wire \r_row_count_reg_n_0_[3] ;
   wire r_state0_carry__0_i_1_n_0;
   wire r_state0_carry__0_i_2_n_0;
   wire r_state0_carry__0_i_3_n_0;
@@ -786,60 +798,75 @@ module design_1_HUB75_driver_0_3_HUB75_driver
   wire [3:3]NLW_r_state0_carry__1_CO_UNCONNECTED;
   wire [3:0]NLW_r_state0_carry__1_O_UNCONNECTED;
 
+  LUT3 #(
+    .INIT(8'hBA)) 
+    \FSM_onehot_r_state[0]_i_1 
+       (.I0(r_row_count),
+        .I1(\r_bitplane_count_reg_n_0_[0] ),
+        .I2(r_brightness_count),
+        .O(\FSM_onehot_r_state[0]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hAAAAAAAA888A8880)) 
     \FSM_onehot_r_state[4]_i_1 
        (.I0(i_clk_enable),
-        .I1(\FSM_onehot_r_state[4]_i_2_n_0 ),
+        .I1(\FSM_onehot_r_state[4]_i_3_n_0 ),
         .I2(r_latch),
         .I3(r_brightness_count),
-        .I4(\FSM_onehot_r_state[4]_i_3_n_0 ),
+        .I4(\FSM_onehot_r_state[4]_i_4_n_0 ),
         .I5(r_row_count),
         .O(\FSM_onehot_r_state[4]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \FSM_onehot_r_state[4]_i_2 
+       (.I0(r_brightness_count),
+        .I1(\r_bitplane_count_reg_n_0_[0] ),
+        .O(\FSM_onehot_r_state[4]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT4 #(
     .INIT(16'hABA8)) 
-    \FSM_onehot_r_state[4]_i_2 
+    \FSM_onehot_r_state[4]_i_3 
        (.I0(r_state0_carry__1_n_1),
         .I1(r_clk),
         .I2(r_brightness_count),
         .I3(r_latch_reg_n_0),
-        .O(\FSM_onehot_r_state[4]_i_2_n_0 ));
+        .O(\FSM_onehot_r_state[4]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'h222F2220)) 
-    \FSM_onehot_r_state[4]_i_3 
-       (.I0(\FSM_onehot_r_state[4]_i_4_n_0 ),
+    \FSM_onehot_r_state[4]_i_4 
+       (.I0(\FSM_onehot_r_state[4]_i_5_n_0 ),
         .I1(r_clk__0),
         .I2(r_clk),
         .I3(r_brightness_count),
         .I4(r_state__8),
-        .O(\FSM_onehot_r_state[4]_i_3_n_0 ));
+        .O(\FSM_onehot_r_state[4]_i_4_n_0 ));
   LUT6 #(
     .INIT(64'h0000000000000008)) 
-    \FSM_onehot_r_state[4]_i_4 
+    \FSM_onehot_r_state[4]_i_5 
        (.I0(\r_col_count_reg_n_0_[5] ),
         .I1(\r_col_count_reg_n_0_[4] ),
         .I2(\r_col_count_reg_n_0_[6] ),
         .I3(\r_col_count_reg_n_0_[7] ),
         .I4(\r_col_count[6]_i_2_n_0 ),
-        .I5(\FSM_onehot_r_state[4]_i_5_n_0 ),
-        .O(\FSM_onehot_r_state[4]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+        .I5(\FSM_onehot_r_state[4]_i_6_n_0 ),
+        .O(\FSM_onehot_r_state[4]_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT2 #(
     .INIT(4'h7)) 
-    \FSM_onehot_r_state[4]_i_5 
+    \FSM_onehot_r_state[4]_i_6 
        (.I0(\r_col_count_reg_n_0_[3] ),
         .I1(\r_col_count_reg_n_0_[2] ),
-        .O(\FSM_onehot_r_state[4]_i_5_n_0 ));
-  (* FSM_ENCODED_STATES = "s_read_mem:00001,s_write_row:00010,s_latch_row:00100,s_display_row:01000,s_increment_row:10000," *) 
+        .O(\FSM_onehot_r_state[4]_i_6_n_0 ));
+  (* FSM_ENCODED_STATES = "s_write_row:00010,s_latch_row:00100,s_display_row:01000,s_read_mem:00001,s_increment_row:10000" *) 
   FDSE #(
     .INIT(1'b1)) 
     \FSM_onehot_r_state_reg[0] 
        (.C(i_clk),
         .CE(\FSM_onehot_r_state[4]_i_1_n_0 ),
-        .D(r_row_count),
+        .D(\FSM_onehot_r_state[0]_i_1_n_0 ),
         .Q(\FSM_onehot_r_state_reg_n_0_[0] ),
         .S(i_rst));
-  (* FSM_ENCODED_STATES = "s_read_mem:00001,s_write_row:00010,s_latch_row:00100,s_display_row:01000,s_increment_row:10000," *) 
+  (* FSM_ENCODED_STATES = "s_write_row:00010,s_latch_row:00100,s_display_row:01000,s_read_mem:00001,s_increment_row:10000" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_onehot_r_state_reg[1] 
@@ -848,7 +875,7 @@ module design_1_HUB75_driver_0_3_HUB75_driver
         .D(\FSM_onehot_r_state_reg_n_0_[0] ),
         .Q(r_clk),
         .R(i_rst));
-  (* FSM_ENCODED_STATES = "s_read_mem:00001,s_write_row:00010,s_latch_row:00100,s_display_row:01000,s_increment_row:10000," *) 
+  (* FSM_ENCODED_STATES = "s_write_row:00010,s_latch_row:00100,s_display_row:01000,s_read_mem:00001,s_increment_row:10000" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_onehot_r_state_reg[2] 
@@ -857,7 +884,7 @@ module design_1_HUB75_driver_0_3_HUB75_driver
         .D(r_clk),
         .Q(r_latch),
         .R(i_rst));
-  (* FSM_ENCODED_STATES = "s_read_mem:00001,s_write_row:00010,s_latch_row:00100,s_display_row:01000,s_increment_row:10000," *) 
+  (* FSM_ENCODED_STATES = "s_write_row:00010,s_latch_row:00100,s_display_row:01000,s_read_mem:00001,s_increment_row:10000" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_onehot_r_state_reg[3] 
@@ -866,24 +893,48 @@ module design_1_HUB75_driver_0_3_HUB75_driver
         .D(r_latch),
         .Q(r_brightness_count),
         .R(i_rst));
-  (* FSM_ENCODED_STATES = "s_read_mem:00001,s_write_row:00010,s_latch_row:00100,s_display_row:01000,s_increment_row:10000," *) 
+  (* FSM_ENCODED_STATES = "s_write_row:00010,s_latch_row:00100,s_display_row:01000,s_read_mem:00001,s_increment_row:10000" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_onehot_r_state_reg[4] 
        (.C(i_clk),
         .CE(\FSM_onehot_r_state[4]_i_1_n_0 ),
-        .D(r_brightness_count),
+        .D(\FSM_onehot_r_state[4]_i_2_n_0 ),
         .Q(r_row_count),
         .R(i_rst));
+  FDRE \o_addr_reg[0] 
+       (.C(i_clk),
+        .CE(\o_read_addr_bottom[5]_i_1_n_0 ),
+        .D(\r_row_count_reg_n_0_[0] ),
+        .Q(o_addr[0]),
+        .R(1'b0));
+  FDRE \o_addr_reg[1] 
+       (.C(i_clk),
+        .CE(\o_read_addr_bottom[5]_i_1_n_0 ),
+        .D(\r_row_count_reg_n_0_[1] ),
+        .Q(o_addr[1]),
+        .R(1'b0));
+  FDRE \o_addr_reg[2] 
+       (.C(i_clk),
+        .CE(\o_read_addr_bottom[5]_i_1_n_0 ),
+        .D(\r_row_count_reg_n_0_[2] ),
+        .Q(o_addr[2]),
+        .R(1'b0));
+  FDRE \o_addr_reg[3] 
+       (.C(i_clk),
+        .CE(\o_read_addr_bottom[5]_i_1_n_0 ),
+        .D(\r_row_count_reg_n_0_[3] ),
+        .Q(o_addr[3]),
+        .R(1'b0));
   FDRE o_clk_reg
        (.C(i_clk),
-        .CE(\o_read_addr_top[5]_i_1_n_0 ),
+        .CE(\o_read_addr_bottom[5]_i_1_n_0 ),
         .D(r_clk__0),
         .Q(o_clk),
         .R(1'b0));
   FDRE o_latch_reg
        (.C(i_clk),
-        .CE(\o_read_addr_top[5]_i_1_n_0 ),
+        .CE(\o_read_addr_bottom[5]_i_1_n_0 ),
         .D(r_latch_reg_n_0),
         .Q(o_latch),
         .R(1'b0));
@@ -903,39 +954,39 @@ module design_1_HUB75_driver_0_3_HUB75_driver
         .R(1'b0));
   LUT2 #(
     .INIT(4'h2)) 
-    \o_read_addr_top[5]_i_1 
+    \o_read_addr_bottom[5]_i_1 
        (.I0(i_clk_enable),
         .I1(i_rst),
-        .O(\o_read_addr_top[5]_i_1_n_0 ));
+        .O(\o_read_addr_bottom[5]_i_1_n_0 ));
+  FDRE \o_read_addr_bottom_reg[5] 
+       (.C(i_clk),
+        .CE(\o_read_addr_bottom[5]_i_1_n_0 ),
+        .D(\r_bitplane_count_reg_n_0_[0] ),
+        .Q(o_read_addr_bottom[4]),
+        .R(1'b0));
   FDRE \o_read_addr_top_reg[0] 
        (.C(i_clk),
-        .CE(\o_read_addr_top[5]_i_1_n_0 ),
+        .CE(\o_read_addr_bottom[5]_i_1_n_0 ),
         .D(o_read_addr_top0[0]),
         .Q(o_read_addr_bottom[0]),
         .R(1'b0));
   FDRE \o_read_addr_top_reg[1] 
        (.C(i_clk),
-        .CE(\o_read_addr_top[5]_i_1_n_0 ),
+        .CE(\o_read_addr_bottom[5]_i_1_n_0 ),
         .D(o_read_addr_top0[1]),
         .Q(o_read_addr_bottom[1]),
         .R(1'b0));
   FDRE \o_read_addr_top_reg[2] 
        (.C(i_clk),
-        .CE(\o_read_addr_top[5]_i_1_n_0 ),
+        .CE(\o_read_addr_bottom[5]_i_1_n_0 ),
         .D(o_read_addr_top0[2]),
         .Q(o_read_addr_bottom[2]),
         .R(1'b0));
   FDRE \o_read_addr_top_reg[3] 
        (.C(i_clk),
-        .CE(\o_read_addr_top[5]_i_1_n_0 ),
+        .CE(\o_read_addr_bottom[5]_i_1_n_0 ),
         .D(o_read_addr_top0[3]),
         .Q(o_read_addr_bottom[3]),
-        .R(1'b0));
-  FDRE \o_read_addr_top_reg[5] 
-       (.C(i_clk),
-        .CE(\o_read_addr_top[5]_i_1_n_0 ),
-        .D(r_bitplane_count__0),
-        .Q(o_read_addr_bottom[4]),
         .R(1'b0));
   CARRY4 o_rgb_01__5_carry
        (.CI(1'b0),
@@ -2980,30 +3031,22 @@ module design_1_HUB75_driver_0_3_HUB75_driver
         .I1(\o_rgb_1_reg[2]_i_31_n_0 ),
         .O(\o_rgb_1_reg[2]_i_9_n_0 ),
         .S(o_rgb_01__5_carry_n_4));
-  LUT6 #(
-    .INIT(64'hFF7FFFFF00800000)) 
+  LUT5 #(
+    .INIT(32'hFF7F0080)) 
     \r_bitplane_count[0]_i_1 
-       (.I0(r_row_count),
-        .I1(o_read_addr_top0[3]),
-        .I2(o_read_addr_top0[2]),
-        .I3(\r_bitplane_count[0]_i_2_n_0 ),
-        .I4(\o_read_addr_top[5]_i_1_n_0 ),
-        .I5(r_bitplane_count__0),
+       (.I0(r_brightness_count),
+        .I1(r_state0_carry__1_n_1),
+        .I2(i_clk_enable),
+        .I3(i_rst),
+        .I4(\r_bitplane_count_reg_n_0_[0] ),
         .O(\r_bitplane_count[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
-  LUT2 #(
-    .INIT(4'h7)) 
-    \r_bitplane_count[0]_i_2 
-       (.I0(o_read_addr_top0[0]),
-        .I1(o_read_addr_top0[1]),
-        .O(\r_bitplane_count[0]_i_2_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \r_bitplane_count_reg[0] 
        (.C(i_clk),
         .CE(1'b1),
         .D(\r_bitplane_count[0]_i_1_n_0 ),
-        .Q(r_bitplane_count__0),
+        .Q(\r_bitplane_count_reg_n_0_[0] ),
         .R(1'b0));
   FDRE \r_bottom_half_row_reg[0] 
        (.C(i_clk),
@@ -4606,7 +4649,7 @@ module design_1_HUB75_driver_0_3_HUB75_driver
         .I1(\r_col_count_reg_n_0_[6] ),
         .I2(\r_col_count_reg_n_0_[7] ),
         .O(\r_col_count[7]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT4 #(
     .INIT(16'hFFF7)) 
     \r_col_count[7]_i_4 
@@ -4708,7 +4751,7 @@ module design_1_HUB75_driver_0_3_HUB75_driver
   LUT6 #(
     .INIT(64'hD5FFFFFF80808080)) 
     r_out_enable_n_i_1
-       (.I0(\o_read_addr_top[5]_i_1_n_0 ),
+       (.I0(\o_read_addr_bottom[5]_i_1_n_0 ),
         .I1(r_brightness_count),
         .I2(r_state0_carry__1_n_1),
         .I3(r_latch),
@@ -5134,74 +5177,125 @@ module design_1_HUB75_driver_0_3_HUB75_driver
         .D(data0[9]),
         .Q(\r_read_counter_reg_n_0_[9] ),
         .R(\r_read_counter[31]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \r_row_count[0]_i_1 
-       (.I0(o_read_addr_top0[0]),
+       (.I0(\r_row_count_reg_n_0_[0] ),
         .O(\r_row_count[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \r_row_count[1]_i_1 
-       (.I0(o_read_addr_top0[0]),
-        .I1(o_read_addr_top0[1]),
+       (.I0(\r_row_count_reg_n_0_[0] ),
+        .I1(\r_row_count_reg_n_0_[1] ),
         .O(\r_row_count[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
-    .INIT(8'h6A)) 
+    .INIT(8'h78)) 
     \r_row_count[2]_i_1 
-       (.I0(o_read_addr_top0[2]),
-        .I1(o_read_addr_top0[0]),
-        .I2(o_read_addr_top0[1]),
+       (.I0(\r_row_count_reg_n_0_[1] ),
+        .I1(\r_row_count_reg_n_0_[0] ),
+        .I2(\r_row_count_reg_n_0_[2] ),
         .O(\r_row_count[2]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h80000000)) 
+    \r_row_count[3]__0_i_1 
+       (.I0(\r_row_count_reg_n_0_[3] ),
+        .I1(\r_row_count_reg_n_0_[2] ),
+        .I2(\r_row_count_reg_n_0_[0] ),
+        .I3(\r_row_count_reg_n_0_[1] ),
+        .I4(\r_row_count[3]_i_2_n_0 ),
+        .O(\r_row_count[3]__0_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h80000000)) 
+    \r_row_count[3]_i_1 
+       (.I0(\r_row_count[3]_i_2_n_0 ),
+        .I1(\r_row_count_reg_n_0_[1] ),
+        .I2(\r_row_count_reg_n_0_[0] ),
+        .I3(\r_row_count_reg_n_0_[2] ),
+        .I4(\r_row_count_reg_n_0_[3] ),
+        .O(\r_row_count[3]_i_1_n_0 ));
   LUT3 #(
     .INIT(8'h08)) 
-    \r_row_count[3]_i_1 
+    \r_row_count[3]_i_2 
        (.I0(r_row_count),
         .I1(i_clk_enable),
         .I2(i_rst),
-        .O(\r_row_count[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
-  LUT4 #(
-    .INIT(16'h6AAA)) 
-    \r_row_count[3]_i_2 
-       (.I0(o_read_addr_top0[3]),
-        .I1(o_read_addr_top0[2]),
-        .I2(o_read_addr_top0[0]),
-        .I3(o_read_addr_top0[1]),
         .O(\r_row_count[3]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  LUT4 #(
+    .INIT(16'h7F80)) 
+    \r_row_count[3]_i_3 
+       (.I0(\r_row_count_reg_n_0_[0] ),
+        .I1(\r_row_count_reg_n_0_[1] ),
+        .I2(\r_row_count_reg_n_0_[2] ),
+        .I3(\r_row_count_reg_n_0_[3] ),
+        .O(\r_row_count[3]_i_3_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \r_row_count_reg[0] 
        (.C(i_clk),
-        .CE(\r_row_count[3]_i_1_n_0 ),
+        .CE(\r_row_count[3]_i_2_n_0 ),
+        .D(\r_row_count[0]_i_1_n_0 ),
+        .Q(\r_row_count_reg_n_0_[0] ),
+        .R(\r_row_count[3]_i_1_n_0 ));
+  FDRE #(
+    .INIT(1'b0)) 
+    \r_row_count_reg[0]__0 
+       (.C(i_clk),
+        .CE(\r_row_count[3]_i_2_n_0 ),
         .D(\r_row_count[0]_i_1_n_0 ),
         .Q(o_read_addr_top0[0]),
-        .R(1'b0));
+        .R(\r_row_count[3]__0_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \r_row_count_reg[1] 
        (.C(i_clk),
-        .CE(\r_row_count[3]_i_1_n_0 ),
+        .CE(\r_row_count[3]_i_2_n_0 ),
+        .D(\r_row_count[1]_i_1_n_0 ),
+        .Q(\r_row_count_reg_n_0_[1] ),
+        .R(\r_row_count[3]_i_1_n_0 ));
+  FDRE #(
+    .INIT(1'b0)) 
+    \r_row_count_reg[1]__0 
+       (.C(i_clk),
+        .CE(\r_row_count[3]_i_2_n_0 ),
         .D(\r_row_count[1]_i_1_n_0 ),
         .Q(o_read_addr_top0[1]),
-        .R(1'b0));
+        .R(\r_row_count[3]__0_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \r_row_count_reg[2] 
        (.C(i_clk),
-        .CE(\r_row_count[3]_i_1_n_0 ),
+        .CE(\r_row_count[3]_i_2_n_0 ),
+        .D(\r_row_count[2]_i_1_n_0 ),
+        .Q(\r_row_count_reg_n_0_[2] ),
+        .R(\r_row_count[3]_i_1_n_0 ));
+  FDRE #(
+    .INIT(1'b0)) 
+    \r_row_count_reg[2]__0 
+       (.C(i_clk),
+        .CE(\r_row_count[3]_i_2_n_0 ),
         .D(\r_row_count[2]_i_1_n_0 ),
         .Q(o_read_addr_top0[2]),
-        .R(1'b0));
+        .R(\r_row_count[3]__0_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \r_row_count_reg[3] 
        (.C(i_clk),
-        .CE(\r_row_count[3]_i_1_n_0 ),
-        .D(\r_row_count[3]_i_2_n_0 ),
+        .CE(\r_row_count[3]_i_2_n_0 ),
+        .D(\r_row_count[3]_i_3_n_0 ),
+        .Q(\r_row_count_reg_n_0_[3] ),
+        .R(\r_row_count[3]_i_1_n_0 ));
+  FDRE #(
+    .INIT(1'b0)) 
+    \r_row_count_reg[3]__0 
+       (.C(i_clk),
+        .CE(\r_row_count[3]_i_2_n_0 ),
+        .D(\r_row_count[3]_i_3_n_0 ),
         .Q(o_read_addr_top0[3]),
-        .R(1'b0));
+        .R(\r_row_count[3]__0_i_1_n_0 ));
   CARRY4 r_state0_carry
        (.CI(1'b0),
         .CO({r_state0_carry_n_0,r_state0_carry_n_1,r_state0_carry_n_2,r_state0_carry_n_3}),
@@ -5278,26 +5372,27 @@ module design_1_HUB75_driver_0_3_HUB75_driver
         .I1(r_brightness_count__0[10]),
         .I2(r_brightness_count__0[9]),
         .O(r_state0_carry_i_1_n_0));
-  LUT3 #(
-    .INIT(8'h01)) 
+  LUT4 #(
+    .INIT(16'h0006)) 
     r_state0_carry_i_2
-       (.I0(r_brightness_count__0[8]),
-        .I1(r_brightness_count__0[7]),
-        .I2(r_brightness_count__0[6]),
+       (.I0(r_brightness_count__0[6]),
+        .I1(\r_bitplane_count_reg_n_0_[0] ),
+        .I2(r_brightness_count__0[8]),
+        .I3(r_brightness_count__0[7]),
         .O(r_state0_carry_i_2_n_0));
   LUT4 #(
-    .INIT(16'h0042)) 
+    .INIT(16'h0082)) 
     r_state0_carry_i_3
-       (.I0(r_bitplane_count__0),
-        .I1(r_brightness_count__0[5]),
+       (.I0(r_brightness_count__0[5]),
+        .I1(\r_bitplane_count_reg_n_0_[0] ),
         .I2(r_brightness_count__0[4]),
         .I3(r_brightness_count__0[3]),
         .O(r_state0_carry_i_3_n_0));
   LUT4 #(
-    .INIT(16'h0014)) 
+    .INIT(16'h0024)) 
     r_state0_carry_i_4
-       (.I0(r_brightness_count__0[2]),
-        .I1(r_bitplane_count__0),
+       (.I0(\r_bitplane_count_reg_n_0_[0] ),
+        .I1(r_brightness_count__0[2]),
         .I2(r_brightness_count__0[1]),
         .I3(r_brightness_count__0[0]),
         .O(r_state0_carry_i_4_n_0));

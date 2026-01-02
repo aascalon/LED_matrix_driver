@@ -2,7 +2,7 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
--- Date        : Sat Dec 20 19:22:35 2025
+-- Date        : Thu Jan  1 13:10:30 2026
 -- Host        : adrianna-linux running 64-bit Linux Mint 22
 -- Command     : write_vhdl -force -mode synth_stub
 --               /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_HUB75_bus_breakout_0_1/design_1_HUB75_bus_breakout_0_1_stub.vhdl
@@ -51,7 +51,7 @@ architecture stub of design_1_HUB75_bus_breakout_0_1 is
   attribute x_interface_mode : string;
   attribute x_interface_mode of i_clk : signal is "slave i_clk";
   attribute x_interface_parameter : string;
-  attribute x_interface_parameter of i_clk : signal is "XIL_INTERFACENAME i_clk, FREQ_HZ 6250000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_clk_out1, INSERT_VIP 0";
+  attribute x_interface_parameter of i_clk : signal is "XIL_INTERFACENAME i_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0";
   attribute x_core_info : string;
   attribute x_core_info of stub : architecture is "HUB75_bus_breakout,Vivado 2024.2";
 begin

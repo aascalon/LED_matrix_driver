@@ -128,10 +128,17 @@ begin
  
                         
                     when s_display_row => 
-                    if r_brightness_count = g_BRIGHTNESS * (g_COLOUR_DEPTH - 1 - r_bitplane_count) then
+                    if r_brightness_count = g_BRIGHTNESS * (g_COLOUR_DEPTH - r_bitplane_count) then
                             r_brightness_count <= 0; 
                             r_out_enable_n <= '1';
-                            r_state <= s_increment_row;
+                            if (r_bitplane_count = g_COLOUR_DEPTH-1) then 
+                                r_bitplane_count <= 0;
+                                r_state <= s_increment_row;
+                            else 
+                                r_bitplane_count <= r_bitplane_count + 1;
+                                r_state <= s_read_mem;
+                            end if;
+                    
                     else
                             r_brightness_count <= r_brightness_count + 1;
                         end if;
@@ -140,11 +147,6 @@ begin
                         r_row_count <= r_row_count + 1;
                     if (r_row_count = c_PIXEL_ROWS_HAlF-1) then 
                             r_row_count <= 0;
-                            if (r_bitplane_count = g_COLOUR_DEPTH-1) then 
-                                r_bitplane_count <= 0;
-                            else 
-                                r_bitplane_count <= r_bitplane_count + 1;
-                            end if;
                     end if;
                         r_state <= s_read_mem;
 

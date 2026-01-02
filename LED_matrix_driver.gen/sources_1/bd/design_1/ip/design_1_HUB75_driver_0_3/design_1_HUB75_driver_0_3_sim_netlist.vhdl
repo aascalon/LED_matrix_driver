@@ -2,7 +2,7 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
--- Date        : Thu Jan  1 12:15:47 2026
+-- Date        : Thu Jan  1 13:18:17 2026
 -- Host        : adrianna-linux running 64-bit Linux Mint 22
 -- Command     : write_vhdl -force -mode funcsim
 --               /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_HUB75_driver_0_3/design_1_HUB75_driver_0_3_sim_netlist.vhdl
@@ -17,6 +17,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity design_1_HUB75_driver_0_3_HUB75_driver is
   port (
+    o_addr : out STD_LOGIC_VECTOR ( 3 downto 0 );
     o_rgb_0 : out STD_LOGIC_VECTOR ( 2 downto 0 );
     o_rgb_1 : out STD_LOGIC_VECTOR ( 2 downto 0 );
     o_latch : out STD_LOGIC;
@@ -34,18 +35,20 @@ entity design_1_HUB75_driver_0_3_HUB75_driver is
 end design_1_HUB75_driver_0_3_HUB75_driver;
 
 architecture STRUCTURE of design_1_HUB75_driver_0_3_HUB75_driver is
+  signal \FSM_onehot_r_state[0]_i_1_n_0\ : STD_LOGIC;
   signal \FSM_onehot_r_state[4]_i_1_n_0\ : STD_LOGIC;
   signal \FSM_onehot_r_state[4]_i_2_n_0\ : STD_LOGIC;
   signal \FSM_onehot_r_state[4]_i_3_n_0\ : STD_LOGIC;
   signal \FSM_onehot_r_state[4]_i_4_n_0\ : STD_LOGIC;
   signal \FSM_onehot_r_state[4]_i_5_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_r_state[4]_i_6_n_0\ : STD_LOGIC;
   signal \FSM_onehot_r_state_reg_n_0_[0]\ : STD_LOGIC;
   signal data0 : STD_LOGIC_VECTOR ( 31 downto 1 );
   signal \data0__0\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal \^o_out_enable_n\ : STD_LOGIC;
   signal o_out_enable_n_i_1_n_0 : STD_LOGIC;
+  signal \o_read_addr_bottom[5]_i_1_n_0\ : STD_LOGIC;
   signal o_read_addr_top0 : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal \o_read_addr_top[5]_i_1_n_0\ : STD_LOGIC;
   signal \o_rgb_01__5_carry__0_i_1_n_0\ : STD_LOGIC;
   signal \o_rgb_01__5_carry__0_i_2_n_0\ : STD_LOGIC;
   signal \o_rgb_01__5_carry__0_i_3_n_0\ : STD_LOGIC;
@@ -326,8 +329,7 @@ architecture STRUCTURE of design_1_HUB75_driver_0_3_HUB75_driver is
   signal \o_rgb_1_reg[2]_i_8_n_0\ : STD_LOGIC;
   signal \o_rgb_1_reg[2]_i_9_n_0\ : STD_LOGIC;
   signal \r_bitplane_count[0]_i_1_n_0\ : STD_LOGIC;
-  signal \r_bitplane_count[0]_i_2_n_0\ : STD_LOGIC;
-  signal \r_bitplane_count__0\ : STD_LOGIC;
+  signal \r_bitplane_count_reg_n_0_[0]\ : STD_LOGIC;
   signal r_bottom_half_row : STD_LOGIC_VECTOR ( 191 downto 0 );
   signal r_brightness_count : STD_LOGIC;
   signal r_brightness_count0 : STD_LOGIC_VECTOR ( 31 downto 1 );
@@ -470,8 +472,14 @@ architecture STRUCTURE of design_1_HUB75_driver_0_3_HUB75_driver is
   signal \r_row_count[0]_i_1_n_0\ : STD_LOGIC;
   signal \r_row_count[1]_i_1_n_0\ : STD_LOGIC;
   signal \r_row_count[2]_i_1_n_0\ : STD_LOGIC;
+  signal \r_row_count[3]__0_i_1_n_0\ : STD_LOGIC;
   signal \r_row_count[3]_i_1_n_0\ : STD_LOGIC;
   signal \r_row_count[3]_i_2_n_0\ : STD_LOGIC;
+  signal \r_row_count[3]_i_3_n_0\ : STD_LOGIC;
+  signal \r_row_count_reg_n_0_[0]\ : STD_LOGIC;
+  signal \r_row_count_reg_n_0_[1]\ : STD_LOGIC;
+  signal \r_row_count_reg_n_0_[2]\ : STD_LOGIC;
+  signal \r_row_count_reg_n_0_[3]\ : STD_LOGIC;
   signal \r_state0_carry__0_i_1_n_0\ : STD_LOGIC;
   signal \r_state0_carry__0_i_2_n_0\ : STD_LOGIC;
   signal \r_state0_carry__0_i_3_n_0\ : STD_LOGIC;
@@ -702,13 +710,15 @@ architecture STRUCTURE of design_1_HUB75_driver_0_3_HUB75_driver is
   signal \NLW_r_state0_carry__1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   signal \NLW_r_state0_carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \FSM_onehot_r_state[4]_i_5\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \FSM_onehot_r_state[4]_i_2\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \FSM_onehot_r_state[4]_i_3\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \FSM_onehot_r_state[4]_i_6\ : label is "soft_lutpair5";
   attribute FSM_ENCODED_STATES : string;
-  attribute FSM_ENCODED_STATES of \FSM_onehot_r_state_reg[0]\ : label is "s_read_mem:00001,s_write_row:00010,s_latch_row:00100,s_display_row:01000,s_increment_row:10000,";
-  attribute FSM_ENCODED_STATES of \FSM_onehot_r_state_reg[1]\ : label is "s_read_mem:00001,s_write_row:00010,s_latch_row:00100,s_display_row:01000,s_increment_row:10000,";
-  attribute FSM_ENCODED_STATES of \FSM_onehot_r_state_reg[2]\ : label is "s_read_mem:00001,s_write_row:00010,s_latch_row:00100,s_display_row:01000,s_increment_row:10000,";
-  attribute FSM_ENCODED_STATES of \FSM_onehot_r_state_reg[3]\ : label is "s_read_mem:00001,s_write_row:00010,s_latch_row:00100,s_display_row:01000,s_increment_row:10000,";
-  attribute FSM_ENCODED_STATES of \FSM_onehot_r_state_reg[4]\ : label is "s_read_mem:00001,s_write_row:00010,s_latch_row:00100,s_display_row:01000,s_increment_row:10000,";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_r_state_reg[0]\ : label is "s_write_row:00010,s_latch_row:00100,s_display_row:01000,s_read_mem:00001,s_increment_row:10000";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_r_state_reg[1]\ : label is "s_write_row:00010,s_latch_row:00100,s_display_row:01000,s_read_mem:00001,s_increment_row:10000";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_r_state_reg[2]\ : label is "s_write_row:00010,s_latch_row:00100,s_display_row:01000,s_read_mem:00001,s_increment_row:10000";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_r_state_reg[3]\ : label is "s_write_row:00010,s_latch_row:00100,s_display_row:01000,s_read_mem:00001,s_increment_row:10000";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_r_state_reg[4]\ : label is "s_write_row:00010,s_latch_row:00100,s_display_row:01000,s_read_mem:00001,s_increment_row:10000";
   attribute SOFT_HLUTNM of \o_rgb_0[0]_i_4\ : label is "soft_lutpair1";
   attribute SOFT_HLUTNM of \o_rgb_0[1]_i_4\ : label is "soft_lutpair2";
   attribute SOFT_HLUTNM of \o_rgb_0[2]_i_23\ : label is "soft_lutpair1";
@@ -717,7 +727,6 @@ architecture STRUCTURE of design_1_HUB75_driver_0_3_HUB75_driver is
   attribute SOFT_HLUTNM of \o_rgb_1[1]_i_4\ : label is "soft_lutpair4";
   attribute SOFT_HLUTNM of \o_rgb_1[2]_i_22\ : label is "soft_lutpair3";
   attribute SOFT_HLUTNM of \o_rgb_1[2]_i_40\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \r_bitplane_count[0]_i_2\ : label is "soft_lutpair7";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \r_brightness_count_reg[12]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \r_brightness_count_reg[16]_i_1\ : label is 35;
@@ -731,7 +740,7 @@ architecture STRUCTURE of design_1_HUB75_driver_0_3_HUB75_driver is
   attribute SOFT_HLUTNM of \r_col_count[3]_i_1\ : label is "soft_lutpair0";
   attribute SOFT_HLUTNM of \r_col_count[4]_i_1\ : label is "soft_lutpair0";
   attribute SOFT_HLUTNM of \r_col_count[6]_i_2\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \r_col_count[7]_i_4\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \r_col_count[7]_i_4\ : label is "soft_lutpair5";
   attribute ADDER_THRESHOLD of r_read_counter0_carry : label is 35;
   attribute ADDER_THRESHOLD of \r_read_counter0_carry__0\ : label is 35;
   attribute ADDER_THRESHOLD of \r_read_counter0_carry__1\ : label is 35;
@@ -740,25 +749,45 @@ architecture STRUCTURE of design_1_HUB75_driver_0_3_HUB75_driver is
   attribute ADDER_THRESHOLD of \r_read_counter0_carry__4\ : label is 35;
   attribute ADDER_THRESHOLD of \r_read_counter0_carry__5\ : label is 35;
   attribute ADDER_THRESHOLD of \r_read_counter0_carry__6\ : label is 35;
-  attribute SOFT_HLUTNM of \r_row_count[1]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \r_row_count[2]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \r_row_count[3]_i_2\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \r_row_count[0]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \r_row_count[1]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \r_row_count[2]_i_1\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \r_row_count[3]_i_3\ : label is "soft_lutpair7";
 begin
   o_out_enable_n <= \^o_out_enable_n\;
+\FSM_onehot_r_state[0]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"BA"
+    )
+        port map (
+      I0 => r_row_count,
+      I1 => \r_bitplane_count_reg_n_0_[0]\,
+      I2 => r_brightness_count,
+      O => \FSM_onehot_r_state[0]_i_1_n_0\
+    );
 \FSM_onehot_r_state[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"AAAAAAAA888A8880"
     )
         port map (
       I0 => i_clk_enable,
-      I1 => \FSM_onehot_r_state[4]_i_2_n_0\,
+      I1 => \FSM_onehot_r_state[4]_i_3_n_0\,
       I2 => r_latch,
       I3 => r_brightness_count,
-      I4 => \FSM_onehot_r_state[4]_i_3_n_0\,
+      I4 => \FSM_onehot_r_state[4]_i_4_n_0\,
       I5 => r_row_count,
       O => \FSM_onehot_r_state[4]_i_1_n_0\
     );
-\FSM_onehot_r_state[4]_i_2\: unisim.vcomponents.LUT4
+\FSM_onehot_r_state[4]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => r_brightness_count,
+      I1 => \r_bitplane_count_reg_n_0_[0]\,
+      O => \FSM_onehot_r_state[4]_i_2_n_0\
+    );
+\FSM_onehot_r_state[4]_i_3\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"ABA8"
     )
@@ -767,21 +796,21 @@ begin
       I1 => r_clk,
       I2 => r_brightness_count,
       I3 => r_latch_reg_n_0,
-      O => \FSM_onehot_r_state[4]_i_2_n_0\
+      O => \FSM_onehot_r_state[4]_i_3_n_0\
     );
-\FSM_onehot_r_state[4]_i_3\: unisim.vcomponents.LUT5
+\FSM_onehot_r_state[4]_i_4\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"222F2220"
     )
         port map (
-      I0 => \FSM_onehot_r_state[4]_i_4_n_0\,
+      I0 => \FSM_onehot_r_state[4]_i_5_n_0\,
       I1 => \r_clk__0\,
       I2 => r_clk,
       I3 => r_brightness_count,
       I4 => \r_state__8\,
-      O => \FSM_onehot_r_state[4]_i_3_n_0\
+      O => \FSM_onehot_r_state[4]_i_4_n_0\
     );
-\FSM_onehot_r_state[4]_i_4\: unisim.vcomponents.LUT6
+\FSM_onehot_r_state[4]_i_5\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"0000000000000008"
     )
@@ -791,17 +820,17 @@ begin
       I2 => \r_col_count_reg_n_0_[6]\,
       I3 => \r_col_count_reg_n_0_[7]\,
       I4 => \r_col_count[6]_i_2_n_0\,
-      I5 => \FSM_onehot_r_state[4]_i_5_n_0\,
-      O => \FSM_onehot_r_state[4]_i_4_n_0\
+      I5 => \FSM_onehot_r_state[4]_i_6_n_0\,
+      O => \FSM_onehot_r_state[4]_i_5_n_0\
     );
-\FSM_onehot_r_state[4]_i_5\: unisim.vcomponents.LUT2
+\FSM_onehot_r_state[4]_i_6\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"7"
     )
         port map (
       I0 => \r_col_count_reg_n_0_[3]\,
       I1 => \r_col_count_reg_n_0_[2]\,
-      O => \FSM_onehot_r_state[4]_i_5_n_0\
+      O => \FSM_onehot_r_state[4]_i_6_n_0\
     );
 \FSM_onehot_r_state_reg[0]\: unisim.vcomponents.FDSE
     generic map(
@@ -810,7 +839,7 @@ begin
         port map (
       C => i_clk,
       CE => \FSM_onehot_r_state[4]_i_1_n_0\,
-      D => r_row_count,
+      D => \FSM_onehot_r_state[0]_i_1_n_0\,
       Q => \FSM_onehot_r_state_reg_n_0_[0]\,
       S => i_rst
     );
@@ -854,14 +883,46 @@ begin
         port map (
       C => i_clk,
       CE => \FSM_onehot_r_state[4]_i_1_n_0\,
-      D => r_brightness_count,
+      D => \FSM_onehot_r_state[4]_i_2_n_0\,
       Q => r_row_count,
       R => i_rst
+    );
+\o_addr_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => i_clk,
+      CE => \o_read_addr_bottom[5]_i_1_n_0\,
+      D => \r_row_count_reg_n_0_[0]\,
+      Q => o_addr(0),
+      R => '0'
+    );
+\o_addr_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => i_clk,
+      CE => \o_read_addr_bottom[5]_i_1_n_0\,
+      D => \r_row_count_reg_n_0_[1]\,
+      Q => o_addr(1),
+      R => '0'
+    );
+\o_addr_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => i_clk,
+      CE => \o_read_addr_bottom[5]_i_1_n_0\,
+      D => \r_row_count_reg_n_0_[2]\,
+      Q => o_addr(2),
+      R => '0'
+    );
+\o_addr_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => i_clk,
+      CE => \o_read_addr_bottom[5]_i_1_n_0\,
+      D => \r_row_count_reg_n_0_[3]\,
+      Q => o_addr(3),
+      R => '0'
     );
 o_clk_reg: unisim.vcomponents.FDRE
      port map (
       C => i_clk,
-      CE => \o_read_addr_top[5]_i_1_n_0\,
+      CE => \o_read_addr_bottom[5]_i_1_n_0\,
       D => \r_clk__0\,
       Q => o_clk,
       R => '0'
@@ -869,7 +930,7 @@ o_clk_reg: unisim.vcomponents.FDRE
 o_latch_reg: unisim.vcomponents.FDRE
      port map (
       C => i_clk,
-      CE => \o_read_addr_top[5]_i_1_n_0\,
+      CE => \o_read_addr_bottom[5]_i_1_n_0\,
       D => r_latch_reg_n_0,
       Q => o_latch,
       R => '0'
@@ -893,19 +954,27 @@ o_out_enable_n_reg: unisim.vcomponents.FDRE
       Q => \^o_out_enable_n\,
       R => '0'
     );
-\o_read_addr_top[5]_i_1\: unisim.vcomponents.LUT2
+\o_read_addr_bottom[5]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"2"
     )
         port map (
       I0 => i_clk_enable,
       I1 => i_rst,
-      O => \o_read_addr_top[5]_i_1_n_0\
+      O => \o_read_addr_bottom[5]_i_1_n_0\
+    );
+\o_read_addr_bottom_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => i_clk,
+      CE => \o_read_addr_bottom[5]_i_1_n_0\,
+      D => \r_bitplane_count_reg_n_0_[0]\,
+      Q => o_read_addr_bottom(4),
+      R => '0'
     );
 \o_read_addr_top_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => i_clk,
-      CE => \o_read_addr_top[5]_i_1_n_0\,
+      CE => \o_read_addr_bottom[5]_i_1_n_0\,
       D => o_read_addr_top0(0),
       Q => o_read_addr_bottom(0),
       R => '0'
@@ -913,7 +982,7 @@ o_out_enable_n_reg: unisim.vcomponents.FDRE
 \o_read_addr_top_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => i_clk,
-      CE => \o_read_addr_top[5]_i_1_n_0\,
+      CE => \o_read_addr_bottom[5]_i_1_n_0\,
       D => o_read_addr_top0(1),
       Q => o_read_addr_bottom(1),
       R => '0'
@@ -921,7 +990,7 @@ o_out_enable_n_reg: unisim.vcomponents.FDRE
 \o_read_addr_top_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => i_clk,
-      CE => \o_read_addr_top[5]_i_1_n_0\,
+      CE => \o_read_addr_bottom[5]_i_1_n_0\,
       D => o_read_addr_top0(2),
       Q => o_read_addr_bottom(2),
       R => '0'
@@ -929,17 +998,9 @@ o_out_enable_n_reg: unisim.vcomponents.FDRE
 \o_read_addr_top_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => i_clk,
-      CE => \o_read_addr_top[5]_i_1_n_0\,
+      CE => \o_read_addr_bottom[5]_i_1_n_0\,
       D => o_read_addr_top0(3),
       Q => o_read_addr_bottom(3),
-      R => '0'
-    );
-\o_read_addr_top_reg[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => i_clk,
-      CE => \o_read_addr_top[5]_i_1_n_0\,
-      D => \r_bitplane_count__0\,
-      Q => o_read_addr_bottom(4),
       R => '0'
     );
 \o_rgb_01__5_carry\: unisim.vcomponents.CARRY4
@@ -3721,27 +3782,17 @@ o_rgb_03_carry_i_3: unisim.vcomponents.LUT1
       O => \o_rgb_1_reg[2]_i_9_n_0\,
       S => \o_rgb_01__5_carry_n_4\
     );
-\r_bitplane_count[0]_i_1\: unisim.vcomponents.LUT6
+\r_bitplane_count[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FF7FFFFF00800000"
+      INIT => X"FF7F0080"
     )
         port map (
-      I0 => r_row_count,
-      I1 => o_read_addr_top0(3),
-      I2 => o_read_addr_top0(2),
-      I3 => \r_bitplane_count[0]_i_2_n_0\,
-      I4 => \o_read_addr_top[5]_i_1_n_0\,
-      I5 => \r_bitplane_count__0\,
+      I0 => r_brightness_count,
+      I1 => \r_state0_carry__1_n_1\,
+      I2 => i_clk_enable,
+      I3 => i_rst,
+      I4 => \r_bitplane_count_reg_n_0_[0]\,
       O => \r_bitplane_count[0]_i_1_n_0\
-    );
-\r_bitplane_count[0]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"7"
-    )
-        port map (
-      I0 => o_read_addr_top0(0),
-      I1 => o_read_addr_top0(1),
-      O => \r_bitplane_count[0]_i_2_n_0\
     );
 \r_bitplane_count_reg[0]\: unisim.vcomponents.FDRE
     generic map(
@@ -3751,7 +3802,7 @@ o_rgb_03_carry_i_3: unisim.vcomponents.LUT1
       C => i_clk,
       CE => '1',
       D => \r_bitplane_count[0]_i_1_n_0\,
-      Q => \r_bitplane_count__0\,
+      Q => \r_bitplane_count_reg_n_0_[0]\,
       R => '0'
     );
 \r_bottom_half_row_reg[0]\: unisim.vcomponents.FDRE
@@ -6051,7 +6102,7 @@ r_out_enable_n_i_1: unisim.vcomponents.LUT6
       INIT => X"D5FFFFFF80808080"
     )
         port map (
-      I0 => \o_read_addr_top[5]_i_1_n_0\,
+      I0 => \o_read_addr_bottom[5]_i_1_n_0\,
       I1 => r_brightness_count,
       I2 => \r_state0_carry__1_n_1\,
       I3 => r_latch,
@@ -6671,7 +6722,7 @@ r_read_counter0_carry: unisim.vcomponents.CARRY4
       INIT => X"1"
     )
         port map (
-      I0 => o_read_addr_top0(0),
+      I0 => \r_row_count_reg_n_0_[0]\,
       O => \r_row_count[0]_i_1_n_0\
     );
 \r_row_count[1]_i_1\: unisim.vcomponents.LUT2
@@ -6679,21 +6730,45 @@ r_read_counter0_carry: unisim.vcomponents.CARRY4
       INIT => X"6"
     )
         port map (
-      I0 => o_read_addr_top0(0),
-      I1 => o_read_addr_top0(1),
+      I0 => \r_row_count_reg_n_0_[0]\,
+      I1 => \r_row_count_reg_n_0_[1]\,
       O => \r_row_count[1]_i_1_n_0\
     );
 \r_row_count[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"6A"
+      INIT => X"78"
     )
         port map (
-      I0 => o_read_addr_top0(2),
-      I1 => o_read_addr_top0(0),
-      I2 => o_read_addr_top0(1),
+      I0 => \r_row_count_reg_n_0_[1]\,
+      I1 => \r_row_count_reg_n_0_[0]\,
+      I2 => \r_row_count_reg_n_0_[2]\,
       O => \r_row_count[2]_i_1_n_0\
     );
-\r_row_count[3]_i_1\: unisim.vcomponents.LUT3
+\r_row_count[3]__0_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"80000000"
+    )
+        port map (
+      I0 => \r_row_count_reg_n_0_[3]\,
+      I1 => \r_row_count_reg_n_0_[2]\,
+      I2 => \r_row_count_reg_n_0_[0]\,
+      I3 => \r_row_count_reg_n_0_[1]\,
+      I4 => \r_row_count[3]_i_2_n_0\,
+      O => \r_row_count[3]__0_i_1_n_0\
+    );
+\r_row_count[3]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"80000000"
+    )
+        port map (
+      I0 => \r_row_count[3]_i_2_n_0\,
+      I1 => \r_row_count_reg_n_0_[1]\,
+      I2 => \r_row_count_reg_n_0_[0]\,
+      I3 => \r_row_count_reg_n_0_[2]\,
+      I4 => \r_row_count_reg_n_0_[3]\,
+      O => \r_row_count[3]_i_1_n_0\
+    );
+\r_row_count[3]_i_2\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"08"
     )
@@ -6701,18 +6776,18 @@ r_read_counter0_carry: unisim.vcomponents.CARRY4
       I0 => r_row_count,
       I1 => i_clk_enable,
       I2 => i_rst,
-      O => \r_row_count[3]_i_1_n_0\
+      O => \r_row_count[3]_i_2_n_0\
     );
-\r_row_count[3]_i_2\: unisim.vcomponents.LUT4
+\r_row_count[3]_i_3\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"6AAA"
+      INIT => X"7F80"
     )
         port map (
-      I0 => o_read_addr_top0(3),
-      I1 => o_read_addr_top0(2),
-      I2 => o_read_addr_top0(0),
-      I3 => o_read_addr_top0(1),
-      O => \r_row_count[3]_i_2_n_0\
+      I0 => \r_row_count_reg_n_0_[0]\,
+      I1 => \r_row_count_reg_n_0_[1]\,
+      I2 => \r_row_count_reg_n_0_[2]\,
+      I3 => \r_row_count_reg_n_0_[3]\,
+      O => \r_row_count[3]_i_3_n_0\
     );
 \r_row_count_reg[0]\: unisim.vcomponents.FDRE
     generic map(
@@ -6720,10 +6795,21 @@ r_read_counter0_carry: unisim.vcomponents.CARRY4
     )
         port map (
       C => i_clk,
-      CE => \r_row_count[3]_i_1_n_0\,
+      CE => \r_row_count[3]_i_2_n_0\,
+      D => \r_row_count[0]_i_1_n_0\,
+      Q => \r_row_count_reg_n_0_[0]\,
+      R => \r_row_count[3]_i_1_n_0\
+    );
+\r_row_count_reg[0]__0\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => i_clk,
+      CE => \r_row_count[3]_i_2_n_0\,
       D => \r_row_count[0]_i_1_n_0\,
       Q => o_read_addr_top0(0),
-      R => '0'
+      R => \r_row_count[3]__0_i_1_n_0\
     );
 \r_row_count_reg[1]\: unisim.vcomponents.FDRE
     generic map(
@@ -6731,10 +6817,21 @@ r_read_counter0_carry: unisim.vcomponents.CARRY4
     )
         port map (
       C => i_clk,
-      CE => \r_row_count[3]_i_1_n_0\,
+      CE => \r_row_count[3]_i_2_n_0\,
+      D => \r_row_count[1]_i_1_n_0\,
+      Q => \r_row_count_reg_n_0_[1]\,
+      R => \r_row_count[3]_i_1_n_0\
+    );
+\r_row_count_reg[1]__0\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => i_clk,
+      CE => \r_row_count[3]_i_2_n_0\,
       D => \r_row_count[1]_i_1_n_0\,
       Q => o_read_addr_top0(1),
-      R => '0'
+      R => \r_row_count[3]__0_i_1_n_0\
     );
 \r_row_count_reg[2]\: unisim.vcomponents.FDRE
     generic map(
@@ -6742,10 +6839,21 @@ r_read_counter0_carry: unisim.vcomponents.CARRY4
     )
         port map (
       C => i_clk,
-      CE => \r_row_count[3]_i_1_n_0\,
+      CE => \r_row_count[3]_i_2_n_0\,
+      D => \r_row_count[2]_i_1_n_0\,
+      Q => \r_row_count_reg_n_0_[2]\,
+      R => \r_row_count[3]_i_1_n_0\
+    );
+\r_row_count_reg[2]__0\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => i_clk,
+      CE => \r_row_count[3]_i_2_n_0\,
       D => \r_row_count[2]_i_1_n_0\,
       Q => o_read_addr_top0(2),
-      R => '0'
+      R => \r_row_count[3]__0_i_1_n_0\
     );
 \r_row_count_reg[3]\: unisim.vcomponents.FDRE
     generic map(
@@ -6753,10 +6861,21 @@ r_read_counter0_carry: unisim.vcomponents.CARRY4
     )
         port map (
       C => i_clk,
-      CE => \r_row_count[3]_i_1_n_0\,
-      D => \r_row_count[3]_i_2_n_0\,
+      CE => \r_row_count[3]_i_2_n_0\,
+      D => \r_row_count[3]_i_3_n_0\,
+      Q => \r_row_count_reg_n_0_[3]\,
+      R => \r_row_count[3]_i_1_n_0\
+    );
+\r_row_count_reg[3]__0\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => i_clk,
+      CE => \r_row_count[3]_i_2_n_0\,
+      D => \r_row_count[3]_i_3_n_0\,
       Q => o_read_addr_top0(3),
-      R => '0'
+      R => \r_row_count[3]__0_i_1_n_0\
     );
 r_state0_carry: unisim.vcomponents.CARRY4
      port map (
@@ -6882,34 +7001,35 @@ r_state0_carry_i_1: unisim.vcomponents.LUT3
       I2 => \r_brightness_count__0\(9),
       O => r_state0_carry_i_1_n_0
     );
-r_state0_carry_i_2: unisim.vcomponents.LUT3
+r_state0_carry_i_2: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"01"
+      INIT => X"0006"
     )
         port map (
-      I0 => \r_brightness_count__0\(8),
-      I1 => \r_brightness_count__0\(7),
-      I2 => \r_brightness_count__0\(6),
+      I0 => \r_brightness_count__0\(6),
+      I1 => \r_bitplane_count_reg_n_0_[0]\,
+      I2 => \r_brightness_count__0\(8),
+      I3 => \r_brightness_count__0\(7),
       O => r_state0_carry_i_2_n_0
     );
 r_state0_carry_i_3: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0042"
+      INIT => X"0082"
     )
         port map (
-      I0 => \r_bitplane_count__0\,
-      I1 => \r_brightness_count__0\(5),
+      I0 => \r_brightness_count__0\(5),
+      I1 => \r_bitplane_count_reg_n_0_[0]\,
       I2 => \r_brightness_count__0\(4),
       I3 => \r_brightness_count__0\(3),
       O => r_state0_carry_i_3_n_0
     );
 r_state0_carry_i_4: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0014"
+      INIT => X"0024"
     )
         port map (
-      I0 => \r_brightness_count__0\(2),
-      I1 => \r_bitplane_count__0\,
+      I0 => \r_bitplane_count_reg_n_0_[0]\,
+      I1 => \r_brightness_count__0\(2),
       I2 => \r_brightness_count__0\(1),
       I3 => \r_brightness_count__0\(0),
       O => r_state0_carry_i_4_n_0
@@ -8532,7 +8652,8 @@ end design_1_HUB75_driver_0_3;
 architecture STRUCTURE of design_1_HUB75_driver_0_3 is
   signal \<const0>\ : STD_LOGIC;
   signal \<const1>\ : STD_LOGIC;
-  signal \^o_read_addr_bottom\ : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal \^o_read_addr_bottom\ : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal \^o_read_addr_top\ : STD_LOGIC_VECTOR ( 5 to 5 );
   attribute x_interface_info : string;
   attribute x_interface_info of i_clk : signal is "xilinx.com:signal:clock:1.0 i_clk CLK";
   attribute x_interface_mode : string;
@@ -8546,11 +8667,10 @@ architecture STRUCTURE of design_1_HUB75_driver_0_3 is
   attribute x_interface_mode of o_clk : signal is "master o_clk";
   attribute x_interface_parameter of o_clk : signal is "XIL_INTERFACENAME o_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN design_1_HUB75_driver_0_3_o_clk, INSERT_VIP 0";
 begin
-  o_addr(3 downto 0) <= \^o_read_addr_bottom\(3 downto 0);
-  o_read_addr_bottom(5) <= \^o_read_addr_bottom\(5);
+  o_read_addr_bottom(5) <= \^o_read_addr_top\(5);
   o_read_addr_bottom(4) <= \<const1>\;
   o_read_addr_bottom(3 downto 0) <= \^o_read_addr_bottom\(3 downto 0);
-  o_read_addr_top(5) <= \^o_read_addr_bottom\(5);
+  o_read_addr_top(5) <= \^o_read_addr_top\(5);
   o_read_addr_top(4) <= \<const0>\;
   o_read_addr_top(3 downto 0) <= \^o_read_addr_bottom\(3 downto 0);
 GND: unisim.vcomponents.GND
@@ -8564,10 +8684,11 @@ U0: entity work.design_1_HUB75_driver_0_3_HUB75_driver
       i_row_data_bottom(191 downto 0) => i_row_data_bottom(191 downto 0),
       i_row_data_top(191 downto 0) => i_row_data_top(191 downto 0),
       i_rst => i_rst,
+      o_addr(3 downto 0) => o_addr(3 downto 0),
       o_clk => o_clk,
       o_latch => o_latch,
       o_out_enable_n => o_out_enable_n,
-      o_read_addr_bottom(4) => \^o_read_addr_bottom\(5),
+      o_read_addr_bottom(4) => \^o_read_addr_top\(5),
       o_read_addr_bottom(3 downto 0) => \^o_read_addr_bottom\(3 downto 0),
       o_rgb_0(2 downto 0) => o_rgb_0(2 downto 0),
       o_rgb_1(2 downto 0) => o_rgb_1(2 downto 0)

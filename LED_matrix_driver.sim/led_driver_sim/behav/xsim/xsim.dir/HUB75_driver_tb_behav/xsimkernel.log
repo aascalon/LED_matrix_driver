@@ -1,4 +1,4 @@
-Running: xsim.dir/HUB75_driver_tb_behav/xsimk -simmode gui -wdb HUB75_driver_tb_behav.wdb -simrunnum 0 -socket 36181
+Running: xsim.dir/HUB75_driver_tb_behav/xsimk -simmode gui -wdb HUB75_driver_tb_behav.wdb -simrunnum 0 -socket 57691
 Design successfully loaded
-Design Loading Memory Usage: 184112 KB (Peak: 184112 KB)
-Design Loading CPU Usage: 2040 ms
+Design Loading Memory Usage: 184128 KB (Peak: 184128 KB)
+Design Loading CPU Usage: 1610 ms

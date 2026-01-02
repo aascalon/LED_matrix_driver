@@ -53,17 +53,15 @@ architecture Behavioral of HUB75_bus_breakout is
 begin
     p_breakout : process (i_clk)
         begin
-        if rising_edge(i_clk) then
-            o_a <= i_addr(0); 
-            o_b <= i_addr(1); 
-            o_c <= i_addr(2); 
-            o_d <= i_addr(3); 
-            o_r_0 <= i_rgb_0(2);
-            o_g_0 <= i_rgb_0(1);
-            o_b_0 <= i_rgb_0(0);
-            o_r_1 <= i_rgb_1(2);
-            o_g_1 <= i_rgb_1(1);
-            o_b_1 <= i_rgb_1(0);
-        end if;
+        o_a <= i_addr(0); 
+        o_b <= i_addr(1); 
+        o_c <= i_addr(2); 
+        o_d <= i_addr(3); 
+        o_r_0 <= i_rgb_0(2);
+        o_g_0 <= i_rgb_0(1);
+        o_b_0 <= i_rgb_0(0);
+        o_r_1 <= i_rgb_1(2);
+        o_g_1 <= i_rgb_1(1);
+        o_b_1 <= i_rgb_1(0);
     end process p_breakout;
 end Behavioral;

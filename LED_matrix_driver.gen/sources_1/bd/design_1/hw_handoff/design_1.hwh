@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Jan  1 12:21:42 2026" VIVADOVERSION="2024.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Jan  1 14:03:32 2026" VIVADOVERSION="2024.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:basys3:part0:1.2" DEVICE="7a35t" NAME="design_1" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
@@ -136,7 +136,7 @@
             <CONNECTION INSTANCE="HUB75_driver_0" PORT="o_addr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="6250000" DIR="I" NAME="i_clk" SIGIS="clk" SIGNAME="Frame_Clock_Divider_0_o_clk_en">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="i_clk" SIGIS="clk" SIGNAME="Frame_Clock_Divider_0_o_clk_en">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Frame_Clock_Divider_0" PORT="o_clk_en"/>
           </CONNECTIONS>
