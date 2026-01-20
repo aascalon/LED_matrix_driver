@@ -44,10 +44,10 @@ architecture Behavioral of HUB75_driver_tb is
     signal r_clk : std_logic := '0';
     signal r_rst : std_logic := '1';
     signal r_clk_en : std_logic;
-    signal r_rom_read_top : STD_LOGIC_VECTOR (5 downto 0);
-    signal r_data_top : std_logic_vector(191 downto 0) := (others  => '0');
-    signal r_rom_read_bottom : STD_LOGIC_VECTOR (5 downto 0);
-    signal r_data_bottom : std_logic_vector(191 downto 0) := (others  => '0');
+    signal r_rom_read_top : STD_LOGIC_VECTOR (10 downto 0);
+    signal r_data_top : std_logic_vector(7 downto 0) := (others  => '0');
+    signal r_rom_read_bottom : STD_LOGIC_VECTOR (10 downto 0);
+    signal r_data_bottom : std_logic_vector(7 downto 0) := (others  => '0');
     -- procedure DUAL_PORT_READ (
 
     --     signal o_row_data_top : out std_logic_vector(63 downto 0);
@@ -74,10 +74,10 @@ begin
         i_clk => r_clk,
         i_rst => r_rst,
         i_clk_enable => r_clk_en,
-        i_row_data_top => r_data_top,
-        i_row_data_bottom => r_data_bottom,
-        o_read_addr_top => r_rom_read_top,
-        o_read_addr_bottom => r_rom_read_bottom,
+        i_data_top => r_data_top,
+        i_data_bottom => r_data_bottom,
+        o_fb_read_addr_top => r_rom_read_top,
+        o_fb_read_addr_bottom => r_rom_read_bottom,
         o_addr => open,
         o_rgb_0 => open,
         o_rgb_1 => open,
@@ -96,7 +96,7 @@ begin
         -- enb => '1'
     );
 
-    CLK_EN_INST : entity work.design_1_Frame_Clock_Divider_0_1_Frame_Clock_Divider
+    CLK_EN_INST : entity work.design_1_Frame_Clock_Divider_0_1
     port map (
         o_clk_en => r_clk_en,
         i_clk => r_clk,
