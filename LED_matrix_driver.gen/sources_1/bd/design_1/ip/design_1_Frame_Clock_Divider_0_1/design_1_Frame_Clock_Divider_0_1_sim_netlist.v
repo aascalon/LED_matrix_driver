@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-// Date        : Thu Jan  1 12:22:46 2026
+// Date        : Sat Jan 24 02:50:52 2026
 // Host        : adrianna-linux running 64-bit Linux Mint 22
 // Command     : write_verilog -force -mode funcsim
 //               /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_Frame_Clock_Divider_0_1/design_1_Frame_Clock_Divider_0_1_sim_netlist.v
@@ -20,7 +20,7 @@ module design_1_Frame_Clock_Divider_0_1
    (i_clk,
     i_rst,
     o_clk_en);
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 i_clk CLK" *) (* x_interface_mode = "slave i_clk" *) (* x_interface_parameter = "XIL_INTERFACENAME i_clk, ASSOCIATED_RESET i_rst, FREQ_HZ 6250000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_clk_out1, INSERT_VIP 0" *) input i_clk;
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 i_clk CLK" *) (* x_interface_mode = "slave i_clk" *) (* x_interface_parameter = "XIL_INTERFACENAME i_clk, ASSOCIATED_RESET i_rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_clk_out1, INSERT_VIP 0" *) input i_clk;
   (* x_interface_info = "xilinx.com:signal:reset:1.0 i_rst RST" *) (* x_interface_mode = "slave i_rst" *) (* x_interface_parameter = "XIL_INTERFACENAME i_rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input i_rst;
   output o_clk_en;
 
@@ -85,8 +85,6 @@ module design_1_Frame_Clock_Divider_0_1_Frame_Clock_Divider
   wire counter0_carry_i_4_n_0;
   wire counter0_carry_i_5_n_0;
   wire counter0_carry_i_6_n_0;
-  wire counter0_carry_i_7_n_0;
-  wire counter0_carry_i_8_n_0;
   wire counter0_carry_n_0;
   wire counter0_carry_n_1;
   wire counter0_carry_n_2;
@@ -181,9 +179,9 @@ module design_1_Frame_Clock_Divider_0_1_Frame_Clock_Divider
        (.CI(1'b0),
         .CO({counter0_carry_n_0,counter0_carry_n_1,counter0_carry_n_2,counter0_carry_n_3}),
         .CYINIT(1'b0),
-        .DI({counter0_carry_i_1_n_0,counter0_carry_i_2_n_0,counter0_carry_i_3_n_0,counter0_carry_i_4_n_0}),
+        .DI({counter0_carry_i_1_n_0,counter_reg[5],counter_reg[3],counter0_carry_i_2_n_0}),
         .O(NLW_counter0_carry_O_UNCONNECTED[3:0]),
-        .S({counter0_carry_i_5_n_0,counter0_carry_i_6_n_0,counter0_carry_i_7_n_0,counter0_carry_i_8_n_0}));
+        .S({counter0_carry_i_3_n_0,counter0_carry_i_4_n_0,counter0_carry_i_5_n_0,counter0_carry_i_6_n_0}));
   (* COMPARATOR_THRESHOLD = "11" *) 
   CARRY4 counter0_carry__0
        (.CI(counter0_carry_n_0),
@@ -361,45 +359,33 @@ module design_1_Frame_Clock_Divider_0_1_Frame_Clock_Divider
   LUT2 #(
     .INIT(4'hE)) 
     counter0_carry_i_2
-       (.I0(counter_reg[4]),
-        .I1(counter_reg[5]),
-        .O(counter0_carry_i_2_n_0));
-  LUT2 #(
-    .INIT(4'h8)) 
-    counter0_carry_i_3
-       (.I0(counter_reg[2]),
-        .I1(counter_reg[3]),
-        .O(counter0_carry_i_3_n_0));
-  LUT2 #(
-    .INIT(4'h8)) 
-    counter0_carry_i_4
        (.I0(counter_reg[0]),
         .I1(counter_reg[1]),
-        .O(counter0_carry_i_4_n_0));
+        .O(counter0_carry_i_2_n_0));
   LUT2 #(
     .INIT(4'h1)) 
-    counter0_carry_i_5
+    counter0_carry_i_3
        (.I0(counter_reg[7]),
         .I1(counter_reg[6]),
+        .O(counter0_carry_i_3_n_0));
+  LUT2 #(
+    .INIT(4'h2)) 
+    counter0_carry_i_4
+       (.I0(counter_reg[4]),
+        .I1(counter_reg[5]),
+        .O(counter0_carry_i_4_n_0));
+  LUT2 #(
+    .INIT(4'h2)) 
+    counter0_carry_i_5
+       (.I0(counter_reg[2]),
+        .I1(counter_reg[3]),
         .O(counter0_carry_i_5_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     counter0_carry_i_6
-       (.I0(counter_reg[5]),
-        .I1(counter_reg[4]),
-        .O(counter0_carry_i_6_n_0));
-  LUT2 #(
-    .INIT(4'h2)) 
-    counter0_carry_i_7
-       (.I0(counter_reg[3]),
-        .I1(counter_reg[2]),
-        .O(counter0_carry_i_7_n_0));
-  LUT2 #(
-    .INIT(4'h2)) 
-    counter0_carry_i_8
        (.I0(counter_reg[1]),
         .I1(counter_reg[0]),
-        .O(counter0_carry_i_8_n_0));
+        .O(counter0_carry_i_6_n_0));
   LUT2 #(
     .INIT(4'hE)) 
     \counter[0]_i_1 
@@ -752,8 +738,8 @@ module design_1_Frame_Clock_Divider_0_1_Frame_Clock_Divider
   LUT6 #(
     .INIT(64'h0000000000000001)) 
     o_clk_en_INST_0_i_10
-       (.I0(counter_reg[4]),
-        .I1(counter_reg[5]),
+       (.I0(counter_reg[0]),
+        .I1(counter_reg[1]),
         .I2(counter_reg[10]),
         .I3(counter_reg[11]),
         .I4(counter_reg[17]),
@@ -783,9 +769,9 @@ module design_1_Frame_Clock_Divider_0_1_Frame_Clock_Divider
     .INIT(64'h0002000000000000)) 
     o_clk_en_INST_0_i_4
        (.I0(o_clk_en_INST_0_i_8_n_0),
-        .I1(counter_reg[0]),
-        .I2(counter_reg[1]),
-        .I3(counter_reg[2]),
+        .I1(counter_reg[2]),
+        .I2(counter_reg[4]),
+        .I3(counter_reg[5]),
         .I4(o_clk_en_INST_0_i_9_n_0),
         .I5(o_clk_en_INST_0_i_10_n_0),
         .O(o_clk_en_INST_0_i_4_n_0));

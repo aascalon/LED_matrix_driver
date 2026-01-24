@@ -56,10 +56,7 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "design_1_Frame_Clock_Divider_0_1_synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 2
-set_param xicom.use_bs_reader 1
-set_msg_config -id {HDL 9-1061} -limit 100000
-set_msg_config -id {HDL 9-1654} -limit 100000
+set_msg_config -id {Common 17-41} -limit 10000000
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
 set_param ips.modRefOverrideMrefDirPath /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/mref
@@ -81,6 +78,11 @@ set_property ip_output_repo /home/adrianna/Git/LED_matrix_driver/LED_matrix_driv
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
+read_mem {
+  /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/sources_1/imports/LED_matrix_helpers/test_pattern_packed_binary.mem
+  /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/sources_1/imports/LED_matrix_helpers/char_rom_binary.mem
+  /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/sources_1/imports/LED_matrix_helpers/oam.mem
+}
 read_vhdl -library xil_defaultlib /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/sources_1/new/Frame_Clock_Divider.vhd
 read_ip -quiet /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/sources_1/bd/design_1/ip/design_1_Frame_Clock_Divider_0_1/design_1_Frame_Clock_Divider_0_1.xci
 

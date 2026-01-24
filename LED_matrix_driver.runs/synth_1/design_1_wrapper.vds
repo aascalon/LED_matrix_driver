@@ -3,8 +3,8 @@
 # SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
 # IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
 # SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
-# Start of session at: Thu Jan  1 14:04:50 2026
-# Process ID         : 116061
+# Start of session at: Sat Jan 24 02:51:44 2026
+# Process ID         : 10192
 # Current directory  : /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1
 # Command line       : vivado -log design_1_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_wrapper.tcl
 # Log file           : /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/design_1_wrapper.vds
@@ -13,16 +13,16 @@
 # Platform           : Linuxmint
 # Operating System   : Linux Mint 22
 # Processor Detail   : Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz
-# CPU Frequency      : 3608.019 MHz
+# CPU Frequency      : 3335.448 MHz
 # CPU Physical cores : 4
 # CPU Logical cores  : 8
 # Host memory        : 16434 MB
 # Swap memory        : 2147 MB
 # Total Virtual      : 18581 MB
-# Available Virtual  : 7877 MB
+# Available Virtual  : 15184 MB
 #-----------------------------------------------------------
 source design_1_wrapper.tcl -notrace
-create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1468.105 ; gain = 0.027 ; free physical = 1475 ; free virtual = 7241
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1431.035 ; gain = 0.027 ; free physical = 10518 ; free virtual = 14139
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2024.2/data/ip'.
@@ -38,44 +38,50 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 116196
+INFO: [Synth 8-7075] Helper process launched with PID 10393
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1976.449 ; gain = 396.289 ; free physical = 757 ; free virtual = 6520
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1975.379 ; gain = 336.242 ; free physical = 9664 ; free virtual = 13320
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'design_1_wrapper' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/hdl/design_1_wrapper.vhd:37]
 INFO: [Synth 8-3491] module 'design_1' declared at '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:15' bound to instance 'design_1_i' of component 'design_1' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/hdl/design_1_wrapper.vhd:60]
 INFO: [Synth 8-638] synthesizing module 'design_1' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:41]
-INFO: [Synth 8-3491] module 'design_1_Frame_Clock_Divider_0_1' declared at '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-116061-adrianna-linux/realtime/design_1_Frame_Clock_Divider_0_1_stub.vhdl:6' bound to instance 'Frame_Clock_Divider_0' of component 'design_1_Frame_Clock_Divider_0_1' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:196]
-INFO: [Synth 8-638] synthesizing module 'design_1_Frame_Clock_Divider_0_1' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-116061-adrianna-linux/realtime/design_1_Frame_Clock_Divider_0_1_stub.vhdl:23]
-INFO: [Synth 8-3491] module 'design_1_HUB75_bus_breakout_0_1' declared at '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-116061-adrianna-linux/realtime/design_1_HUB75_bus_breakout_0_1_stub.vhdl:6' bound to instance 'HUB75_bus_breakout_0' of component 'design_1_HUB75_bus_breakout_0_1' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:202]
-INFO: [Synth 8-638] synthesizing module 'design_1_HUB75_bus_breakout_0_1' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-116061-adrianna-linux/realtime/design_1_HUB75_bus_breakout_0_1_stub.vhdl:34]
-INFO: [Synth 8-3491] module 'design_1_HUB75_driver_0_3' declared at '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-116061-adrianna-linux/realtime/design_1_HUB75_driver_0_3_stub.vhdl:6' bound to instance 'HUB75_driver_0' of component 'design_1_HUB75_driver_0_3' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:219]
-INFO: [Synth 8-638] synthesizing module 'design_1_HUB75_driver_0_3' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-116061-adrianna-linux/realtime/design_1_HUB75_driver_0_3_stub.vhdl:33]
-INFO: [Synth 8-3491] module 'design_1_UART_RX_0_1' declared at '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-116061-adrianna-linux/realtime/design_1_UART_RX_0_1_stub.vhdl:6' bound to instance 'UART_RX_0' of component 'design_1_UART_RX_0_1' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:235]
-INFO: [Synth 8-638] synthesizing module 'design_1_UART_RX_0_1' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-116061-adrianna-linux/realtime/design_1_UART_RX_0_1_stub.vhdl:24]
-INFO: [Synth 8-3491] module 'design_1_clk_wiz_0' declared at '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-116061-adrianna-linux/realtime/design_1_clk_wiz_0_stub.vhdl:6' bound to instance 'clk_wiz' of component 'design_1_clk_wiz_0' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:242]
-INFO: [Synth 8-638] synthesizing module 'design_1_clk_wiz_0' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-116061-adrianna-linux/realtime/design_1_clk_wiz_0_stub.vhdl:20]
-INFO: [Synth 8-3491] module 'design_1_fifo_generator_0_0' declared at '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-116061-adrianna-linux/realtime/design_1_fifo_generator_0_0_stub.vhdl:6' bound to instance 'fifo_generator_0' of component 'design_1_fifo_generator_0_0' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:251]
-INFO: [Synth 8-638] synthesizing module 'design_1_fifo_generator_0_0' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-116061-adrianna-linux/realtime/design_1_fifo_generator_0_0_stub.vhdl:29]
-INFO: [Synth 8-3491] module 'design_1_proc_sys_reset_0_0' declared at '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-116061-adrianna-linux/realtime/design_1_proc_sys_reset_0_0_stub.vhdl:6' bound to instance 'proc_sys_reset_0' of component 'design_1_proc_sys_reset_0_0' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:265]
-INFO: [Synth 8-638] synthesizing module 'design_1_proc_sys_reset_0_0' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-116061-adrianna-linux/realtime/design_1_proc_sys_reset_0_0_stub.vhdl:28]
-INFO: [Synth 8-3491] module 'design_1_blk_mem_gen_0_0' declared at '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-116061-adrianna-linux/realtime/design_1_blk_mem_gen_0_0_stub.vhdl:6' bound to instance 'static_img' of component 'design_1_blk_mem_gen_0_0' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:278]
-INFO: [Synth 8-638] synthesizing module 'design_1_blk_mem_gen_0_0' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-116061-adrianna-linux/realtime/design_1_blk_mem_gen_0_0_stub.vhdl:24]
+INFO: [Synth 8-3491] module 'design_1_Frame_Clock_Divider_0_1' declared at '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_Frame_Clock_Divider_0_1_stub.vhdl:6' bound to instance 'Frame_Clock_Divider_0' of component 'design_1_Frame_Clock_Divider_0_1' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:228]
+INFO: [Synth 8-638] synthesizing module 'design_1_Frame_Clock_Divider_0_1' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_Frame_Clock_Divider_0_1_stub.vhdl:23]
+INFO: [Synth 8-3491] module 'design_1_HUB75_bus_breakout_0_1' declared at '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_HUB75_bus_breakout_0_1_stub.vhdl:6' bound to instance 'HUB75_bus_breakout_0' of component 'design_1_HUB75_bus_breakout_0_1' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:234]
+INFO: [Synth 8-638] synthesizing module 'design_1_HUB75_bus_breakout_0_1' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_HUB75_bus_breakout_0_1_stub.vhdl:34]
+INFO: [Synth 8-3491] module 'design_1_HUB75_driver_0_3' declared at '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_HUB75_driver_0_3_stub.vhdl:6' bound to instance 'HUB75_driver_0' of component 'design_1_HUB75_driver_0_3' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:251]
+INFO: [Synth 8-638] synthesizing module 'design_1_HUB75_driver_0_3' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_HUB75_driver_0_3_stub.vhdl:31]
+INFO: [Synth 8-3491] module 'design_1_simple_dual_port_ram_0_1' declared at '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_simple_dual_port_ram_0_1_stub.vhdl:6' bound to instance 'OAM' of component 'design_1_simple_dual_port_ram_0_1' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:265]
+INFO: [Synth 8-638] synthesizing module 'design_1_simple_dual_port_ram_0_1' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_simple_dual_port_ram_0_1_stub.vhdl:26]
+INFO: [Synth 8-3491] module 'design_1_UART_RX_0_1' declared at '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_UART_RX_0_1_stub.vhdl:6' bound to instance 'UART_RX_0' of component 'design_1_UART_RX_0_1' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:274]
+INFO: [Synth 8-638] synthesizing module 'design_1_UART_RX_0_1' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_UART_RX_0_1_stub.vhdl:24]
+INFO: [Synth 8-3491] module 'design_1_clk_wiz_0' declared at '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_clk_wiz_0_stub.vhdl:6' bound to instance 'clk_wiz' of component 'design_1_clk_wiz_0' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:281]
+INFO: [Synth 8-638] synthesizing module 'design_1_clk_wiz_0' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_clk_wiz_0_stub.vhdl:19]
+INFO: [Synth 8-3491] module 'design_1_fb_writer_0_0' declared at '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_fb_writer_0_0_stub.vhdl:6' bound to instance 'fb_writer_0' of component 'design_1_fb_writer_0_0' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:289]
+INFO: [Synth 8-638] synthesizing module 'design_1_fb_writer_0_0' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_fb_writer_0_0_stub.vhdl:30]
+INFO: [Synth 8-3491] module 'design_1_fifo_generator_0_0' declared at '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_fifo_generator_0_0_stub.vhdl:6' bound to instance 'fifo_generator_0' of component 'design_1_fifo_generator_0_0' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:302]
+INFO: [Synth 8-638] synthesizing module 'design_1_fifo_generator_0_0' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_fifo_generator_0_0_stub.vhdl:29]
+INFO: [Synth 8-3491] module 'design_1_simple_dual_port_ram_0_0' declared at '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_simple_dual_port_ram_0_0_stub.vhdl:6' bound to instance 'framebuffer' of component 'design_1_simple_dual_port_ram_0_0' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:316]
+INFO: [Synth 8-638] synthesizing module 'design_1_simple_dual_port_ram_0_0' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_simple_dual_port_ram_0_0_stub.vhdl:26]
+INFO: [Synth 8-3491] module 'design_1_proc_sys_reset_0_0' declared at '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_proc_sys_reset_0_0_stub.vhdl:6' bound to instance 'proc_sys_reset_0' of component 'design_1_proc_sys_reset_0_0' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:326]
+INFO: [Synth 8-638] synthesizing module 'design_1_proc_sys_reset_0_0' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_proc_sys_reset_0_0_stub.vhdl:28]
+INFO: [Synth 8-3491] module 'design_1_simple_rom_0_0' declared at '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_simple_rom_0_0_stub.vhdl:6' bound to instance 'simple_rom_0' of component 'design_1_simple_rom_0_0' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:339]
+INFO: [Synth 8-638] synthesizing module 'design_1_simple_rom_0_0' [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/.Xil/Vivado-10192-adrianna-linux/realtime/design_1_simple_rom_0_0_stub.vhdl:23]
 INFO: [Synth 8-256] done synthesizing module 'design_1' (0#1) [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/synth/design_1.vhd:41]
 INFO: [Synth 8-256] done synthesizing module 'design_1_wrapper' (0#1) [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/hdl/design_1_wrapper.vhd:37]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2051.418 ; gain = 471.258 ; free physical = 663 ; free virtual = 6429
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2051.316 ; gain = 412.180 ; free physical = 9591 ; free virtual = 13250
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2069.230 ; gain = 489.070 ; free physical = 654 ; free virtual = 6419
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2069.129 ; gain = 429.992 ; free physical = 9589 ; free virtual = 13248
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2069.230 ; gain = 489.070 ; free physical = 654 ; free virtual = 6419
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2069.129 ; gain = 429.992 ; free physical = 9589 ; free virtual = 13248
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2069.230 ; gain = 0.000 ; free physical = 651 ; free virtual = 6417
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2069.129 ; gain = 0.000 ; free physical = 9589 ; free virtual = 13248
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -86,8 +92,6 @@ Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sou
 Finished Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_proc_sys_reset_0_0/design_1_proc_sys_reset_0_0/design_1_proc_sys_reset_0_0_in_context.xdc] for cell 'design_1_i/proc_sys_reset_0'
 Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_fifo_generator_0_0/design_1_fifo_generator_0_0/design_1_fifo_generator_0_0_in_context.xdc] for cell 'design_1_i/fifo_generator_0'
 Finished Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_fifo_generator_0_0/design_1_fifo_generator_0_0/design_1_fifo_generator_0_0_in_context.xdc] for cell 'design_1_i/fifo_generator_0'
-Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_blk_mem_gen_0_0/design_1_blk_mem_gen_0_0/design_1_blk_mem_gen_0_0_in_context.xdc] for cell 'design_1_i/static_img'
-Finished Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_blk_mem_gen_0_0/design_1_blk_mem_gen_0_0/design_1_blk_mem_gen_0_0_in_context.xdc] for cell 'design_1_i/static_img'
 Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_HUB75_bus_breakout_0_1/design_1_HUB75_bus_breakout_0_1/design_1_HUB75_bus_breakout_0_1_in_context.xdc] for cell 'design_1_i/HUB75_bus_breakout_0'
 Finished Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_HUB75_bus_breakout_0_1/design_1_HUB75_bus_breakout_0_1/design_1_HUB75_bus_breakout_0_1_in_context.xdc] for cell 'design_1_i/HUB75_bus_breakout_0'
 Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_UART_RX_0_1/design_1_UART_RX_0_1/design_1_UART_RX_0_1_in_context.xdc] for cell 'design_1_i/UART_RX_0'
@@ -96,68 +100,79 @@ Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sou
 Finished Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_Frame_Clock_Divider_0_1/design_1_Frame_Clock_Divider_0_1/design_1_Frame_Clock_Divider_0_1_in_context.xdc] for cell 'design_1_i/Frame_Clock_Divider_0'
 Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_HUB75_driver_0_3/design_1_HUB75_driver_0_3/design_1_HUB75_driver_0_3_in_context.xdc] for cell 'design_1_i/HUB75_driver_0'
 Finished Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_HUB75_driver_0_3/design_1_HUB75_driver_0_3/design_1_HUB75_driver_0_3_in_context.xdc] for cell 'design_1_i/HUB75_driver_0'
-Parsing XDC File [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc]
-WARNING: [Vivado 12-584] No ports matched 'led0'. [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc:31]
-WARNING: [Vivado 12-584] No ports matched 'led2'. [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc:33]
-WARNING: [Vivado 12-584] No ports matched 'CA'. [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc:50]
-WARNING: [Vivado 12-584] No ports matched 'CB'. [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc:51]
-WARNING: [Vivado 12-584] No ports matched 'CC'. [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc:52]
-WARNING: [Vivado 12-584] No ports matched 'CD'. [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc:53]
-WARNING: [Vivado 12-584] No ports matched 'CE'. [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc:54]
-WARNING: [Vivado 12-584] No ports matched 'CF'. [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc:55]
-WARNING: [Vivado 12-584] No ports matched 'CG'. [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc:56]
-WARNING: [Vivado 12-584] No ports matched 'DP'. [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc:58]
-WARNING: [Vivado 12-584] No ports matched 'AN0'. [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc:60]
-WARNING: [Vivado 12-584] No ports matched 'AN1'. [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc:61]
-WARNING: [Vivado 12-584] No ports matched 'AN2'. [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc:62]
-WARNING: [Vivado 12-584] No ports matched 'AN3'. [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc:63]
-WARNING: [Vivado 12-584] No ports matched 'JA10'. [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc:82]
-WARNING: [Vivado 12-584] No ports matched 'JXADC9'. [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc:111]
-WARNING: [Vivado 12-584] No ports matched 'JXADC10'. [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc:112]
-Finished Parsing XDC File [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc]
-WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/design_1_wrapper_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_wrapper_propImpl.xdc].
+Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_simple_dual_port_ram_0_0/design_1_simple_dual_port_ram_0_0/design_1_simple_dual_port_ram_0_0_in_context.xdc] for cell 'design_1_i/framebuffer'
+Finished Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_simple_dual_port_ram_0_0/design_1_simple_dual_port_ram_0_0/design_1_simple_dual_port_ram_0_0_in_context.xdc] for cell 'design_1_i/framebuffer'
+Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_simple_rom_0_0/design_1_simple_rom_0_0/design_1_simple_rom_0_0_in_context.xdc] for cell 'design_1_i/simple_rom_0'
+Finished Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_simple_rom_0_0/design_1_simple_rom_0_0/design_1_simple_rom_0_0_in_context.xdc] for cell 'design_1_i/simple_rom_0'
+Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_simple_dual_port_ram_0_1/design_1_simple_dual_port_ram_0_1/design_1_simple_dual_port_ram_0_1_in_context.xdc] for cell 'design_1_i/OAM'
+Finished Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_simple_dual_port_ram_0_1/design_1_simple_dual_port_ram_0_1/design_1_simple_dual_port_ram_0_1_in_context.xdc] for cell 'design_1_i/OAM'
+Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_fb_writer_0_0/design_1_fb_writer_0_0/design_1_fb_writer_0_0_in_context.xdc] for cell 'design_1_i/fb_writer_0'
+Finished Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_fb_writer_0_0/design_1_fb_writer_0_0/design_1_fb_writer_0_0_in_context.xdc] for cell 'design_1_i/fb_writer_0'
+Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc]
+WARNING: [Vivado 12-584] No ports matched 'led0'. [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc:31]
+WARNING: [Vivado 12-584] No ports matched 'led2'. [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc:33]
+WARNING: [Vivado 12-584] No ports matched 'CA'. [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc:50]
+WARNING: [Vivado 12-584] No ports matched 'CB'. [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc:51]
+WARNING: [Vivado 12-584] No ports matched 'CC'. [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc:52]
+WARNING: [Vivado 12-584] No ports matched 'CD'. [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc:53]
+WARNING: [Vivado 12-584] No ports matched 'CE'. [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc:54]
+WARNING: [Vivado 12-584] No ports matched 'CF'. [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc:55]
+WARNING: [Vivado 12-584] No ports matched 'CG'. [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc:56]
+WARNING: [Vivado 12-584] No ports matched 'DP'. [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc:58]
+WARNING: [Vivado 12-584] No ports matched 'AN0'. [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc:60]
+WARNING: [Vivado 12-584] No ports matched 'AN1'. [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc:61]
+WARNING: [Vivado 12-584] No ports matched 'AN2'. [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc:62]
+WARNING: [Vivado 12-584] No ports matched 'AN3'. [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc:63]
+WARNING: [Vivado 12-584] No ports matched 'JA10'. [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc:82]
+WARNING: [Vivado 12-584] No ports matched 'JXADC9'. [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc:111]
+WARNING: [Vivado 12-584] No ports matched 'JXADC10'. [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc:112]
+Finished Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc]
+WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/design_1_wrapper_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_wrapper_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/design_1_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/dont_touch.xdc]
 Finished Parsing XDC File [/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2118.156 ; gain = 0.000 ; free physical = 645 ; free virtual = 6408
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2115.086 ; gain = 0.000 ; free physical = 9606 ; free virtual = 13267
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2118.156 ; gain = 0.000 ; free physical = 648 ; free virtual = 6411
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2115.086 ; gain = 0.000 ; free physical = 9606 ; free virtual = 13267
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2118.156 ; gain = 537.996 ; free physical = 673 ; free virtual = 6436
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2115.086 ; gain = 475.949 ; free physical = 9654 ; free virtual = 13316
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2126.160 ; gain = 546.000 ; free physical = 673 ; free virtual = 6436
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2123.090 ; gain = 483.953 ; free physical = 9654 ; free virtual = 13316
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property IO_BUFFER_TYPE = NONE for clk. (constraint file  /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_clk_wiz_0/design_1_clk_wiz_0/design_1_clk_wiz_0_in_context.xdc, line 4).
-Applied set_property CLOCK_BUFFER_TYPE = NONE for clk. (constraint file  /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_clk_wiz_0/design_1_clk_wiz_0/design_1_clk_wiz_0_in_context.xdc, line 5).
+Applied set_property IO_BUFFER_TYPE = NONE for clk. (constraint file  /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_clk_wiz_0/design_1_clk_wiz_0/design_1_clk_wiz_0_in_context.xdc, line 3).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for clk. (constraint file  /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_clk_wiz_0/design_1_clk_wiz_0/design_1_clk_wiz_0_in_context.xdc, line 4).
 Applied set_property KEEP_HIERARCHY = SOFT for design_1_i. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/clk_wiz. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/proc_sys_reset_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/fifo_generator_0. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/static_img. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/HUB75_bus_breakout_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/UART_RX_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/Frame_Clock_Divider_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/HUB75_driver_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/framebuffer. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/simple_rom_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/OAM. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/fb_writer_0. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2126.160 ; gain = 546.000 ; free physical = 673 ; free virtual = 6436
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2123.090 ; gain = 483.953 ; free physical = 9654 ; free virtual = 13316
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2126.160 ; gain = 546.000 ; free physical = 675 ; free virtual = 6440
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2123.090 ; gain = 483.953 ; free physical = 9661 ; free virtual = 13323
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -180,25 +195,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 2126.160 ; gain = 546.000 ; free physical = 672 ; free virtual = 6442
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 2123.090 ; gain = 483.953 ; free physical = 9673 ; free virtual = 13340
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 2197.160 ; gain = 617.000 ; free physical = 594 ; free virtual = 6363
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2204.090 ; gain = 564.953 ; free physical = 9625 ; free virtual = 13292
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 2197.160 ; gain = 617.000 ; free physical = 594 ; free virtual = 6363
+Finished Timing Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2204.090 ; gain = 564.953 ; free physical = 9625 ; free virtual = 13292
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 2206.176 ; gain = 626.016 ; free physical = 586 ; free virtual = 6355
+Finished Technology Mapping : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2214.105 ; gain = 574.969 ; free physical = 9610 ; free virtual = 13277
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -216,93 +231,99 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2375.988 ; gain = 795.828 ; free physical = 435 ; free virtual = 6207
+Finished IO Insertion : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2375.918 ; gain = 736.781 ; free physical = 9482 ; free virtual = 13151
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2375.988 ; gain = 795.828 ; free physical = 435 ; free virtual = 6207
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2375.918 ; gain = 736.781 ; free physical = 9482 ; free virtual = 13151
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2375.988 ; gain = 795.828 ; free physical = 435 ; free virtual = 6207
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2375.918 ; gain = 736.781 ; free physical = 9482 ; free virtual = 13151
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2375.988 ; gain = 795.828 ; free physical = 435 ; free virtual = 6207
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2375.918 ; gain = 736.781 ; free physical = 9482 ; free virtual = 13151
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2375.988 ; gain = 795.828 ; free physical = 435 ; free virtual = 6207
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2375.918 ; gain = 736.781 ; free physical = 9482 ; free virtual = 13151
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2375.988 ; gain = 795.828 ; free physical = 435 ; free virtual = 6207
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2375.918 ; gain = 736.781 ; free physical = 9482 ; free virtual = 13151
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
 ---------------------------------------------------------------------------------
 
 Report BlackBoxes: 
-+------+---------------------------------+----------+
-|      |BlackBox name                    |Instances |
-+------+---------------------------------+----------+
-|1     |design_1_Frame_Clock_Divider_0_1 |         1|
-|2     |design_1_HUB75_bus_breakout_0_1  |         1|
-|3     |design_1_HUB75_driver_0_3        |         1|
-|4     |design_1_UART_RX_0_1             |         1|
-|5     |design_1_clk_wiz_0               |         1|
-|6     |design_1_fifo_generator_0_0      |         1|
-|7     |design_1_proc_sys_reset_0_0      |         1|
-|8     |design_1_blk_mem_gen_0_0         |         1|
-+------+---------------------------------+----------+
++------+----------------------------------+----------+
+|      |BlackBox name                     |Instances |
++------+----------------------------------+----------+
+|1     |design_1_Frame_Clock_Divider_0_1  |         1|
+|2     |design_1_HUB75_bus_breakout_0_1   |         1|
+|3     |design_1_HUB75_driver_0_3         |         1|
+|4     |design_1_simple_dual_port_ram_0_1 |         1|
+|5     |design_1_UART_RX_0_1              |         1|
+|6     |design_1_clk_wiz_0                |         1|
+|7     |design_1_fb_writer_0_0            |         1|
+|8     |design_1_fifo_generator_0_0       |         1|
+|9     |design_1_simple_dual_port_ram_0_0 |         1|
+|10    |design_1_proc_sys_reset_0_0       |         1|
+|11    |design_1_simple_rom_0_0           |         1|
++------+----------------------------------+----------+
 
 Report Cell Usage: 
-+------+--------------------------------------+------+
-|      |Cell                                  |Count |
-+------+--------------------------------------+------+
-|1     |design_1_Frame_Clock_Divider_0_1_bbox |     1|
-|2     |design_1_HUB75_bus_breakout_0_1_bbox  |     1|
-|3     |design_1_HUB75_driver_0_3_bbox        |     1|
-|4     |design_1_UART_RX_0_1_bbox             |     1|
-|5     |design_1_blk_mem_gen_0_0_bbox         |     1|
-|6     |design_1_clk_wiz_0_bbox               |     1|
-|7     |design_1_fifo_generator_0_0_bbox      |     1|
-|8     |design_1_proc_sys_reset_0_0_bbox      |     1|
-|9     |IBUF                                  |     2|
-|10    |OBUF                                  |    14|
-+------+--------------------------------------+------+
++------+---------------------------------------+------+
+|      |Cell                                   |Count |
++------+---------------------------------------+------+
+|1     |design_1_Frame_Clock_Divider_0_1_bbox  |     1|
+|2     |design_1_HUB75_bus_breakout_0_1_bbox   |     1|
+|3     |design_1_HUB75_driver_0_3_bbox         |     1|
+|4     |design_1_UART_RX_0_1_bbox              |     1|
+|5     |design_1_clk_wiz_0_bbox                |     1|
+|6     |design_1_fb_writer_0_0_bbox            |     1|
+|7     |design_1_fifo_generator_0_0_bbox       |     1|
+|8     |design_1_proc_sys_reset_0_0_bbox       |     1|
+|9     |design_1_simple_dual_port_ram_0_0_bbox |     1|
+|10    |design_1_simple_dual_port_ram_0_1_bbox |     1|
+|11    |design_1_simple_rom_0_0_bbox           |     1|
+|12    |IBUF                                   |     2|
+|13    |OBUF                                   |    14|
++------+---------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2375.988 ; gain = 795.828 ; free physical = 435 ; free virtual = 6207
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2375.918 ; gain = 736.781 ; free physical = 9482 ; free virtual = 13151
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:28 ; elapsed = 00:00:28 . Memory (MB): peak = 2375.988 ; gain = 746.902 ; free physical = 435 ; free virtual = 6208
-Synthesis Optimization Complete : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2375.996 ; gain = 795.828 ; free physical = 435 ; free virtual = 6208
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:26 ; elapsed = 00:00:26 . Memory (MB): peak = 2375.918 ; gain = 690.824 ; free physical = 9482 ; free virtual = 13151
+Synthesis Optimization Complete : Time (s): cpu = 00:00:28 ; elapsed = 00:00:28 . Memory (MB): peak = 2375.926 ; gain = 736.781 ; free physical = 9482 ; free virtual = 13151
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2375.996 ; gain = 0.000 ; free physical = 436 ; free virtual = 6208
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2375.926 ; gain = 0.000 ; free physical = 9475 ; free virtual = 13143
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2375.996 ; gain = 0.000 ; free physical = 616 ; free virtual = 6391
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2375.926 ; gain = 0.000 ; free physical = 9643 ; free virtual = 13312
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 91d4b8b2
+Synth Design complete | Checksum: 46a37d50
 INFO: [Common 17-83] Releasing license: Synthesis
-43 Infos, 19 Warnings, 0 Critical Warnings and 0 Errors encountered.
+49 Infos, 19 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:51 ; elapsed = 00:00:44 . Memory (MB): peak = 2375.996 ; gain = 907.891 ; free physical = 617 ; free virtual = 6392
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1569.555; main = 1569.555; forked = 266.595
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3043.148; main = 2375.992; forked = 916.984
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2400.000 ; gain = 0.000 ; free physical = 617 ; free virtual = 6392
+synth_design: Time (s): cpu = 00:00:56 ; elapsed = 00:00:45 . Memory (MB): peak = 2375.926 ; gain = 944.891 ; free physical = 9643 ; free virtual = 13312
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1582.301; main = 1582.301; forked = 268.345
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3040.078; main = 2375.922; forked = 916.984
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2399.930 ; gain = 0.000 ; free physical = 9643 ; free virtual = 13312
 INFO: [Common 17-1381] The checkpoint '/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.runs/synth_1/design_1_wrapper.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file design_1_wrapper_utilization_synth.rpt -pb design_1_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Jan  1 14:05:45 2026...
+INFO: [Common 17-206] Exiting Vivado at Sat Jan 24 02:52:40 2026...

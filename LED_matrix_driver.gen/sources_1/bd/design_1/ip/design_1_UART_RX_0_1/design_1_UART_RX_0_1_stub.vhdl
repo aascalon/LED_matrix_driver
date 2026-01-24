@@ -2,7 +2,7 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
--- Date        : Sat Dec 20 21:53:11 2025
+-- Date        : Sat Jan 24 02:50:53 2026
 -- Host        : adrianna-linux running 64-bit Linux Mint 22
 -- Command     : write_vhdl -force -mode synth_stub
 --               /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_UART_RX_0_1/design_1_UART_RX_0_1_stub.vhdl

@@ -1,69 +1,76 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.34202",
-   "Default View_TopLeft":"653,-145",
+   "Default View_ScaleFactor":"5.0",
+   "Default View_TopLeft":"1166,0",
    "ExpandedHierarchyInLayout":"",
    "PinnedBlocks":"",
    "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0 TLS
 #  -string -flagsOSRD
-preplace port port-id_clk -pg 1 -lvl 0 -x -70 -y 230 -defaultsOSRD
-preplace port port-id_UART_RX -pg 1 -lvl 0 -x -70 -y 320 -defaultsOSRD
-preplace port port-id_fpga_reset -pg 1 -lvl 0 -x -70 -y 200 -defaultsOSRD
-preplace port port-id_led1 -pg 1 -lvl 7 -x 2860 -y 190 -defaultsOSRD
-preplace port port-id_JA1 -pg 1 -lvl 7 -x 2860 -y -300 -defaultsOSRD
-preplace port port-id_JA2 -pg 1 -lvl 7 -x 2860 -y -270 -defaultsOSRD
-preplace port port-id_JA3 -pg 1 -lvl 7 -x 2860 -y -140 -defaultsOSRD
-preplace port port-id_JA4 -pg 1 -lvl 7 -x 2860 -y -110 -defaultsOSRD
-preplace port port-id_JA7 -pg 1 -lvl 7 -x 2860 -y -80 -defaultsOSRD
-preplace port port-id_JA8 -pg 1 -lvl 7 -x 2860 -y -50 -defaultsOSRD
-preplace port port-id_JA9 -pg 1 -lvl 7 -x 2860 -y -20 -defaultsOSRD
-preplace port port-id_JXADC1 -pg 1 -lvl 7 -x 2860 -y 10 -defaultsOSRD
-preplace port port-id_JXADC2 -pg 1 -lvl 7 -x 2860 -y 40 -defaultsOSRD
-preplace port port-id_JXADC3 -pg 1 -lvl 7 -x 2860 -y 70 -defaultsOSRD
-preplace port port-id_JXADC4 -pg 1 -lvl 7 -x 2860 -y 100 -defaultsOSRD
-preplace port port-id_JXADC7 -pg 1 -lvl 7 -x 2860 -y 130 -defaultsOSRD
-preplace port port-id_JXADC8 -pg 1 -lvl 7 -x 2860 -y 160 -defaultsOSRD
-preplace inst clk_wiz -pg 1 -lvl 1 -x 120 -y 220 -defaultsOSRD
-preplace inst proc_sys_reset_0 -pg 1 -lvl 3 -x 1050 -y 770 -defaultsOSRD
-preplace inst fifo_generator_0 -pg 1 -lvl 5 -x 1920 -y 440 -defaultsOSRD
-preplace inst static_img -pg 1 -lvl 3 -x 1050 -y 10 -defaultsOSRD
-preplace inst HUB75_bus_breakout_0 -pg 1 -lvl 6 -x 2650 -y -150 -defaultsOSRD
-preplace inst UART_RX_0 -pg 1 -lvl 2 -x 650 -y 580 -defaultsOSRD
-preplace inst Frame_Clock_Divider_0 -pg 1 -lvl 3 -x 1050 -y -230 -defaultsOSRD
-preplace inst HUB75_driver_0 -pg 1 -lvl 4 -x 1470 -y 80 -defaultsOSRD
-preplace netloc Frame_Clock_Divider_0_o_clk_en 1 3 3 1240 -180 N -180 N
-preplace netloc HUB75_bus_breakout_0_o_a 1 6 1 2830 -300n
-preplace netloc HUB75_bus_breakout_0_o_b 1 6 1 2840 -270n
-preplace netloc HUB75_bus_breakout_0_o_b_0 1 6 1 2800 -120n
-preplace netloc HUB75_bus_breakout_0_o_b_1 1 6 1 2770 -60n
-preplace netloc HUB75_bus_breakout_0_o_c 1 6 1 2840 -200n
-preplace netloc HUB75_bus_breakout_0_o_d 1 6 1 2830 -180n
-preplace netloc HUB75_bus_breakout_0_o_g_0 1 6 1 2810 -140n
-preplace netloc HUB75_bus_breakout_0_o_g_1 1 6 1 2780 -80n
-preplace netloc HUB75_bus_breakout_0_o_r_0 1 6 1 2820 -160n
-preplace netloc HUB75_bus_breakout_0_o_r_1 1 6 1 2790 -100n
-preplace netloc HUB75_driver_0_o_addr 1 4 2 1700 -160 NJ
-preplace netloc HUB75_driver_0_o_clk 1 4 3 1720 160 NJ 160 NJ
-preplace netloc HUB75_driver_0_o_latch 1 4 3 1680 100 NJ 100 NJ
-preplace netloc HUB75_driver_0_o_out_enable_n 1 4 3 N 130 NJ 130 NJ
-preplace netloc HUB75_driver_0_o_read_addr_bottom 1 2 3 860 -130 NJ -130 1690
-preplace netloc HUB75_driver_0_o_read_addr_top 1 2 3 870 -120 NJ -120 1680
-preplace netloc HUB75_driver_0_o_rgb_0 1 4 2 1710 -140 NJ
-preplace netloc HUB75_driver_0_o_rgb_1 1 4 2 1720 -120 NJ
-preplace netloc UART_RX_0_o_RX_Byte 1 2 3 830 410 NJ 410 N
-preplace netloc UART_RX_0_o_RX_DV 1 2 3 840 430 NJ 430 N
-preplace netloc UART_RX_1 1 0 2 NJ 320 240
-preplace netloc clk_1 1 0 1 NJ 230
-preplace netloc clk_wiz_clk_out1 1 1 4 510 470 820 470 N 470 N
-preplace netloc clk_wiz_clk_out2 1 1 3 N 210 810 160 1230
-preplace netloc clk_wiz_locked 1 1 2 N 250 790
-preplace netloc fifo_generator_0_wr_ack 1 5 2 NJ 430 2840
-preplace netloc proc_sys_reset_0_peripheral_reset 1 3 2 1260 490 NJ
-preplace netloc static_img_douta 1 2 2 870 140 1240
-preplace netloc static_img_doutb 1 2 2 860 150 1260
-preplace netloc xlconstant_0_dout 1 0 4 0 310 NJ 310 850 170 1250
-levelinfo -pg 1 -70 120 650 1050 1470 1920 2650 2860
-pagesize -pg 1 -db -bbox -sgen -230 -500 2960 870
+preplace port port-id_clk -pg 1 -lvl 0 -x 0 -y 670 -defaultsOSRD
+preplace port port-id_UART_RX -pg 1 -lvl 0 -x 0 -y 540 -defaultsOSRD
+preplace port port-id_fpga_reset -pg 1 -lvl 0 -x 0 -y 580 -defaultsOSRD
+preplace port port-id_led1 -pg 1 -lvl 7 -x 2140 -y 560 -defaultsOSRD
+preplace port port-id_JA1 -pg 1 -lvl 7 -x 2140 -y 30 -defaultsOSRD
+preplace port port-id_JA2 -pg 1 -lvl 7 -x 2140 -y 60 -defaultsOSRD
+preplace port port-id_JA3 -pg 1 -lvl 7 -x 2140 -y 90 -defaultsOSRD
+preplace port port-id_JA4 -pg 1 -lvl 7 -x 2140 -y 120 -defaultsOSRD
+preplace port port-id_JA7 -pg 1 -lvl 7 -x 2140 -y 150 -defaultsOSRD
+preplace port port-id_JA8 -pg 1 -lvl 7 -x 2140 -y 180 -defaultsOSRD
+preplace port port-id_JA9 -pg 1 -lvl 7 -x 2140 -y 210 -defaultsOSRD
+preplace port port-id_JXADC1 -pg 1 -lvl 7 -x 2140 -y 240 -defaultsOSRD
+preplace port port-id_JXADC2 -pg 1 -lvl 7 -x 2140 -y 270 -defaultsOSRD
+preplace port port-id_JXADC3 -pg 1 -lvl 7 -x 2140 -y 300 -defaultsOSRD
+preplace port port-id_JXADC4 -pg 1 -lvl 7 -x 2140 -y 330 -defaultsOSRD
+preplace port port-id_JXADC7 -pg 1 -lvl 7 -x 2140 -y 360 -defaultsOSRD
+preplace port port-id_JXADC8 -pg 1 -lvl 7 -x 2140 -y 390 -defaultsOSRD
+preplace inst clk_wiz -pg 1 -lvl 1 -x 140 -y 660 -defaultsOSRD
+preplace inst proc_sys_reset_0 -pg 1 -lvl 2 -x 460 -y 640 -defaultsOSRD
+preplace inst fifo_generator_0 -pg 1 -lvl 6 -x 1900 -y 570 -defaultsOSRD
+preplace inst HUB75_bus_breakout_0 -pg 1 -lvl 6 -x 1900 -y 170 -defaultsOSRD
+preplace inst UART_RX_0 -pg 1 -lvl 5 -x 1520 -y 530 -defaultsOSRD
+preplace inst Frame_Clock_Divider_0 -pg 1 -lvl 2 -x 460 -y 410 -defaultsOSRD
+preplace inst HUB75_driver_0 -pg 1 -lvl 5 -x 1520 -y 310 -defaultsOSRD
+preplace inst framebuffer -pg 1 -lvl 4 -x 1210 -y 340 -defaultsOSRD
+preplace inst simple_rom_0 -pg 1 -lvl 2 -x 460 -y 270 -defaultsOSRD
+preplace inst OAM -pg 1 -lvl 2 -x 460 -y 120 -defaultsOSRD
+preplace inst fb_writer_0 -pg 1 -lvl 3 -x 850 -y 140 -defaultsOSRD
+preplace netloc Frame_Clock_Divider_0_o_clk_en 1 2 4 680 240 NJ 240 1360 140 N
+preplace netloc HUB75_bus_breakout_0_o_a 1 6 1 2090J 30n
+preplace netloc HUB75_bus_breakout_0_o_b 1 6 1 2100J 60n
+preplace netloc HUB75_bus_breakout_0_o_b_0 1 6 1 2120J 200n
+preplace netloc HUB75_bus_breakout_0_o_b_1 1 6 1 2090J 260n
+preplace netloc HUB75_bus_breakout_0_o_c 1 6 1 2110J 90n
+preplace netloc HUB75_bus_breakout_0_o_d 1 6 1 2120J 120n
+preplace netloc HUB75_bus_breakout_0_o_g_0 1 6 1 NJ 180
+preplace netloc HUB75_bus_breakout_0_o_g_1 1 6 1 2110J 240n
+preplace netloc HUB75_bus_breakout_0_o_r_0 1 6 1 2090J 150n
+preplace netloc HUB75_bus_breakout_0_o_r_1 1 6 1 2120J 220n
+preplace netloc HUB75_driver_0_o_addr 1 5 1 1690 160n
+preplace netloc HUB75_driver_0_o_clk 1 5 2 NJ 370 2120J
+preplace netloc HUB75_driver_0_o_fb_read_addr 1 3 3 1080 190 NJ 190 1680
+preplace netloc HUB75_driver_0_o_latch 1 5 2 NJ 330 NJ
+preplace netloc HUB75_driver_0_o_out_enable_n 1 5 2 1680J 360 NJ
+preplace netloc HUB75_driver_0_o_rgb_0 1 5 1 1700 180n
+preplace netloc HUB75_driver_0_o_rgb_1 1 5 1 1710 200n
+preplace netloc OAM_doutb 1 2 1 N 120
+preplace netloc UART_RX_0_o_RX_Byte 1 5 1 N 540
+preplace netloc UART_RX_0_o_RX_DV 1 5 1 1680 520n
+preplace netloc UART_RX_1 1 0 5 NJ 540 NJ 540 NJ 540 NJ 540 NJ
+preplace netloc clk_1 1 0 1 NJ 670
+preplace netloc clk_wiz_clk_out1 1 1 5 270 20 660 40 1070 230 1340 460 1710J
+preplace netloc clk_wiz_locked 1 1 1 N 680
+preplace netloc fb_writer_0_o_fb_addr 1 3 1 1050 160n
+preplace netloc fb_writer_0_o_fb_data 1 3 1 1060 140n
+preplace netloc fb_writer_0_o_fb_write_en 1 3 1 1040 180n
+preplace netloc fb_writer_0_o_oam_addr 1 1 3 280 10 NJ 10 1030
+preplace netloc fb_writer_0_o_rom_addr 1 1 3 280 340 NJ 340 1020
+preplace netloc fifo_generator_0_wr_ack 1 6 1 NJ 560
+preplace netloc fpga_reset 1 0 2 20 580 280
+preplace netloc proc_sys_reset_0_peripheral_reset 1 2 4 670 550 NJ 550 1350 620 NJ
+preplace netloc simple_dual_port_ram_0_doutb 1 4 1 N 340
+preplace netloc simple_rom_0_data 1 2 1 640 100n
+levelinfo -pg 1 0 140 460 850 1210 1520 1900 2140
+pagesize -pg 1 -db -bbox -sgen -120 0 2240 740
 "
 }
 {

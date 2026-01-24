@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-| Date         : Thu Jan  1 14:05:45 2026
+| Date         : Sat Jan 24 02:52:40 2026
 | Host         : adrianna-linux running 64-bit Linux Mint 22
 | Command      : report_utilization -file design_1_wrapper_utilization_synth.rpt -pb design_1_wrapper_utilization_synth.pb
 | Design       : design_1_wrapper
@@ -160,18 +160,21 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 8. Black Boxes
 --------------
 
-+----------------------------------+------+
-|             Ref Name             | Used |
-+----------------------------------+------+
-| design_1_proc_sys_reset_0_0      |    1 |
-| design_1_fifo_generator_0_0      |    1 |
-| design_1_clk_wiz_0               |    1 |
-| design_1_blk_mem_gen_0_0         |    1 |
-| design_1_UART_RX_0_1             |    1 |
-| design_1_HUB75_driver_0_3        |    1 |
-| design_1_HUB75_bus_breakout_0_1  |    1 |
-| design_1_Frame_Clock_Divider_0_1 |    1 |
-+----------------------------------+------+
++-----------------------------------+------+
+|              Ref Name             | Used |
++-----------------------------------+------+
+| design_1_simple_rom_0_0           |    1 |
+| design_1_simple_dual_port_ram_0_1 |    1 |
+| design_1_simple_dual_port_ram_0_0 |    1 |
+| design_1_proc_sys_reset_0_0       |    1 |
+| design_1_fifo_generator_0_0       |    1 |
+| design_1_fb_writer_0_0            |    1 |
+| design_1_clk_wiz_0                |    1 |
+| design_1_UART_RX_0_1              |    1 |
+| design_1_HUB75_driver_0_3         |    1 |
+| design_1_HUB75_bus_breakout_0_1   |    1 |
+| design_1_Frame_Clock_Divider_0_1  |    1 |
++-----------------------------------+------+
 
 
 9. Instantiated Netlists

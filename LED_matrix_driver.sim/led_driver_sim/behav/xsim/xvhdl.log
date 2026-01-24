@@ -1,0 +1,4 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/sources_1/new/HUB75_driver.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'HUB75_driver'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/led_driver_sim/imports/LED_matrix_driver/LED_matrix_driver.srcs/sim_1/new/HUB75_driver_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'HUB75_driver_tb'

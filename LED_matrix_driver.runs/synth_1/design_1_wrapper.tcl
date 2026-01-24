@@ -56,10 +56,7 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 2
-set_param xicom.use_bs_reader 1
-set_msg_config -id {HDL 9-1061} -limit 100000
-set_msg_config -id {HDL 9-1654} -limit 100000
+set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -80,6 +77,16 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 add_files /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/sources_1/bd/design_1/ip/design_1_blk_mem_gen_0_0.coe
 add_files /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/sources_1/bd/design_1/ip/hub75_fb_64x32_2planes_rgb2bpc_vertical_stripes.coe
+add_files /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/sources_1/bd/design_1/ip/colour_palette.coe
+add_files /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/sources_1/bd/design_1/ip/test_pattern.coe
+add_files /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/sources_1/bd/design_1/ip/test_pattern_packed.coe
+add_files /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/sources_1/bd/design_1/ip/char_rom.coe
+add_files /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/sources_1/bd/design_1/ip/oam.coe
+read_mem {
+  /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/sources_1/imports/LED_matrix_helpers/test_pattern_packed_binary.mem
+  /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/sources_1/imports/LED_matrix_helpers/char_rom_binary.mem
+  /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/sources_1/imports/LED_matrix_helpers/oam.mem
+}
 read_vhdl -library xil_defaultlib /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/hdl/design_1_wrapper.vhd
 add_files /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/sources_1/bd/design_1/design_1.bd
 set_property used_in_implementation false [get_files -all /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_clk_wiz_0/design_1_clk_wiz_0_board.xdc]
@@ -90,7 +97,6 @@ set_property used_in_implementation false [get_files -all /home/adrianna/Git/LED
 set_property used_in_implementation false [get_files -all /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_proc_sys_reset_0_0/design_1_proc_sys_reset_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_fifo_generator_0_0/design_1_fifo_generator_0_0.xdc]
 set_property used_in_implementation false [get_files -all /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_fifo_generator_0_0/design_1_fifo_generator_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_blk_mem_gen_0_0/design_1_blk_mem_gen_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/design_1_ooc.xdc]
 
 OPTRACE "Adding files" END { }
@@ -102,8 +108,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc /home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc
-set_property used_in_implementation false [get_files /home/adrianna/Documents/digilent-xdc-master/Basys-3-Master.xdc]
+read_xdc /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc
+set_property used_in_implementation false [get_files /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.srcs/constrs_1/imports/digilent-xdc-master/Basys-3-Master.xdc]
 
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]

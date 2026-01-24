@@ -43,11 +43,13 @@ entity HUB75_driver is
         Port ( i_clk : in STD_LOGIC;
         i_rst : in STD_LOGIC;
         i_clk_enable : in STD_LOGIC;
-        i_data_top : in STD_LOGIC_VECTOR (g_DATA_WIDTH-1 downto 0);
-        i_data_bottom : in STD_LOGIC_VECTOR (g_DATA_WIDTH-1 downto 0);
+        -- i_data_top : in STD_LOGIC_VECTOR (g_DATA_WIDTH-1 downto 0);
+        -- i_data_bottom : in STD_LOGIC_VECTOR (g_DATA_WIDTH-1 downto 0);
+        i_data : in STD_LOGIC_VECTOR (g_DATA_WIDTH-1 downto 0);
            
-        o_fb_read_addr_top: out STD_LOGIC_VECTOR (10 downto 0) ;
-        o_fb_read_addr_bottom: out STD_LOGIC_VECTOR (10 downto 0) ; 
+        -- o_fb_read_addr_top: out STD_LOGIC_VECTOR (10 downto 0) ;
+        -- o_fb_read_addr_bottom: out STD_LOGIC_VECTOR (10 downto 0) ; 
+        o_fb_read_addr: out STD_LOGIC_VECTOR (10 downto 0) ;    
                 
         o_addr : out STD_LOGIC_VECTOR (3 downto 0);
         o_rgb_0 : out STD_LOGIC_VECTOR (2 downto 0) ;
@@ -70,6 +72,8 @@ architecture RTL of HUB75_driver is
         signal r_row_count : integer range 0 to (c_PIXEL_ROWS_HAlF - 1) := 0; -- stores which row we're writing to (from half of the framebuffer)
         signal r_top_half : std_logic_vector(g_DATA_WIDTH-1 downto 0);
         signal r_bottom_half : std_logic_vector(g_DATA_WIDTH-1 downto 0);
+        signal r_v_half_mux: std_logic := '0'; -- 0 = top half, 1 = bottom half
+        signal r_fb_read_addr : integer range 0 to (g_PIXEL_COLUMNS * g_PIXEL_ROWS) := 0; 
 
         signal r_brightness_count : integer := 0;
         signal r_bitplane_count : integer range 0 to (g_COLOUR_DEPTH-1) := 0 ; -- tracks the bitplane as well
@@ -100,14 +104,35 @@ begin
                 o_rgb_1 <= "000";
                 o_out_enable_n <= '0';
                 r_state <= s_read_mem;
+                r_fb_read_addr <= 0;
+                o_fb_read_addr <= (others => '0');
+
             elsif i_clk_enable = '1' then 
                 case r_state is 
                     when s_read_mem => 
-                        if r_read_counter = g_READ_LATENCY then 
-                            r_top_half <= i_data_top; 
-                            r_bottom_half <= i_data_bottom;
+                       
+                        if r_read_counter = 0 then 
+                            case r_v_half_mux is 
+                                when '0' => r_fb_read_addr <= r_col_count + (r_row_count * g_PIXEL_COLUMNS);
+                                when '1' => r_fb_read_addr <= r_col_count + (r_row_count * g_PIXEL_COLUMNS) + (c_PIXEL_ROWS_HAlF * g_PIXEL_COLUMNS);
+                                when others => 
+                                end case; 
+                            r_read_counter <= r_read_counter + 1;
+ 
+                        elsif r_read_counter = g_READ_LATENCY then
+                            case r_v_half_mux is 
+                                when '0' =>
+                                    r_top_half <= i_data;
+                                
+                                when '1' => 
+                                    r_bottom_half <= i_data;
+                                    r_state <= s_write_row;
+                                when others => 
+
+                            end case;
+                            r_v_half_mux <= not r_v_half_mux;
                             r_read_counter <= 0;
-                            r_state <= s_write_row;
+                        
                         else
                             r_read_counter <= r_read_counter + 1;
                         end if;
@@ -171,8 +196,8 @@ begin
                 o_clk <= r_clk; 
                 o_latch <= r_latch;
                 o_out_enable_n <= r_out_enable_n;
-                o_fb_read_addr_top <= std_logic_vector(TO_UNSIGNED(r_col_count + (r_row_count * g_PIXEL_COLUMNS), o_fb_read_addr_top'length));
-                o_fb_read_addr_bottom <= std_logic_vector(TO_UNSIGNED(r_col_count + (r_row_count * g_PIXEL_COLUMNS) + (c_PIXEL_ROWS_HAlF * g_PIXEL_COLUMNS), o_fb_read_addr_bottom'length));
+                o_fb_read_addr <= std_logic_vector(TO_UNSIGNED(r_fb_read_addr, o_fb_read_addr'length));
+                -- o_fb_read_addr_bottom <= std_logic_vector(TO_UNSIGNED(r_col_count + (r_row_count * g_PIXEL_COLUMNS) + (c_PIXEL_ROWS_HAlF * g_PIXEL_COLUMNS), o_fb_read_addr_bottom'length));
             end if;
         end if;            
     end process p_HUB75_display;

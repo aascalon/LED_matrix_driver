@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
---Date        : Thu Jan  1 14:03:31 2026
+--Date        : Sat Jan 24 02:48:23 2026
 --Host        : adrianna-linux running 64-bit Linux Mint 22
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -33,7 +33,7 @@ entity design_1 is
     led1 : out STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=8,numReposBlks=8,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=4,numPkgbdBlks=0,bdsource=USER,da_board_cnt=11,da_clkrst_cnt=11,synth_mode=Hierarchical}";
+  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=11,numReposBlks=11,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=8,numPkgbdBlks=0,bdsource=USER,da_board_cnt=11,da_clkrst_cnt=11,synth_mode=Hierarchical}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of design_1 : entity is "design_1.hwdef";
 end design_1;
@@ -44,7 +44,6 @@ architecture STRUCTURE of design_1 is
     reset : in STD_LOGIC;
     clk_in1 : in STD_LOGIC;
     clk_out1 : out STD_LOGIC;
-    clk_out2 : out STD_LOGIC;
     input_clk_stopped : out STD_LOGIC;
     locked : out STD_LOGIC
   );
@@ -78,16 +77,6 @@ architecture STRUCTURE of design_1 is
     data_count : out STD_LOGIC_VECTOR ( 10 downto 0 )
   );
   end component design_1_fifo_generator_0_0;
-  component design_1_blk_mem_gen_0_0 is
-  port (
-    clka : in STD_LOGIC;
-    addra : in STD_LOGIC_VECTOR ( 5 downto 0 );
-    douta : out STD_LOGIC_VECTOR ( 191 downto 0 );
-    clkb : in STD_LOGIC;
-    addrb : in STD_LOGIC_VECTOR ( 5 downto 0 );
-    doutb : out STD_LOGIC_VECTOR ( 191 downto 0 )
-  );
-  end component design_1_blk_mem_gen_0_0;
   component design_1_HUB75_bus_breakout_0_1 is
   port (
     i_clk : in STD_LOGIC;
@@ -126,10 +115,8 @@ architecture STRUCTURE of design_1 is
     i_clk : in STD_LOGIC;
     i_rst : in STD_LOGIC;
     i_clk_enable : in STD_LOGIC;
-    i_row_data_top : in STD_LOGIC_VECTOR ( 191 downto 0 );
-    i_row_data_bottom : in STD_LOGIC_VECTOR ( 191 downto 0 );
-    o_read_addr_top : out STD_LOGIC_VECTOR ( 5 downto 0 );
-    o_read_addr_bottom : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    i_data : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    o_fb_read_addr : out STD_LOGIC_VECTOR ( 10 downto 0 );
     o_addr : out STD_LOGIC_VECTOR ( 3 downto 0 );
     o_rgb_0 : out STD_LOGIC_VECTOR ( 2 downto 0 );
     o_rgb_1 : out STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -138,20 +125,65 @@ architecture STRUCTURE of design_1 is
     o_clk : out STD_LOGIC
   );
   end component design_1_HUB75_driver_0_3;
+  component design_1_simple_dual_port_ram_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    wea : in STD_LOGIC;
+    addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    addrb : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    doutb : out STD_LOGIC_VECTOR ( 7 downto 0 )
+  );
+  end component design_1_simple_dual_port_ram_0_0;
+  component design_1_simple_rom_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    data : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    addr : in STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component design_1_simple_rom_0_0;
+  component design_1_simple_dual_port_ram_0_1 is
+  port (
+    clk : in STD_LOGIC;
+    wea : in STD_LOGIC;
+    addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    addrb : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    dina : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    doutb : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component design_1_simple_dual_port_ram_0_1;
+  component design_1_fb_writer_0_0 is
+  port (
+    i_char_data : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    i_oam_data : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    i_rst : in STD_LOGIC;
+    i_clk : in STD_LOGIC;
+    i_clk_enable : in STD_LOGIC;
+    o_rom_addr : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    o_oam_addr : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    o_fb_data : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    o_fb_addr : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    o_fb_write_en : out STD_LOGIC
+  );
+  end component design_1_fb_writer_0_0;
   signal Frame_Clock_Divider_0_o_clk_en : STD_LOGIC;
   signal HUB75_driver_0_o_addr : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal HUB75_driver_0_o_read_addr_bottom : STD_LOGIC_VECTOR ( 5 downto 0 );
-  signal HUB75_driver_0_o_read_addr_top : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal HUB75_driver_0_o_fb_read_addr : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal HUB75_driver_0_o_rgb_0 : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal HUB75_driver_0_o_rgb_1 : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal OAM_doutb : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal UART_RX_0_o_RX_Byte : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal UART_RX_0_o_RX_DV : STD_LOGIC;
   signal clk_wiz_clk_out1 : STD_LOGIC;
-  signal clk_wiz_clk_out2 : STD_LOGIC;
   signal clk_wiz_locked : STD_LOGIC;
+  signal fb_writer_0_o_fb_addr : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal fb_writer_0_o_fb_data : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal fb_writer_0_o_fb_write_en : STD_LOGIC;
+  signal fb_writer_0_o_oam_addr : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal fb_writer_0_o_rom_addr : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal proc_sys_reset_0_peripheral_reset : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal static_img_douta : STD_LOGIC_VECTOR ( 191 downto 0 );
-  signal static_img_doutb : STD_LOGIC_VECTOR ( 191 downto 0 );
+  signal simple_dual_port_ram_0_doutb : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal simple_rom_0_data : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal NLW_clk_wiz_input_clk_stopped_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_generator_0_almost_empty_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_generator_0_empty_UNCONNECTED : STD_LOGIC;
@@ -195,7 +227,7 @@ architecture STRUCTURE of design_1 is
 begin
 Frame_Clock_Divider_0: component design_1_Frame_Clock_Divider_0_1
      port map (
-      i_clk => clk_wiz_clk_out2,
+      i_clk => clk_wiz_clk_out1,
       i_rst => fpga_reset,
       o_clk_en => Frame_Clock_Divider_0_o_clk_en
     );
@@ -218,19 +250,26 @@ HUB75_bus_breakout_0: component design_1_HUB75_bus_breakout_0_1
     );
 HUB75_driver_0: component design_1_HUB75_driver_0_3
      port map (
-      i_clk => clk_wiz_clk_out2,
+      i_clk => clk_wiz_clk_out1,
       i_clk_enable => Frame_Clock_Divider_0_o_clk_en,
-      i_row_data_bottom(191 downto 0) => static_img_doutb(191 downto 0),
-      i_row_data_top(191 downto 0) => static_img_douta(191 downto 0),
-      i_rst => fpga_reset,
+      i_data(7 downto 0) => simple_dual_port_ram_0_doutb(7 downto 0),
+      i_rst => proc_sys_reset_0_peripheral_reset(0),
       o_addr(3 downto 0) => HUB75_driver_0_o_addr(3 downto 0),
       o_clk => JXADC8,
+      o_fb_read_addr(10 downto 0) => HUB75_driver_0_o_fb_read_addr(10 downto 0),
       o_latch => JXADC4,
       o_out_enable_n => JXADC7,
-      o_read_addr_bottom(5 downto 0) => HUB75_driver_0_o_read_addr_bottom(5 downto 0),
-      o_read_addr_top(5 downto 0) => HUB75_driver_0_o_read_addr_top(5 downto 0),
       o_rgb_0(2 downto 0) => HUB75_driver_0_o_rgb_0(2 downto 0),
       o_rgb_1(2 downto 0) => HUB75_driver_0_o_rgb_1(2 downto 0)
+    );
+OAM: component design_1_simple_dual_port_ram_0_1
+     port map (
+      addra(15 downto 0) => B"0000000000000000",
+      addrb(15 downto 0) => fb_writer_0_o_oam_addr(15 downto 0),
+      clk => clk_wiz_clk_out1,
+      dina(15 downto 0) => B"0000000000000000",
+      doutb(15 downto 0) => OAM_doutb(15 downto 0),
+      wea => '0'
     );
 UART_RX_0: component design_1_UART_RX_0_1
      port map (
@@ -243,10 +282,22 @@ clk_wiz: component design_1_clk_wiz_0
      port map (
       clk_in1 => clk,
       clk_out1 => clk_wiz_clk_out1,
-      clk_out2 => clk_wiz_clk_out2,
       input_clk_stopped => NLW_clk_wiz_input_clk_stopped_UNCONNECTED,
       locked => clk_wiz_locked,
       reset => fpga_reset
+    );
+fb_writer_0: component design_1_fb_writer_0_0
+     port map (
+      i_char_data(7 downto 0) => simple_rom_0_data(7 downto 0),
+      i_clk => clk_wiz_clk_out1,
+      i_clk_enable => Frame_Clock_Divider_0_o_clk_en,
+      i_oam_data(15 downto 0) => OAM_doutb(15 downto 0),
+      i_rst => proc_sys_reset_0_peripheral_reset(0),
+      o_fb_addr(15 downto 0) => fb_writer_0_o_fb_addr(15 downto 0),
+      o_fb_data(7 downto 0) => fb_writer_0_o_fb_data(7 downto 0),
+      o_fb_write_en => fb_writer_0_o_fb_write_en,
+      o_oam_addr(15 downto 0) => fb_writer_0_o_oam_addr(15 downto 0),
+      o_rom_addr(15 downto 0) => fb_writer_0_o_rom_addr(15 downto 0)
     );
 fifo_generator_0: component design_1_fifo_generator_0_0
      port map (
@@ -262,6 +313,16 @@ fifo_generator_0: component design_1_fifo_generator_0_0
       wr_ack => led1,
       wr_en => UART_RX_0_o_RX_DV
     );
+framebuffer: component design_1_simple_dual_port_ram_0_0
+     port map (
+      addra(15 downto 0) => fb_writer_0_o_fb_addr(15 downto 0),
+      addrb(15 downto 11) => B"00000",
+      addrb(10 downto 0) => HUB75_driver_0_o_fb_read_addr(10 downto 0),
+      clk => clk_wiz_clk_out1,
+      dina(7 downto 0) => fb_writer_0_o_fb_data(7 downto 0),
+      doutb(7 downto 0) => simple_dual_port_ram_0_doutb(7 downto 0),
+      wea => fb_writer_0_o_fb_write_en
+    );
 proc_sys_reset_0: component design_1_proc_sys_reset_0_0
      port map (
       aux_reset_in => '1',
@@ -275,13 +336,10 @@ proc_sys_reset_0: component design_1_proc_sys_reset_0_0
       peripheral_reset(0) => proc_sys_reset_0_peripheral_reset(0),
       slowest_sync_clk => clk_wiz_clk_out1
     );
-static_img: component design_1_blk_mem_gen_0_0
+simple_rom_0: component design_1_simple_rom_0_0
      port map (
-      addra(5 downto 0) => HUB75_driver_0_o_read_addr_top(5 downto 0),
-      addrb(5 downto 0) => HUB75_driver_0_o_read_addr_bottom(5 downto 0),
-      clka => clk_wiz_clk_out2,
-      clkb => clk_wiz_clk_out2,
-      douta(191 downto 0) => static_img_douta(191 downto 0),
-      doutb(191 downto 0) => static_img_doutb(191 downto 0)
+      addr(15 downto 0) => fb_writer_0_o_rom_addr(15 downto 0),
+      clk => clk_wiz_clk_out1,
+      data(7 downto 0) => simple_rom_0_data(7 downto 0)
     );
 end STRUCTURE;

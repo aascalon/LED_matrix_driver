@@ -14,11 +14,14 @@
       "clk_wiz": "",
       "proc_sys_reset_0": "",
       "fifo_generator_0": "",
-      "static_img": "",
       "HUB75_bus_breakout_0": "",
       "UART_RX_0": "",
       "Frame_Clock_Divider_0": "",
-      "HUB75_driver_0": ""
+      "HUB75_driver_0": "",
+      "framebuffer": "",
+      "simple_rom_0": "",
+      "OAM": "",
+      "fb_writer_0": ""
     },
     "ports": {
       "clk": {
@@ -202,40 +205,40 @@
         "inst_hier_path": "clk_wiz",
         "parameters": {
           "CLKOUT1_JITTER": {
-            "value": "144.719"
+            "value": "130.958"
           },
           "CLKOUT1_PHASE_ERROR": {
-            "value": "114.212"
+            "value": "98.575"
           },
           "CLKOUT1_REQUESTED_OUT_FREQ": {
             "value": "100.0"
           },
           "CLKOUT2_JITTER": {
-            "value": "251.196"
+            "value": "151.636"
           },
           "CLKOUT2_PHASE_ERROR": {
-            "value": "114.212"
+            "value": "98.575"
           },
           "CLKOUT2_REQUESTED_OUT_FREQ": {
-            "value": "6.25"
+            "value": "50"
           },
           "CLKOUT2_USED": {
-            "value": "true"
+            "value": "false"
           },
           "CLK_IN1_BOARD_INTERFACE": {
             "value": "Custom"
           },
           "MMCM_CLKFBOUT_MULT_F": {
-            "value": "8.000"
+            "value": "10.000"
           },
           "MMCM_CLKOUT0_DIVIDE_F": {
-            "value": "8.000"
+            "value": "10.000"
           },
           "MMCM_CLKOUT1_DIVIDE": {
-            "value": "128"
+            "value": "1"
           },
           "NUM_OUT_CLKS": {
-            "value": "2"
+            "value": "1"
           },
           "RESET_BOARD_INTERFACE": {
             "value": "reset"
@@ -279,54 +282,6 @@
           },
           "Write_Acknowledge_Flag": {
             "value": "true"
-          }
-        }
-      },
-      "static_img": {
-        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
-        "ip_revision": "9",
-        "xci_name": "design_1_blk_mem_gen_0_0",
-        "xci_path": "ip/design_1_blk_mem_gen_0_0/design_1_blk_mem_gen_0_0.xci",
-        "inst_hier_path": "static_img",
-        "parameters": {
-          "Algorithm": {
-            "value": "Minimum_Area"
-          },
-          "Assume_Synchronous_Clk": {
-            "value": "true"
-          },
-          "Coe_File": {
-            "value": "../hub75_fb_64x32_2planes_rgb2bpc_vertical_stripes.coe"
-          },
-          "Enable_32bit_Address": {
-            "value": "false"
-          },
-          "Enable_A": {
-            "value": "Always_Enabled"
-          },
-          "Enable_B": {
-            "value": "Always_Enabled"
-          },
-          "Fill_Remaining_Memory_Locations": {
-            "value": "false"
-          },
-          "Load_Init_File": {
-            "value": "true"
-          },
-          "Memory_Type": {
-            "value": "Dual_Port_ROM"
-          },
-          "Register_PortB_Output_of_Memory_Primitives": {
-            "value": "false"
-          },
-          "Write_Depth_A": {
-            "value": "64"
-          },
-          "Write_Width_A": {
-            "value": "192"
-          },
-          "use_bram_block": {
-            "value": "Stand_Alone"
           }
         }
       },
@@ -464,7 +419,7 @@
         "inst_hier_path": "Frame_Clock_Divider_0",
         "parameters": {
           "counter_reset_value": {
-            "value": "10"
+            "value": "20"
           }
         },
         "reference_info": {
@@ -482,7 +437,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "6250000",
+                "value": "100000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -530,7 +485,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "6250000",
+                "value": "100000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -555,24 +510,14 @@
           "i_clk_enable": {
             "direction": "I"
           },
-          "i_row_data_top": {
+          "i_data": {
             "direction": "I",
-            "left": "191",
+            "left": "7",
             "right": "0"
           },
-          "i_row_data_bottom": {
-            "direction": "I",
-            "left": "191",
-            "right": "0"
-          },
-          "o_read_addr_top": {
+          "o_fb_read_addr": {
             "direction": "O",
-            "left": "5",
-            "right": "0"
-          },
-          "o_read_addr_bottom": {
-            "direction": "O",
-            "left": "5",
+            "left": "10",
             "right": "0"
           },
           "o_addr": {
@@ -601,6 +546,250 @@
             "direction": "O"
           }
         }
+      },
+      "framebuffer": {
+        "vlnv": "xilinx.com:module_ref:simple_dual_port_ram:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_simple_dual_port_ram_0_0",
+        "xci_path": "ip/design_1_simple_dual_port_ram_0_0/design_1_simple_dual_port_ram_0_0.xci",
+        "inst_hier_path": "framebuffer",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "simple_dual_port_ram",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "wea": {
+            "direction": "I"
+          },
+          "addra": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "addrb": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "dina": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "doutb": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          }
+        }
+      },
+      "simple_rom_0": {
+        "vlnv": "xilinx.com:module_ref:simple_rom:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_simple_rom_0_0",
+        "xci_path": "ip/design_1_simple_rom_0_0/design_1_simple_rom_0_0.xci",
+        "inst_hier_path": "simple_rom_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "simple_rom",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "data": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "addr": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          }
+        }
+      },
+      "OAM": {
+        "vlnv": "xilinx.com:module_ref:simple_dual_port_ram:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_simple_dual_port_ram_0_1",
+        "xci_path": "ip/design_1_simple_dual_port_ram_0_1/design_1_simple_dual_port_ram_0_1.xci",
+        "inst_hier_path": "OAM",
+        "parameters": {
+          "g_MEM_DEPTH": {
+            "value": "3"
+          },
+          "g_MEM_INIT_FILE": {
+            "value": "../../sources_1/imports/LED_matrix_helpers/oam.mem"
+          },
+          "g_MEM_WIDTH": {
+            "value": "16"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "simple_dual_port_ram",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "wea": {
+            "direction": "I"
+          },
+          "addra": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "addrb": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "dina": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "doutb": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          }
+        }
+      },
+      "fb_writer_0": {
+        "vlnv": "xilinx.com:module_ref:fb_writer:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_fb_writer_0_0",
+        "xci_path": "ip/design_1_fb_writer_0_0/design_1_fb_writer_0_0.xci",
+        "inst_hier_path": "fb_writer_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "fb_writer",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "i_char_data": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "i_oam_data": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "i_rst": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH"
+              }
+            }
+          },
+          "i_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "i_rst",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "i_clk_enable": {
+            "direction": "I"
+          },
+          "o_rom_addr": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "o_oam_addr": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "o_fb_data": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "o_fb_addr": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "o_fb_write_en": {
+            "direction": "O"
+          }
+        }
       }
     },
     "nets": {
@@ -608,7 +797,8 @@
         "ports": [
           "Frame_Clock_Divider_0/o_clk_en",
           "HUB75_bus_breakout_0/i_clk",
-          "HUB75_driver_0/i_clk_enable"
+          "HUB75_driver_0/i_clk_enable",
+          "fb_writer_0/i_clk_enable"
         ]
       },
       "HUB75_bus_breakout_0_o_a": {
@@ -683,6 +873,12 @@
           "JXADC8"
         ]
       },
+      "HUB75_driver_0_o_fb_read_addr": {
+        "ports": [
+          "HUB75_driver_0/o_fb_read_addr",
+          "framebuffer/addrb"
+        ]
+      },
       "HUB75_driver_0_o_latch": {
         "ports": [
           "HUB75_driver_0/o_latch",
@@ -695,18 +891,6 @@
           "JXADC7"
         ]
       },
-      "HUB75_driver_0_o_read_addr_bottom": {
-        "ports": [
-          "HUB75_driver_0/o_read_addr_bottom",
-          "static_img/addrb"
-        ]
-      },
-      "HUB75_driver_0_o_read_addr_top": {
-        "ports": [
-          "HUB75_driver_0/o_read_addr_top",
-          "static_img/addra"
-        ]
-      },
       "HUB75_driver_0_o_rgb_0": {
         "ports": [
           "HUB75_driver_0/o_rgb_0",
@@ -717,6 +901,12 @@
         "ports": [
           "HUB75_driver_0/o_rgb_1",
           "HUB75_bus_breakout_0/i_rgb_1"
+        ]
+      },
+      "OAM_doutb": {
+        "ports": [
+          "OAM/doutb",
+          "fb_writer_0/i_oam_data"
         ]
       },
       "UART_RX_0_o_RX_Byte": {
@@ -746,18 +936,15 @@
       "clk_wiz_clk_out1": {
         "ports": [
           "clk_wiz/clk_out1",
-          "proc_sys_reset_0/slowest_sync_clk",
           "fifo_generator_0/clk",
-          "UART_RX_0/i_Clk"
-        ]
-      },
-      "clk_wiz_clk_out2": {
-        "ports": [
-          "clk_wiz/clk_out2",
+          "proc_sys_reset_0/slowest_sync_clk",
+          "HUB75_driver_0/i_clk",
+          "UART_RX_0/i_Clk",
+          "framebuffer/clk",
           "Frame_Clock_Divider_0/i_clk",
-          "static_img/clkb",
-          "static_img/clka",
-          "HUB75_driver_0/i_clk"
+          "OAM/clk",
+          "simple_rom_0/clk",
+          "fb_writer_0/i_clk"
         ]
       },
       "clk_wiz_locked": {
@@ -766,37 +953,68 @@
           "proc_sys_reset_0/dcm_locked"
         ]
       },
+      "fb_writer_0_o_fb_addr": {
+        "ports": [
+          "fb_writer_0/o_fb_addr",
+          "framebuffer/addra"
+        ]
+      },
+      "fb_writer_0_o_fb_data": {
+        "ports": [
+          "fb_writer_0/o_fb_data",
+          "framebuffer/dina"
+        ]
+      },
+      "fb_writer_0_o_fb_write_en": {
+        "ports": [
+          "fb_writer_0/o_fb_write_en",
+          "framebuffer/wea"
+        ]
+      },
+      "fb_writer_0_o_oam_addr": {
+        "ports": [
+          "fb_writer_0/o_oam_addr",
+          "OAM/addrb"
+        ]
+      },
+      "fb_writer_0_o_rom_addr": {
+        "ports": [
+          "fb_writer_0/o_rom_addr",
+          "simple_rom_0/addr"
+        ]
+      },
       "fifo_generator_0_wr_ack": {
         "ports": [
           "fifo_generator_0/wr_ack",
           "led1"
         ]
       },
-      "proc_sys_reset_0_peripheral_reset": {
-        "ports": [
-          "proc_sys_reset_0/peripheral_reset",
-          "fifo_generator_0/srst"
-        ]
-      },
-      "static_img_douta": {
-        "ports": [
-          "static_img/douta",
-          "HUB75_driver_0/i_row_data_top"
-        ]
-      },
-      "static_img_doutb": {
-        "ports": [
-          "static_img/doutb",
-          "HUB75_driver_0/i_row_data_bottom"
-        ]
-      },
-      "xlconstant_0_dout": {
+      "fpga_reset": {
         "ports": [
           "fpga_reset",
           "clk_wiz/reset",
           "proc_sys_reset_0/ext_reset_in",
-          "Frame_Clock_Divider_0/i_rst",
-          "HUB75_driver_0/i_rst"
+          "Frame_Clock_Divider_0/i_rst"
+        ]
+      },
+      "proc_sys_reset_0_peripheral_reset": {
+        "ports": [
+          "proc_sys_reset_0/peripheral_reset",
+          "fifo_generator_0/srst",
+          "HUB75_driver_0/i_rst",
+          "fb_writer_0/i_rst"
+        ]
+      },
+      "simple_dual_port_ram_0_doutb": {
+        "ports": [
+          "framebuffer/doutb",
+          "HUB75_driver_0/i_data"
+        ]
+      },
+      "simple_rom_0_data": {
+        "ports": [
+          "simple_rom_0/data",
+          "fb_writer_0/i_char_data"
         ]
       }
     }

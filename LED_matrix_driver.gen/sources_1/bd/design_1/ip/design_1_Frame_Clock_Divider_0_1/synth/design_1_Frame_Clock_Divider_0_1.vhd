@@ -79,7 +79,7 @@ ARCHITECTURE design_1_Frame_Clock_Divider_0_1_arch OF design_1_Frame_Clock_Divid
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF design_1_Frame_Clock_Divider_0_1_arch : ARCHITECTURE IS "design_1_Frame_Clock_Divider_0_1,Frame_Clock_Divider,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF design_1_Frame_Clock_Divider_0_1_arch: ARCHITECTURE IS "design_1_Frame_Clock_Divider_0_1,Frame_Clock_Divider,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=Frame_Clock_Divider,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,counter_reset_value=10}";
+  ATTRIBUTE CORE_GENERATION_INFO OF design_1_Frame_Clock_Divider_0_1_arch: ARCHITECTURE IS "design_1_Frame_Clock_Divider_0_1,Frame_Clock_Divider,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=Frame_Clock_Divider,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,counter_reset_value=20}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF design_1_Frame_Clock_Divider_0_1_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -87,14 +87,14 @@ ARCHITECTURE design_1_Frame_Clock_Divider_0_1_arch OF design_1_Frame_Clock_Divid
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF i_clk: SIGNAL IS "xilinx.com:signal:clock:1.0 i_clk CLK";
   ATTRIBUTE X_INTERFACE_MODE OF i_clk: SIGNAL IS "slave i_clk";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF i_clk: SIGNAL IS "XIL_INTERFACENAME i_clk, ASSOCIATED_RESET i_rst, FREQ_HZ 6250000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_clk_out1, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF i_clk: SIGNAL IS "XIL_INTERFACENAME i_clk, ASSOCIATED_RESET i_rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_clk_out1, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF i_rst: SIGNAL IS "xilinx.com:signal:reset:1.0 i_rst RST";
   ATTRIBUTE X_INTERFACE_MODE OF i_rst: SIGNAL IS "slave i_rst";
   ATTRIBUTE X_INTERFACE_PARAMETER OF i_rst: SIGNAL IS "XIL_INTERFACENAME i_rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 BEGIN
   U0 : Frame_Clock_Divider
     GENERIC MAP (
-      counter_reset_value => 10
+      counter_reset_value => 20
     )
     PORT MAP (
       i_clk => i_clk,

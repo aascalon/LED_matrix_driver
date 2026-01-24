@@ -2,7 +2,7 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
--- Date        : Thu Jan  1 12:22:46 2026
+-- Date        : Sat Jan 24 02:50:52 2026
 -- Host        : adrianna-linux running 64-bit Linux Mint 22
 -- Command     : write_vhdl -force -mode funcsim
 --               /home/adrianna/Git/LED_matrix_driver/LED_matrix_driver.gen/sources_1/bd/design_1/ip/design_1_Frame_Clock_Divider_0_1/design_1_Frame_Clock_Divider_0_1_sim_netlist.vhdl
@@ -68,8 +68,6 @@ architecture STRUCTURE of design_1_Frame_Clock_Divider_0_1_Frame_Clock_Divider i
   signal counter0_carry_i_4_n_0 : STD_LOGIC;
   signal counter0_carry_i_5_n_0 : STD_LOGIC;
   signal counter0_carry_i_6_n_0 : STD_LOGIC;
-  signal counter0_carry_i_7_n_0 : STD_LOGIC;
-  signal counter0_carry_i_8_n_0 : STD_LOGIC;
   signal counter0_carry_n_0 : STD_LOGIC;
   signal counter0_carry_n_1 : STD_LOGIC;
   signal counter0_carry_n_2 : STD_LOGIC;
@@ -179,14 +177,14 @@ counter0_carry: unisim.vcomponents.CARRY4
       CO(0) => counter0_carry_n_3,
       CYINIT => '0',
       DI(3) => counter0_carry_i_1_n_0,
-      DI(2) => counter0_carry_i_2_n_0,
-      DI(1) => counter0_carry_i_3_n_0,
-      DI(0) => counter0_carry_i_4_n_0,
+      DI(2) => counter_reg(5),
+      DI(1) => counter_reg(3),
+      DI(0) => counter0_carry_i_2_n_0,
       O(3 downto 0) => NLW_counter0_carry_O_UNCONNECTED(3 downto 0),
-      S(3) => counter0_carry_i_5_n_0,
-      S(2) => counter0_carry_i_6_n_0,
-      S(1) => counter0_carry_i_7_n_0,
-      S(0) => counter0_carry_i_8_n_0
+      S(3) => counter0_carry_i_3_n_0,
+      S(2) => counter0_carry_i_4_n_0,
+      S(1) => counter0_carry_i_5_n_0,
+      S(0) => counter0_carry_i_6_n_0
     );
 \counter0_carry__0\: unisim.vcomponents.CARRY4
      port map (
@@ -472,35 +470,35 @@ counter0_carry_i_2: unisim.vcomponents.LUT2
       INIT => X"E"
     )
         port map (
-      I0 => counter_reg(4),
-      I1 => counter_reg(5),
+      I0 => counter_reg(0),
+      I1 => counter_reg(1),
       O => counter0_carry_i_2_n_0
     );
 counter0_carry_i_3: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"8"
-    )
-        port map (
-      I0 => counter_reg(2),
-      I1 => counter_reg(3),
-      O => counter0_carry_i_3_n_0
-    );
-counter0_carry_i_4: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"8"
-    )
-        port map (
-      I0 => counter_reg(0),
-      I1 => counter_reg(1),
-      O => counter0_carry_i_4_n_0
-    );
-counter0_carry_i_5: unisim.vcomponents.LUT2
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => counter_reg(7),
       I1 => counter_reg(6),
+      O => counter0_carry_i_3_n_0
+    );
+counter0_carry_i_4: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => counter_reg(4),
+      I1 => counter_reg(5),
+      O => counter0_carry_i_4_n_0
+    );
+counter0_carry_i_5: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => counter_reg(2),
+      I1 => counter_reg(3),
       O => counter0_carry_i_5_n_0
     );
 counter0_carry_i_6: unisim.vcomponents.LUT2
@@ -508,27 +506,9 @@ counter0_carry_i_6: unisim.vcomponents.LUT2
       INIT => X"1"
     )
         port map (
-      I0 => counter_reg(5),
-      I1 => counter_reg(4),
-      O => counter0_carry_i_6_n_0
-    );
-counter0_carry_i_7: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => counter_reg(3),
-      I1 => counter_reg(2),
-      O => counter0_carry_i_7_n_0
-    );
-counter0_carry_i_8: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
       I0 => counter_reg(1),
       I1 => counter_reg(0),
-      O => counter0_carry_i_8_n_0
+      O => counter0_carry_i_6_n_0
     );
 \counter[0]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1049,8 +1029,8 @@ o_clk_en_INST_0_i_10: unisim.vcomponents.LUT6
       INIT => X"0000000000000001"
     )
         port map (
-      I0 => counter_reg(4),
-      I1 => counter_reg(5),
+      I0 => counter_reg(0),
+      I1 => counter_reg(1),
       I2 => counter_reg(10),
       I3 => counter_reg(11),
       I4 => counter_reg(17),
@@ -1089,9 +1069,9 @@ o_clk_en_INST_0_i_4: unisim.vcomponents.LUT6
     )
         port map (
       I0 => o_clk_en_INST_0_i_8_n_0,
-      I1 => counter_reg(0),
-      I2 => counter_reg(1),
-      I3 => counter_reg(2),
+      I1 => counter_reg(2),
+      I2 => counter_reg(4),
+      I3 => counter_reg(5),
       I4 => o_clk_en_INST_0_i_9_n_0,
       I5 => o_clk_en_INST_0_i_10_n_0,
       O => o_clk_en_INST_0_i_4_n_0
@@ -1186,7 +1166,7 @@ architecture STRUCTURE of design_1_Frame_Clock_Divider_0_1 is
   attribute x_interface_mode : string;
   attribute x_interface_mode of i_clk : signal is "slave i_clk";
   attribute x_interface_parameter : string;
-  attribute x_interface_parameter of i_clk : signal is "XIL_INTERFACENAME i_clk, ASSOCIATED_RESET i_rst, FREQ_HZ 6250000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_clk_out1, INSERT_VIP 0";
+  attribute x_interface_parameter of i_clk : signal is "XIL_INTERFACENAME i_clk, ASSOCIATED_RESET i_rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_clk_out1, INSERT_VIP 0";
   attribute x_interface_info of i_rst : signal is "xilinx.com:signal:reset:1.0 i_rst RST";
   attribute x_interface_mode of i_rst : signal is "slave i_rst";
   attribute x_interface_parameter of i_rst : signal is "XIL_INTERFACENAME i_rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";

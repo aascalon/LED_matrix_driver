@@ -58,10 +58,8 @@ ENTITY design_1_HUB75_driver_0_3 IS
     i_clk : IN STD_LOGIC;
     i_rst : IN STD_LOGIC;
     i_clk_enable : IN STD_LOGIC;
-    i_row_data_top : IN STD_LOGIC_VECTOR(191 DOWNTO 0);
-    i_row_data_bottom : IN STD_LOGIC_VECTOR(191 DOWNTO 0);
-    o_read_addr_top : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
-    o_read_addr_bottom : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
+    i_data : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+    o_fb_read_addr : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
     o_addr : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
     o_rgb_0 : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
     o_rgb_1 : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
@@ -80,16 +78,15 @@ ARCHITECTURE design_1_HUB75_driver_0_3_arch OF design_1_HUB75_driver_0_3 IS
       g_COLOUR_DEPTH : INTEGER;
       g_PIXEL_COLUMNS : INTEGER;
       g_PIXEL_ROWS : INTEGER;
-      g_READ_LATENCY : INTEGER
+      g_READ_LATENCY : INTEGER;
+      g_DATA_WIDTH : INTEGER
     );
     PORT (
       i_clk : IN STD_LOGIC;
       i_rst : IN STD_LOGIC;
       i_clk_enable : IN STD_LOGIC;
-      i_row_data_top : IN STD_LOGIC_VECTOR(191 DOWNTO 0);
-      i_row_data_bottom : IN STD_LOGIC_VECTOR(191 DOWNTO 0);
-      o_read_addr_top : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
-      o_read_addr_bottom : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
+      i_data : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+      o_fb_read_addr : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
       o_addr : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
       o_rgb_0 : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
       o_rgb_1 : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
@@ -103,7 +100,7 @@ ARCHITECTURE design_1_HUB75_driver_0_3_arch OF design_1_HUB75_driver_0_3 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF design_1_HUB75_driver_0_3_arch : ARCHITECTURE IS "design_1_HUB75_driver_0_3,HUB75_driver,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF design_1_HUB75_driver_0_3_arch: ARCHITECTURE IS "design_1_HUB75_driver_0_3,HUB75_driver,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=HUB75_driver,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,g_BRIGHTNESS=50,g_COLOUR_DEPTH=2,g_PIXEL_COLUMNS=64,g_PIXEL_ROWS=32,g_READ_LATENCY=2}";
+  ATTRIBUTE CORE_GENERATION_INFO OF design_1_HUB75_driver_0_3_arch: ARCHITECTURE IS "design_1_HUB75_driver_0_3,HUB75_driver,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=HUB75_driver,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,g_BRIGHTNESS=50,g_COLOUR_DEPTH=2,g_PIXEL_COLUMNS=64,g_PIXEL_ROWS=32,g_READ_LATENCY=2,g_DATA_WIDTH=8}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF design_1_HUB75_driver_0_3_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -111,7 +108,7 @@ ARCHITECTURE design_1_HUB75_driver_0_3_arch OF design_1_HUB75_driver_0_3 IS
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF i_clk: SIGNAL IS "xilinx.com:signal:clock:1.0 i_clk CLK";
   ATTRIBUTE X_INTERFACE_MODE OF i_clk: SIGNAL IS "slave i_clk";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF i_clk: SIGNAL IS "XIL_INTERFACENAME i_clk, ASSOCIATED_RESET i_rst, FREQ_HZ 6250000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_clk_out1, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF i_clk: SIGNAL IS "XIL_INTERFACENAME i_clk, ASSOCIATED_RESET i_rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_clk_out1, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF i_rst: SIGNAL IS "xilinx.com:signal:reset:1.0 i_rst RST";
   ATTRIBUTE X_INTERFACE_MODE OF i_rst: SIGNAL IS "slave i_rst";
   ATTRIBUTE X_INTERFACE_PARAMETER OF i_rst: SIGNAL IS "XIL_INTERFACENAME i_rst, POLARITY ACTIVE_HIGH, INSERT_VIP 0";
@@ -125,16 +122,15 @@ BEGIN
       g_COLOUR_DEPTH => 2,
       g_PIXEL_COLUMNS => 64,
       g_PIXEL_ROWS => 32,
-      g_READ_LATENCY => 2
+      g_READ_LATENCY => 2,
+      g_DATA_WIDTH => 8
     )
     PORT MAP (
       i_clk => i_clk,
       i_rst => i_rst,
       i_clk_enable => i_clk_enable,
-      i_row_data_top => i_row_data_top,
-      i_row_data_bottom => i_row_data_bottom,
-      o_read_addr_top => o_read_addr_top,
-      o_read_addr_bottom => o_read_addr_bottom,
+      i_data => i_data,
+      o_fb_read_addr => o_fb_read_addr,
       o_addr => o_addr,
       o_rgb_0 => o_rgb_0,
       o_rgb_1 => o_rgb_1,
