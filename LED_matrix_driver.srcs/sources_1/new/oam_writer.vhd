@@ -32,6 +32,9 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity oam_writer is
+    Generic (
+        g_OAM_SIZE : integer := 96
+    );
     Port (
         clk : in std_logic;
         i_rst : in std_logic;
@@ -39,12 +42,13 @@ entity oam_writer is
         i_serial_data : in std_logic_vector(7 downto 0);
         o_oam_addr : out std_logic_vector(15 downto 0);
         o_oam_data : out std_logic_vector(15 downto 0);
+        o_fb_clear : out std_logic;
         o_write_en : out std_logic
     );
 end oam_writer;
 
 architecture RTL of oam_writer is
-    type t_state is (s_idle, s_read_data);
+    type t_state is (s_idle, s_read_data, s_clear);
     signal r_state : t_state := s_idle;
 
     constant c_OAM_BLOCK_SIZE : integer := 3;
@@ -73,6 +77,8 @@ begin
             r_data_upper <= (others => '0');
 
         else
+            o_fb_clear <= '0';
+            o_write_en <= '0';
             case r_state is
                 when s_idle =>
                     r_byte_count <= 0;
@@ -80,13 +86,18 @@ begin
                 if i_data_valid = '1' and i_serial_data = X"AA" then
                     r_byte_count <= 1;
                     r_state <= s_read_data;
-                else
-                    o_write_en <= '0';
+                elsif i_data_valid = '1' and i_serial_data = X"BB" then
+                    o_fb_clear <= '1';
+                    r_write_addr <= (others => '0');
+                    r_state <= s_clear;
+
                 end if;
                 
                 when s_read_data => -- since the data is registered, it'll take one cycle to kick in
-                
-                if (i_serial_data /= X"AA") and i_data_valid = '1' then
+
+                if r_byte_count = (c_Y_SIZE_BYTE + 1) then 
+                    r_state <= s_idle;
+                elsif (i_serial_data /= X"AA") and i_data_valid = '1' then
                     -- o_write_en <= '0';
 
                     case r_byte_count is
@@ -96,24 +107,29 @@ begin
                             -- o_write_en <= '1';
                             -- o_oam_data <= i_serial_data;                        
                         when c_CHAR_ROM_BYTE_UPPER | c_X_POS_BYTE | c_X_SIZE_BYTE =>
-                            o_write_en <= '0';
                             r_data_upper <= i_serial_data;
                             if r_byte_count = c_X_POS_BYTE or r_byte_count = c_X_SIZE_BYTE then
                                 r_write_addr <= r_write_addr + 1;
                             end if;
-                        when (c_Y_SIZE_BYTE + 1) => 
-                            o_write_en <= '0';
-                            r_state <= s_idle;
                         when others =>
                             o_write_en <= '1';
                             o_oam_data <= r_data_upper & i_serial_data;
+                
 
                     end case;
                     r_byte_count <= r_byte_count + 1;
 
-                else
-                    o_write_en <= '0';
                 end if;
+                when s_clear =>
+                    o_write_en <= '1';
+                    o_oam_data <= (others => '0');
+                    if r_write_addr = to_unsigned(g_OAM_SIZE-1, r_write_addr'length) then
+                        r_write_addr <= (others => '0');
+                        r_state <= s_idle;
+                    else
+                        r_write_addr <= r_write_addr + 1;
+                    end if;
+
             end case;
         end if;
     end if;
