@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x36E7DA98609FFD6C",
+      "boundary_crc": "0xE79309465D69324C",
       "device": "xc7a35tcpg236-1",
       "gen_directory": "../../../../LED_matrix_driver.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -13,7 +13,6 @@
     "design_tree": {
       "clk_wiz": "",
       "proc_sys_reset_0": "",
-      "fifo_generator_0": "",
       "HUB75_bus_breakout_0": "",
       "UART_RX_0": "",
       "Frame_Clock_Divider_0": "",
@@ -21,7 +20,8 @@
       "framebuffer": "",
       "simple_rom_0": "",
       "OAM": "",
-      "fb_writer_0": ""
+      "fb_writer_0": "",
+      "oam_writer_0": ""
     },
     "ports": {
       "clk": {
@@ -61,9 +61,6 @@
       },
       "fpga_reset": {
         "direction": "I"
-      },
-      "led1": {
-        "direction": "O"
       },
       "JA1": {
         "type": "data",
@@ -258,33 +255,6 @@
         "xci_path": "ip/design_1_proc_sys_reset_0_0/design_1_proc_sys_reset_0_0.xci",
         "inst_hier_path": "proc_sys_reset_0"
       },
-      "fifo_generator_0": {
-        "vlnv": "xilinx.com:ip:fifo_generator:13.2",
-        "ip_revision": "11",
-        "xci_name": "design_1_fifo_generator_0_0",
-        "xci_path": "ip/design_1_fifo_generator_0_0/design_1_fifo_generator_0_0.xci",
-        "inst_hier_path": "fifo_generator_0",
-        "parameters": {
-          "Almost_Empty_Flag": {
-            "value": "true"
-          },
-          "Data_Count": {
-            "value": "true"
-          },
-          "Data_Count_Width": {
-            "value": "11"
-          },
-          "Input_Data_Width": {
-            "value": "8"
-          },
-          "Performance_Options": {
-            "value": "First_Word_Fall_Through"
-          },
-          "Write_Acknowledge_Flag": {
-            "value": "true"
-          }
-        }
-      },
       "HUB75_bus_breakout_0": {
         "vlnv": "xilinx.com:module_ref:HUB75_bus_breakout:1.0",
         "ip_revision": "1",
@@ -467,7 +437,10 @@
         "inst_hier_path": "HUB75_driver_0",
         "parameters": {
           "g_BRIGHTNESS": {
-            "value": "50"
+            "value": "100"
+          },
+          "g_PIXEL_COLUMNS": {
+            "value": "128"
           }
         },
         "reference_info": {
@@ -517,7 +490,7 @@
           },
           "o_fb_read_addr": {
             "direction": "O",
-            "left": "10",
+            "left": "15",
             "right": "0"
           },
           "o_addr": {
@@ -553,6 +526,11 @@
         "xci_name": "design_1_simple_dual_port_ram_0_0",
         "xci_path": "ip/design_1_simple_dual_port_ram_0_0/design_1_simple_dual_port_ram_0_0.xci",
         "inst_hier_path": "framebuffer",
+        "parameters": {
+          "g_MEM_DEPTH": {
+            "value": "4096"
+          }
+        },
         "reference_info": {
           "ref_type": "hdl",
           "ref_name": "simple_dual_port_ram",
@@ -652,10 +630,7 @@
         "inst_hier_path": "OAM",
         "parameters": {
           "g_MEM_DEPTH": {
-            "value": "3"
-          },
-          "g_MEM_INIT_FILE": {
-            "value": "../../sources_1/imports/LED_matrix_helpers/oam.mem"
+            "value": "300"
           },
           "g_MEM_WIDTH": {
             "value": "16"
@@ -716,6 +691,14 @@
         "xci_name": "design_1_fb_writer_0_0",
         "xci_path": "ip/design_1_fb_writer_0_0/design_1_fb_writer_0_0.xci",
         "inst_hier_path": "fb_writer_0",
+        "parameters": {
+          "g_OAM_SIZE": {
+            "value": "300"
+          },
+          "g_PIXEL_COLUMNS": {
+            "value": "128"
+          }
+        },
         "reference_info": {
           "ref_type": "hdl",
           "ref_name": "fb_writer",
@@ -766,6 +749,9 @@
           "i_clk_enable": {
             "direction": "I"
           },
+          "i_clear": {
+            "direction": "I"
+          },
           "o_rom_addr": {
             "direction": "O",
             "left": "15",
@@ -787,6 +773,90 @@
             "right": "0"
           },
           "o_fb_write_en": {
+            "direction": "O"
+          }
+        }
+      },
+      "oam_writer_0": {
+        "vlnv": "xilinx.com:module_ref:oam_writer:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_oam_writer_0_0",
+        "xci_path": "ip/design_1_oam_writer_0_0/design_1_oam_writer_0_0.xci",
+        "inst_hier_path": "oam_writer_0",
+        "parameters": {
+          "g_OAM_SIZE": {
+            "value": "300"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "oam_writer",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "i_rst": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH"
+              }
+            }
+          },
+          "i_data_valid": {
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "i_serial_data": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "o_oam_addr": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "o_oam_data": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "o_fb_clear": {
+            "direction": "O"
+          },
+          "o_write_en": {
             "direction": "O"
           }
         }
@@ -912,13 +982,13 @@
       "UART_RX_0_o_RX_Byte": {
         "ports": [
           "UART_RX_0/o_RX_Byte",
-          "fifo_generator_0/din"
+          "oam_writer_0/i_serial_data"
         ]
       },
       "UART_RX_0_o_RX_DV": {
         "ports": [
           "UART_RX_0/o_RX_DV",
-          "fifo_generator_0/wr_en"
+          "oam_writer_0/i_data_valid"
         ]
       },
       "UART_RX_1": {
@@ -936,15 +1006,15 @@
       "clk_wiz_clk_out1": {
         "ports": [
           "clk_wiz/clk_out1",
-          "fifo_generator_0/clk",
           "proc_sys_reset_0/slowest_sync_clk",
-          "HUB75_driver_0/i_clk",
           "UART_RX_0/i_Clk",
-          "framebuffer/clk",
           "Frame_Clock_Divider_0/i_clk",
-          "OAM/clk",
           "simple_rom_0/clk",
-          "fb_writer_0/i_clk"
+          "framebuffer/clk",
+          "OAM/clk",
+          "HUB75_driver_0/i_clk",
+          "fb_writer_0/i_clk",
+          "oam_writer_0/clk"
         ]
       },
       "clk_wiz_locked": {
@@ -983,12 +1053,6 @@
           "simple_rom_0/addr"
         ]
       },
-      "fifo_generator_0_wr_ack": {
-        "ports": [
-          "fifo_generator_0/wr_ack",
-          "led1"
-        ]
-      },
       "fpga_reset": {
         "ports": [
           "fpga_reset",
@@ -997,12 +1061,36 @@
           "Frame_Clock_Divider_0/i_rst"
         ]
       },
+      "oam_writer_0_o_fb_clear": {
+        "ports": [
+          "oam_writer_0/o_fb_clear",
+          "fb_writer_0/i_clear"
+        ]
+      },
+      "oam_writer_0_o_oam_addr": {
+        "ports": [
+          "oam_writer_0/o_oam_addr",
+          "OAM/addra"
+        ]
+      },
+      "oam_writer_0_o_oam_data": {
+        "ports": [
+          "oam_writer_0/o_oam_data",
+          "OAM/dina"
+        ]
+      },
+      "oam_writer_0_o_write_en": {
+        "ports": [
+          "oam_writer_0/o_write_en",
+          "OAM/wea"
+        ]
+      },
       "proc_sys_reset_0_peripheral_reset": {
         "ports": [
           "proc_sys_reset_0/peripheral_reset",
-          "fifo_generator_0/srst",
           "HUB75_driver_0/i_rst",
-          "fb_writer_0/i_rst"
+          "fb_writer_0/i_rst",
+          "oam_writer_0/i_rst"
         ]
       },
       "simple_dual_port_ram_0_doutb": {
