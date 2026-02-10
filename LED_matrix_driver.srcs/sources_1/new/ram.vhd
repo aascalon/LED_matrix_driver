@@ -47,30 +47,30 @@ entity simple_dual_port_ram is
 end simple_dual_port_ram;
 
 architecture RTL of simple_dual_port_ram is
-    type ram_type is array ( 0 to (g_MEM_DEPTH-1) ) of bit_vector((g_MEM_WIDTH-1) downto 0);
-    impure function InitRamFromFile(RamFileName : in string) return ram_type is
-        FILE RamFile : text;
-        variable RamFileLine : line;
-        variable RAM : ram_type := (others => (others => '0'));
-            begin
-            if RamFileName'length > 0 then 
-                file_open(RamFile, RamFileName, read_mode);
-                for I in ram_type'range loop
-                readline(RamFile, RamFileLine);
-                read(RamFileLine, RAM(I));
-            end loop;
-            end if;
+    type ram_type is array ( 0 to (g_MEM_DEPTH-1) ) of std_logic_vector((g_MEM_WIDTH-1) downto 0);
+    -- impure function InitRamFromFile(RamFileName : in string) return ram_type is
+    --     FILE RamFile : text;
+    --     variable RamFileLine : line;
+    --     variable RAM : ram_type := (others => (others => '0'));
+    --         begin
+    --         if RamFileName'length > 0 then 
+    --             file_open(RamFile, RamFileName, read_mode);
+    --             for I in ram_type'range loop
+    --             readline(RamFile, RamFileLine);
+    --             read(RamFileLine, RAM(I));
+    --         end loop;
+    --         end if;
 
-            return RAM;
-    end function;
-    shared variable RAM : ram_type := InitRamFromFile(g_MEM_INIT_FILE);
+    --         return RAM;
+    -- end function;
+    shared variable RAM : ram_type := (others => (others => '0'));
 begin
     p_write : process(clk)
     begin
     if rising_edge(clk) then
         -- if ena = '1' then
             if wea = '1' then
-                RAM(to_integer(unsigned(addra))) := to_bitvector(dina);
+                RAM(to_integer(unsigned(addra))) := dina;
             end if;
         -- end if;
     end if;
@@ -80,7 +80,7 @@ begin
     begin
     if rising_edge(clk) then
         -- if enb = '1' then
-            doutb <= to_stdlogicvector(RAM(to_integer(unsigned(addrb))));
+            doutb <= RAM(to_integer(unsigned(addrb)));
         -- end if;
     end if;
 end process p_read;
